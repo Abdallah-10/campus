@@ -1,0 +1,631 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {% trans %} Digital Learning Academy {% endtrans %}
+{% endblock %}
+
+{% block body %}
+	<div class="main-wrapper">
+		{{ include('home/_header.html.twig') }}
+		<div class="slider-area banner-style-3 bg-image home-ind">
+            <div class="d-flex align-items-center height-940">
+			{% if (app.request.locale)=='ar' %}
+			<div id="news-bar">
+			<h4 class="journal">الأخبار </h4>
+			<marquee direction="right" scrollamount="3" behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()">
+			<h5 class="title-news">
+					{% for actualite in actualites %}
+					{% if (actualite.langue)=='arabe' %}
+				<a href="/media/{{ actualite.slug }}">{{ actualite.titre }}</a>
+			
+			{% endif %}
+			{% endfor %}
+			</h5>
+			</marquee>
+			</div>
+			{% else %}
+			<div id="news-bar"><h4 class="journal-fr">Journal </h4>
+			<marquee direction="left" scrollamount="3" behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()">
+				<h5 class="title-news">
+			{% for actualite in actualites %}
+			{% if (actualite.langue)=='français' %}
+			<a href="/media/{{ actualite.slug }}">{{ actualite.titre }}</a>
+			{% endif %}
+			{% endfor %}
+			</h5>
+			</marquee>
+		    </div>
+			{% endif %}
+
+                <div class="container eduvibe-animated-shape">
+                    <div class="row g-5 align-items-center">
+                        <div class="col-lg-12">
+
+						 <div class="col-lg-6 col-12">
+                          <div class="testimonial-activation testimonial-item-1 testimonial-style-1 edu-slick-button slick-button-left">
+
+                            <!-- Start Single Testimonial  -->
+                            <div class="single-testimonial">
+                                <div class="inner">
+                                    <h4 class="title {% if (app.request.locale)=='ar' %}desc-ar{% endif %}" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">{% trans %} Bienvenue sur le portail DLA {% endtrans %}</h4>
+                                  {% if (app.request.locale)=='fr' %}  <p class="description" data-sal-delay="350" 
+									data-sal="slide-up" data-sal-duration="800">
+									Ce Portail vous permet d’accéder en tant qu’employeurs du secteur public à un ensemble de formations qualifiantes et diplômantes dans le domaine du numérique proposées en partenariat avec ITU Academy, GSMA,….<br><a href="/register">Inscrivez-vous </a> dès maintenant pour ne 
+									 manquer aucune de nos formations.</p> {% else %}
+									  <p class="description desc-ar" data-sal-delay="350" 
+									data-sal="slide-up" data-sal-duration="800" >
+تهدف هذه البوّابة إلى تقديم عدّة دورات تكوينيّة إشهاديّة في مجال التّحوّل الرّقمي لفائدة موظّفي القطاع العمومي وذلك بالشّراكة مع عدّة مكاتب تكوين مثل أكاديمية الاتحاد الدولي  
+لا تفوِّت الفرصة. سجِّل الآن!<br>
+
+								</p>{% endif %}
+									 
+                            </div>
+                            </div>
+                            <!-- End Single Testimonial  -->
+
+                            <!-- Start Single Testimonial  -->
+                         <div class="single-testimonial">
+                                <div class="inner">
+                                    <h4 class="title {% if (app.request.locale)=='ar' %}desc-ar{% endif %}" data-sal-delay="250"
+									 data-sal="slide-up" data-sal-duration="800">{% trans %}Notre orientation stratégique{% endtrans %}</h4>
+                                  {% if (app.request.locale)=='fr' %}  <p class="description" data-sal-delay="350" 
+									data-sal="slide-up" data-sal-duration="800">
+									La formation en cours de vie professionnelle vous ouvre des perspectives de carrière et la possibilité d’un apprentissage adapté à votre quotidien. Ce portail est votre principal allié pour vous familiariser avec les nouveaux enjeux du numérique afin de développer les compétences techniques et stratégiques dans la politique de digitalisation.</p> {% else %}
+									  <p class="description desc-ar" data-sal-delay="350" 
+									data-sal="slide-up" data-sal-duration="800" >
+يفتح لك التّكوين المتواصل خلال حياتك المهنيّة آفاقا واسعة ويمكّنك من التّعلّم بالسّرعة التي تناسب قدراتك وبالطّريقة التي تختارها. تعتبر هذه البوّابة حليفك الرّئيسي لمساعدتك في مواجهة التحديّات الرّقمية الجديدة وذلك من أجل دعم وتطوير كفاءتك وتعزيز ثقافتك الرّقميّة.
+								</p>{% endif %}
+									 
+                            </div>
+                            </div>
+                            <!-- End Single Testimonial  -->
+
+                            <!-- Start Single Testimonial  -->
+                          <div class="single-testimonial">
+                                <div class="inner">
+                                    <h4 class="title {% if (app.request.locale)=='ar' %}desc-ar{% endif %}" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">{% trans %} Le projet DLA, C’est quoi ? {% endtrans %}</h4>
+                                  {% if (app.request.locale)=='fr' %}  <p class="description" data-sal-delay="350" 
+									data-sal="slide-up" data-sal-duration="800">
+									Le programme Digital Learning Academy est une initiative du ministère des technologies de la communication qui vise dans sa globalité à la montée en compétence des fonctionnaires publics dans le domaine des technologies numériques et de la digitalisation.</p> {% else %}
+									  <p class="description desc-ar" data-sal-delay="350" 
+									data-sal="slide-up" data-sal-duration="800" >
+
+مشروع الأكاديمية التّعليمية الرّقمية هي مبادرة تخصّصية برعاية وزارة تكنولوجيات الاتّصال تهدف إلى نشر وتنمية الوعي الرّقمي بين جميع أعوان وإطارات القطاع العام، بغية تطوير مهاراتهم في هذا المجال								</p>{% endif %}
+									 
+                            </div>
+                            </div>
+                            <!-- End Single Testimonial  -->
+
+								</div>
+							</div>
+						</div>
+                            
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+		<!-- Start About Area  -->
+	<div class="edu-about-area about-style-3 edu-section-gap bg-image" style="margin-bottom: -75px;">
+            <div class="container eduvibe-animated-shape">
+                <div class="row g-5 align-items-center mb--120">
+                    
+                        <div class="gappery-wrapper" data-sal-delay="200" data-sal="fade" data-sal-duration="800">
+                            <div class="row g-5 align-items-end" style="display: flex; flex-wrap: nowrap;justify-content: flex-start;">
+							  <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                <div class="edu-counterup">
+                                    <div class="inner">
+                                        <div class="icon">
+                                            <img src="{{asset('assets/images/user.png') }}" alt="Icons Images">
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="counter"><span class="odometer" data-count="10">00</span>
+                                            </h3>
+                                            <span class="spon">{% if (app.request.locale)=='ar' %}عدد التسجيلات{% else %}Nombre d’inscriptions{% endif %}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Counterup  -->
+
+                            <!-- Start Single Counterup  -->
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                <div class="edu-counterup">
+                                    <div class="inner">
+                                        <div class="icon">
+                                            <img src="{{asset('assets/images/livre.png') }}" alt="Icons Images">
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="counter"><span class="odometer" data-count="623">00</span>
+                                            </h3>
+                                            <span class="spon">{% trans %}Nombre de formations{% endtrans %}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Counterup  -->
+
+                            <!-- Start Single Counterup  -->
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                <div class="edu-counterup">
+                                    <div class="inner">
+                                        <div class="icon">
+                                            <img src="{{asset('assets/images/main.png') }}" alt="Icons Images">
+                                        </div>
+                                        <div class="content">
+                                            <h3 class="counter"><span class="odometer" data-count="300">00</span>
+                                            </h3>
+                                            <span class="spon">{% trans %} Domaines de compétences  {% endtrans %}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							</div>
+                        </div>
+                   
+                </div>
+                
+            </div>
+        </div>
+
+
+	<!-- Start Service Area  -->
+	<div class="home-one-cat edu-service-area service-wrapper-1 edu-section-gap bg-image" id="form-recp">
+		<div class="container eduvibe-animated-shape">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-title text-center" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+						<span class="pre-title">{% trans %}Formations{% endtrans %}</span>
+						<h3 class="title">{% trans %}Ce que nous offrons{% endtrans %}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+						{% include 'home/_filter.html.twig' with {forms: forms} only %} 
+				</div>
+			</div>
+			<div
+				class="row g-5 mt--25">
+				<!-- Start Service Card  -->
+				{% if(formations|length > 0) %}
+				{% for formation in formations %}
+				
+					<div class="col-lg-4 col-md-6 col-sm-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+						<div class="service-card service-card-1 radius-small">
+							<div class="inner">
+								<div class="thumbnail">
+									<a href="{{ path('app_formation_details',{'slug': formation.slug}) }}">
+										<img src="{{ asset('assets/uploads/') }}{{ formation.cover }}" alt="Service Images">
+									</a>
+									<div class="top-position status-group left-top">
+                                        <span class="eduvibe-status status-02">
+                                        
+                                            <div class="rating">
+                                                <i class="icon-Star"></i>
+                                            </div>
+                                            {% set sum = 0 %}    
+
+                                            <span class="rating-count">( 
+                                                {% if (formation.ratings|length > 0) %}
+                                                {% set loopOutput %}               
+                                                    {% for r in formation.ratings %}            
+                                                    {% set sum = sum + r.score %}        
+                                                    {% endfor %}    
+                                                {% endset %}
+                                                {{ sum / formation.ratings|length }} 
+                                                {{ loopOutput }}
+                                                     
+                                                 {% else %} 0 {% endif %})</span>
+                                        </span>
+                                    </div>
+									<div class="wishlist-top-right">
+										<a class="wishlist-btn" href="{{ path('app_like',{'id':formation.id} )}}" id="axios-like">
+											{% if app.user and formation.isLikedByUser(app.user) %}
+												<i class="icon-Heart red"></i>
+											{% else %}
+												<i class="icon-Heart blanc"></i>
+											{% endif %}
+										</a>
+									</div>
+								</div>
+								<div class="content">
+									<span class="course-total">
+										<img src="{{ asset('assets/images/banner/icon1.png') }}" alt="Service formation">
+										<span class="text-formt">{{ formation.duration }}
+										{% trans %} Heures {% endtrans %}</span>
+										<img src="{{ asset('assets/images/banner/icon2.png') }}" alt="Service formation">
+										<span class="text-formt-2">{{ formation.dateStart ? formation.dateStart|date('d-m-Y') : '' }}</span>
+										<img src="{{ asset('assets/images/banner/icon3.png') }}" alt="Service Imformationages">
+										<span class="text-formt-3">{{ formation.langue }} </span>
+									</span>
+									<h6 class="title">
+										<a href="{{ path('app_formation_details',{'slug': formation.slug}) }}"> {{ formation.title|u.truncate(50, '...') }}</a>
+									</h6>
+									<p class="description">{{ formation.apercu|u.truncate(150, '...')  }}</p>
+									<div class="col-lg-12">
+										<div class="load-more-btn mt--20" style="
+											                                    {% if (formation.DateInsF|date('d-m-Y')) < " now"|date('d-m-y') %}cursor: no-drop; {% endif %}">
+											<a class="edu-btn-inscr {% if (formation.DateInsF|date('d-m-Y')) < " now"|date('d-m-y') %}desactived{% endif %}" href="{{ path('app_inscription',{'id': formation.id}) }}">{% trans %}S'inscrire{% endtrans %}</a>
+										</div>
+										{% if (formation.DateInsF|date('d-m-Y')) < "now"|date('d-m-Y') %}
+											<article>
+												<p class="example-left">{% trans %} Le délai d'inscription a expiré {% endtrans %}</p>
+											</article>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				{% endfor %}
+				{% else %}
+					<p>{% trans %}Aucun élément à afficher{% endtrans %}</p>
+                        <div ><button class="edu-btn btn-medium btn-dark bes" href="/" style="line-height: 1px;">
+						{% trans %} Nouvelle recherche {% endtrans %}</button></div>
+					{% endif %}
+			</div>
+			<div class="row text-center mt--60">
+				<div class="col-lg-12">
+					<div class="load-more-btn">
+						<a class="edu-btn-plus" href="/list-formations/#form-recp">{% trans %}Voir toutes les formations{% endtrans %}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Service Area  -->
+	<div class="eedu-testimonial-area eduvibe-home-two-testimonial testimonial-card-box-bg edu-section-gap position-relative bg-image ">
+		<div class="container eduvibe-animated-shape">
+			<div class="row g-5">
+				<div class="col-lg-12">
+					<div class="section-title-testimo text-center" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+						<span class="pre-title-testimo">{% trans %}Témoignages{% endtrans %}</span>
+						<h3 class="title-testimo">{% trans %}Ce qu'ils disent de nous{% endtrans %}</h3>
+					</div>
+				</div>
+			</div>
+
+			<div class="edu-testimonial-activation testimonial-item-3 mt--40 edu-slick-button">
+				
+				{% if (app.request.locale)=='ar' %}
+				{% for temoignage in temoignages %}
+				{% if (temoignage.langue)=='arabe' %}
+					<!-- Start Tastimonial Card  -->
+					<div class="testimonial-card-box">
+						<div class="inner">
+							<div class="client-info">
+								<div class="thumbnail">
+									{% if (temoignage.cover) %}
+										<img src="{{ asset('assets/uploads/') }}{{ temoignage.cover }}" alt="Client Images">
+									{% else %}
+										<div class="avatar-xl mx-auto mb-4">
+											<div class="avatar-title bg-soft-light text-light display-4 m-0 rounded-circle">
+												<i class="bx bxs-user-circle"></i>
+											</div>
+										</div>
+									{% endif %}
+								</div>
+								<div class="content">
+									<h6 class="title">{{ temoignage.nom }}</h6>
+									<span class="designation">{{ temoignage.poste }}</span>
+								</div>
+							</div>
+							<p class="description" dir="rtl">“
+								{{ temoignage.comment }}
+								”</p>
+							<div class="rating">
+								<i class="on icon-Star"></i>
+								<i class="on icon-Star"></i>
+								<i class="on icon-Star"></i>
+								<i class="on icon-Star"></i>
+								<i class="on icon-Star"></i>
+							</div>
+						</div>
+					</div>
+				{% endif %}
+                 {% endfor %}
+                  {% else %}
+                    {% for temoignage in temoignages %}
+                    {% if (temoignage.langue)=='français' %}
+						<div class="testimonial-card-box">
+						<div class="inner">
+							<div class="client-info">
+								<div class="thumbnail">
+									{% if (temoignage.cover) %}
+										<img src="{{ asset('assets/uploads/') }}{{ temoignage.cover }}" alt="Client Images">
+									{% else %}
+										<div class="avatar-xl mx-auto mb-4">
+											<div class="avatar-title bg-soft-light text-light display-4 m-0 rounded-circle">
+												<i class="bx bxs-user-circle"></i>
+											</div>
+										</div>
+									{% endif %}
+								</div>
+								<div class="content">
+									<h6 class="title">{{ temoignage.nom }}</h6>
+									<span class="designation">{{ temoignage.poste }}</span>
+								</div>
+							</div>
+							<p class="description">“
+								{{ temoignage.comment }}
+								”</p>
+							<div class="rating">
+								<i class="on icon-Star"></i>
+								<i class="on icon-Star"></i>
+								<i class="on icon-Star"></i>
+								<i class="on icon-Star"></i>
+								<i class="on icon-Star"></i>
+							</div>
+						</div>
+					</div>
+					 {% endif %}
+                            {% endfor %}
+                            {% endif %}
+				<!-- End Tastimonial Card  -->
+			</div>
+		</div>
+	</div>
+
+	<div class="eduvibe-home-five-course slider-dots edu-course-area  bg-image">
+            <div class="container eduvibe-animated-shape">
+                <div class="row g-5">
+                        <div class="section-title text-start" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <h3 class="title text-center mt--30">{% trans %}Actualités et Événements {% endtrans %}</h3>
+                        </div>
+                   
+                </div>
+                <div class="row g-5 mt--10">
+                    <div class="col-lg-12">
+                        <div class="slick-activation-wrapper course-activation-3 edu-slick-button">
+                            <!-- Start Single Card  -->
+                         {% if (app.request.locale)=='fr' %}
+                        {% for actualite in actualites %}
+                        {% if (actualite.langue)=='français' %}
+                            <!-- Start Blog Grid  -->
+                            <div class="col-lg-4 col-md-4 " style="padding: 18px;" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                <div class="edu-blog blog-type-2 radius-small">
+                                    <div class="inner">
+                                        <div class="thumbnail actaulite">
+                                            <a href="/media/{{ actualite.slug }}">
+                                                <img src="{{ asset('assets/uploads/') }}{{ actualite.image }}" alt="Blog Images">
+                                            </a>
+                                        </div>
+										<div class="top-position status-actus-group right-top">
+                                            <span class="eduvibe-status status-02">{{ actualite.type|trans({}, 'messages') }}</span>
+                                        </div>
+                                        <div class="content">
+                                            
+                                            <h5 class="title-act"><a href="/media/{{ actualite.slug }}">{{ actualite.titre }}</a></h5>
+                                            <p class="desc-actu">{{ actualite.description|u.truncate(120, '...')  }}</p>
+                                            <div class="blog-card-bottom">
+                                                <ul class="blog-meta">
+                                                    <li><i class="icon-calendar-2-line"></i>{{ actualite.date|date('d-m-Y') }}</li>
+                                                </ul>
+                                                <div class="read-more-btn">
+                                                    <a class="btn-transparent" href="/media/{{ actualite.slug }}">En savoir plus<i class="icon-arrow-right-line-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            {% else %}
+                       {% for actualite in actualites %}
+                        {% if (actualite.langue)=='arabe' %}
+                            <!-- Start Blog Grid  -->
+                            <div class="col-lg-4 col-md-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                <div class="edu-blog blog-type-2 radius-small">
+                                    <div class="inner">
+                                        <div class="thumbnail actaulite">
+                                            <a href="/media/{{ actualite.slug }}">
+                                                <img src="{{ asset('assets/uploads/') }}{{ actualite.image }}" alt="Blog Images">
+                                            </a>
+                                        </div>
+										<div class="top-position status-actus-group right-top">
+                                            <span class="eduvibe-status status-02">{{ actualite.type|trans({}, 'messages') }}</span>
+                                        </div>
+                                        <div class="content">
+                                            
+                                            <h5 class="title-act"><a href="/media/{{ actualite.slug }}">{{ actualite.titre }}</a></h5>
+                                            <p class="desc-actu">{{ actualite.description|u.truncate(120, '...')  }}</p>
+                                            <div class="blog-card-bottom">
+                                                <ul class="blog-meta">
+                                                    <li><i class="icon-calendar-2-line"></i>{{ actualite.date|date('d-m-Y') }}</li>
+                                                </ul>
+                                                <div class="read-more-btn">
+                                                    <a class="btn-transparent" href="/media/{{ actualite.slug }}">اقرأ المزيد<i class="icon-arrow-right-line-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                            <!-- End Single Card  -->
+
+                        </div>
+						<div class="row text-center mt--60">
+						<div class="col-lg-12">
+							<div class="load-more-btn">
+								<a class="edu-btn-plus mb--30" href="/media">{% trans %}Voir plus{% endtrans %}</a>
+							</div>
+						</div>
+					</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+	<!-- Start Brand Area  -->
+	<!-- Start Team Area  -->
+	<div class="edu-team-carousel-area edu-section-gapBottom mt--20">
+		<div class="container">
+			<div class="row g-5">
+				<div class="col-lg-12">
+					<div class="section-title sal-animate" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+						<h3 class="title-partenaires">{% trans %}Nos partenaires{% endtrans %}</h3>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="team-activation-03 edu-slick-arrow-top edu-slick-button slick-gutter-15 mt--60 mb_dec--20">
+						{% for partenaire in partenaires %}
+							<!-- Start Team Single  -->
+							<div class="edu-instructor-grid edu-instructor-3 edu-instructor-3-slider-visible">
+								<div class="edu-instructor" style="    margin-bottom: 15px !important;">
+									<div class="inner">
+										<div class="thumbnail parten">
+											<a href="">
+												<img class="logo-hover" src="{{ asset('assets/uploads/') }}{{ partenaire.cover}}" alt="Brand Images">
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- End Team Single  -->
+						{% endfor %}
+					</div>
+					<div class="row text-center mt--60">
+						<div class="col-lg-12">
+							<div class="load-more-btn">
+								<a class="edu-btn-plus" href="/partenaires">{% trans %}Voir plus{% endtrans %}</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Start Footer Area  -->
+	{{ include('home/_footer.html.twig') }}
+	<!-- End Footer Area  -->
+</div>
+<div class="rn-progress-parent">
+	<svg class="rn-back-circle svg-inner" width="100%" height="100%" viewbox="-1 -1 102 102">
+		<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+	</svg>
+</div>
+{% if (app.request.locale)=='ar' %}
+	<style>
+	h4.journal {
+			position: absolute;
+			right: 0;
+			font-size: 27px;
+			z-index: 999;
+			background: white;
+			padding: 0px 25px 3px 26px;
+			border-left: 1px solid red;
+		}
+		p.desc-actu {
+			direction: rtl;
+		}
+	</style>
+{% endif %}
+<style>
+.col-lg-4.col-md-6.col-12.sal-animate {
+    padding: 20px;
+}
+span.odometer-formatting-mark {
+    visibility: hidden;
+}
+	ul.slick-dots {
+		display: none !important;
+	}
+
+	.top-position.status-group.left-top {
+		position: absolute;
+		top: 0;
+	}
+	.wishlist-top-right {
+		position: absolute;
+		top: 3px;
+		right: 8px;
+		/* background-color: #4c4d4e; */
+	}
+	.gappery-wrapper.sal-animate {
+    border-radius: 20px;
+    border: 5px solid #dc3545;
+    padding: 15px;
+}
+span.odometer.odometer-auto-theme {
+    color: #dc3545;
+}
+.eduvibe-status.status-02 {
+    color: #dc3545;
+    background: #f9fafb;
+}
+.testimonial-style-1 .single-testimonial .inner .description {
+    margin-bottom: 50px;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 1.7;
+}.edu-slick-button.slick-button-left .slick-dots {
+    bottom: -20px;}
+
+#news-bar {
+    position: absolute;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0px 0px #c1a4a436, 0 0 2px #b17c7c66 inset;
+    font: 17px bold;
+    padding: 4px;
+    top: 80px;
+}
+.journal-fr{
+	position: absolute;
+    left: 0;
+    font-size: 23px;
+    z-index: 999;
+    background: white;
+    padding: 7px 25px 4px 26px;
+    border-right: 1px solid red;
+}
+#news-bar:hover {
+  transition: 0.37s;
+}
+
+#news-bar a {
+   color: #cf1115;
+    text-decoration: none;
+    font-size: 15px;
+	margin-left: 5%;
+    margin-right: 5%;
+}
+
+#news-bar a:hover {
+  transition: 0.37s;
+  color: red;
+  text-shadow: 0 0 1px white, 0 0 2px white, 0 0 3px white, 0 0 4px white;
+}
+h5.title-news {
+    height: 15px;
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+	function onClickLike(e) {
+e.preventDefault();
+const url = this.href;
+const icone = this.querySelector('i');
+
+axios.get(url).then(function (response) {
+if (icone.classList.contains('blanc')) {
+icone.classList.replace('blanc', 'red');
+} else {
+icone.classList.replace('red', 'blanc');
+}
+});
+
+}
+
+document.querySelectorAll('a#axios-like').forEach(function (link) {
+link.addEventListener('click', onClickLike)
+})
+</script>{% endblock %}

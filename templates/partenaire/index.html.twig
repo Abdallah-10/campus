@@ -1,0 +1,41 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}{% trans %} Partenaire index {% endtrans %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans %} Partenaires {% endtrans %} </h1>
+
+    <div class="row" style="padding: 34px;">
+    <div class="col-md-3">
+    <a class="btn btn-primary waves-effect waves-light" href="{{ path('app_partenaire_new') }}" style="width: 100%;">Ajouter Partenaires</a></div>
+     <table class="table table-bordered dt-responsive nowrap w-100" style="margin: 10px;">
+        <thead>
+            <tr>
+               
+                <th>{% trans %}Image {% endtrans %}</th>
+                <th> {% trans %}Lien {% endtrans %}</th>
+                 <th>{% trans %}Category {% endtrans %}</th>
+                <th>{% trans %}Actions {% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for partenaire in partenaires %}
+            <tr>
+                <td><img src="{{ asset('assets/uploads/') }}{{ partenaire.cover }}" alt="Client Images" width="80px" ></td>
+                <td><a href="{{ partenaire.link }}" target="_blanck">{{ partenaire.link }}</a></td>
+                  <td><a href="{{ partenaire.category }}" target="_blanck">{{ partenaire.category }}</a></td>
+                <td>
+                    <a class="btn btn-secondary waves-effect waves-light" href="{{ path('app_partenaire_show', {'id': partenaire.id}) }}">{% trans %}show {% endtrans %}</a>
+                    <a class="btn btn-warning waves-effect waves-light " href="{{ path('app_partenaire_edit', {'id': partenaire.id}) }}">{% trans %} edit {% endtrans %}</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">{% trans %} no records found {% endtrans %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+{% endblock %}

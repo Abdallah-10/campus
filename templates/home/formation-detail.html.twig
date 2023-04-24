@@ -1,0 +1,513 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {% trans %} Digital Learning Academy {% endtrans %}
+{% endblock %}
+
+{% block body %}
+	<div class="main-wrapper">
+		{{ include('home/_header.html.twig') }}
+
+		<!-- Start Sldier Area  -->
+		<div class="edu-breadcrumb-area breadcrumb-style-1 pt--200 pb--100 ptb_md--140 ptb_sm--140 bg-image">
+			<div class="container eduvibe-animated-shape">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="breadcrumb-inner text-start">
+							<div class="page-title">
+								<h3 class="title">{% trans %} Détails de la Formation {% endtrans %}</h3>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Sldier Area  -->
+
+		<div class="edu-course-details-area edu-section-gap bg-color-white">
+			<div class="container">
+
+				<div class="row g-5">
+					<div class="col-lg-7">
+						<div class="course-details-content">
+							<h3 class="title"> {{ formation.title }} </h3>
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+									<div class="course-tab-content">
+										<h5>{% trans %} Aperçu {% endtrans %}</h5>
+										<p> {{ formation.apercu }} </p>
+										<h5>{% trans %} Objectifs de la formation{% endtrans %}</h5>
+										<p>{{ formation.Objectifs }}</p>
+										<h5>{% trans %}  Critères d'inscription à la formation {% endtrans %}</h5>
+										<p> {{ formation.criteres }}</p>
+										<h5>{% trans %}  Certificat de formation {% endtrans %}</h5>
+										<p>{{ formation.certifs }} </p>
+										<h5> {% trans %} Structure de la formation et temps d'études {% endtrans %}</h5>
+										<p>{{ formation.structure }} </p>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-5">
+						<div class="eduvibe-sidebar course-details-sidebar">
+							<div class="inner">
+								<div class="eduvibe-widget">
+									<div class="video-area">
+										<div class="thumbnailes video-popup-wrapper">
+											<img class="radius-small w-100" src="{{ asset('assets/uploads/') }}{{ formation.cover }}" alt="Course Images">
+											
+											<div class="top-position status-group left-top">
+                                        <span class="eduvibe-status status-02">
+                                        
+                                            <div class="rating">
+                                                <i class="icon-Star"></i>
+                                            </div>
+                                            {% set sum = 0 %}    
+
+                                            <span class="rating-count">( 
+                                                {% if (formation.ratings|length > 0) %}
+                                                {% set loopOutput %}               
+                                                    {% for r in formation.ratings %}            
+                                                    {% set sum = sum + r.score %}        
+                                                    {% endfor %}    
+                                                {% endset %}
+                                                {{ sum / formation.ratings|length }} 
+                                                {{ loopOutput }}
+                                                     
+                                                 {% else %} 0 {% endif %})</span>
+                                        </span>
+                                    </div>
+											<div class="wishlist-top-right details">
+												<a class="wishlist-btn" href="{{ path('app_like',{'id':formation.id} )}}" id="axios-like">
+													{% if app.user and formation.isLikedByUser(app.user) %}
+														<i class="icon-Heart red"></i>
+													{% else %}
+														<i class="icon-Heart blanc"></i>
+													{% endif %}
+												</a>
+											</div>
+										</div>
+									</div>
+									<div class="eduvibe-widget-details mt--35">
+										<div class="widget-content">
+										 {% if (app.request.locale)=='fr' %}
+											<ul>
+												<li>
+													
+													<span>
+										         <i class="icon-artboard-line"></i>
+													{% trans %}	Thématiques : {% endtrans %}</span>
+												<span>
+														{{ formation.thematique }} </span>
+												</li>
+												<li>
+												
+													<span>
+														<i class="icon-time-line"></i>
+													{% trans %} 	Date début de l'inscription :{% endtrans %}</span>
+													<span> {{ formation.DateInsD ? formation.DateInsD|date('d-m-Y') : ''  }} 
+													</span>
+												</li>
+												<li>
+													
+													<span>
+														<i class="icon-time-line"></i>
+													{% trans %} 	Date fin de l'inscription : {% endtrans %}</span>
+												<span>{{ formation.DateInsF ? formation.DateInsF|date('d-m-Y') : ''  }} 
+													</span>
+												</li>
+
+												<li>
+												
+													<span> 	<i class="icon-calendar-2-line"></i>
+													{% trans %} 	Date début de la formation : {% endtrans %}</span>
+													<span>  {{ formation.dateStart|date('d-m-Y') }} </span>
+												
+												</li>
+												<li>
+															
+													<span>
+														<i class="icon-calendar-2-line"></i>
+													{% trans %}	Date fin de la formation : {% endtrans %}</span>
+										<span>{{ formation.dateEnd|date('d-m-Y') }} </span>
+												</li>
+
+												<li>
+												
+													<span>
+												<i class="icon-draft-line"></i>
+													{% trans %}	Durée de la formation :{% endtrans %}		</span>
+													<span>
+														{{ formation.duration }}
+														Heures  </span>
+												</li>
+
+												<li>
+												<span> 
+														<i class="icon-bar-chart-2-line"></i>
+													{% trans %}	Modalité : {% endtrans %}</span>
+													<span>
+														{{ formation.type }} </span>
+													
+												</li>
+
+												<li>
+												
+													<span> 	<i class="icon-translate"></i>
+													{% trans %}	Langue :{% endtrans %}</span>
+													<span>
+													{{ formation.langue }} </span>
+													
+												</li>
+
+													<li>
+													<span> 	<i class="icon-artboard-line"></i>
+													{% trans %}	Partenaire :{% endtrans %}</span>
+													<span>
+													{{ formation.partenaire }} </span>
+													
+												</li>
+											</ul>
+											{% else %}
+											
+											<ul>
+												<li>
+												<span>
+														{{ formation.thematique }} </span>
+													<span>
+														
+													{% trans %}:المواضيع {% endtrans %}<i class="icon-artboard-line"></i></span>
+													
+												</li>
+												<li>
+												<span> {{ formation.DateInsD ? formation.DateInsD|date('d-m-Y') : ''  }} 
+													</span>
+													<span>
+														
+													{% trans %}: تاريخ بدء التسجيل {% endtrans %}<i class="icon-time-line"></i></span>
+													
+												</li>
+												<li>
+												<span>{{ formation.DateInsF ? formation.DateInsF|date('d-m-Y') : ''  }} 
+													</span>
+													<span>
+														
+													{% trans %} : تاريخ انتهاء التسجيل {% endtrans %}<i class="icon-time-line"></i></span>
+													
+												</li>
+
+												<li>
+												<span>  {{ formation.dateStart|date('d-m-Y') }} </span>
+													<span>
+														
+													{% trans %} : تاريخ بدء التدريب {% endtrans %}<i class="icon-calendar-2-line"></i></span>
+													
+												</li>
+												<li>
+												<span>{{ formation.dateStart|date('d-m-Y') }} </span>
+													<span>
+														
+													{% trans %}	: تاريخ انتهاء التدريب {% endtrans %}<i class="icon-calendar-2-line"></i></span>
+													
+												</li>
+
+												<li>
+												<span>
+														{{ formation.duration }}
+														Heures  </span>
+													<span>
+											
+													{% trans %}	 : مدة التدريب{% endtrans %}			<i class="icon-draft-line"></i></span>
+													
+												</li>
+
+												<li>
+												<span>
+														{{ formation.type }} </span>
+													<span>
+													{% trans %}	 : نوع التدريب {% endtrans %}
+													<i class="icon-bar-chart-2-line"></i></span>
+													
+												</li>
+
+												<li>
+												<span>
+													{{ formation.langue }} </span>
+													<span>
+													
+													{% trans %}: اللغة{% endtrans %}	<i class="icon-translate"></i></span>
+													
+												</li>
+												<li>
+												<span>
+													{{ formation.partenaire }} </span>
+													<span>
+													
+													{% trans %}: الداعم{% endtrans %}	<i class="icon-artboard-line"></i></span>
+													
+												</li>
+											</ul>
+											{% endif %}
+
+											<div class="read-more-btn mt--60">
+												<a class="edu-btn w-100 text-center" href="{{ path('app_inscription',{'id': formation.id}) }}">{% trans %} S'inscrire {% endtrans %}</a>
+											</div>
+
+											<div class="read-more-btn mt--30 text-center">
+												<div class="eduvibe-post-share">
+													
+													<a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ url('app_list') }}/{{ formation.slug }}" rel="nofollow" onclick="javascript:window.open(this.href, '','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;">
+														<i class="icon-linkedin"></i>
+													</a>
+													<a class="facebook" href="https://www.facebook.com/sharer.php?u={{ url('app_list') }}/{{ formation.slug }}" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;">
+														<i class="icon-Fb"></i>
+													</a>
+													<a class="twitter" href="Twitter" href="https://twitter.com/share?url={{ url('app_list') }}/{{ formation.slug }}" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;">
+														<i class="icon-Twitter"></i>
+													</a>
+													<a class="" href="mailto:?Subject=Regarde ça c'est cool !&amp;Body=regarde%20cet%20formation%20c'est%20super !%20 {{ url('app_list') }}/{{ formation.slug }}">
+														<i class="icon-Mail"></i>
+														</a></div>
+													</div>
+												</div>
+											</div>
+											<div class="read-more-btn mt--30 text-center">
+											<p class="avis">{% trans %} Donner votre avis pour cette formation {% endtrans %} </p>
+											<div class="stars" data="{{ path('app_profil_rating',{'id':formation.id} )}}" id="{{ formation.id }}" >
+												<i class="star stargrey fas fa-star" data-index="1"></i>
+												<i class="star stargrey fas fa-star"   data-index="2"></i>
+												<i class="star stargrey fas fa-star"   data-index="3"></i>
+												<i class="star stargrey fas fa-star"  data-index="4"></i>
+												<i class="star stargrey fas fa-star"   data-index="5"></i>
+											</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="edu-course-wrapper pt--65">
+									<div class="section-title text-start mb--20">
+										<span class="pre-title">{% trans %}Formation similaires{% endtrans %}</span>
+									</div>
+
+									<div class="mt--40 edu-slick-button slick-activation-wrapper eduvibe-course-one-carousel eduvibe-course-details-related-course-carousel">
+										{% for formation in formations %}
+											<div class="single-slick-card">
+												<div class="edu-card card-type-3 radius-small">
+													<div class="inner">
+														<div class="thumbnailes">
+															<div class="wishlist-top-right details">
+																<a class="wishlist-btn" href="{{ path('app_like',{'id':formation.id} )}}" id="axios-like">
+																	{% if app.user and formation.isLikedByUser(app.user) %}
+																		<i class="icon-Heart red"></i>
+																	{% else %}
+																		<i class="icon-Heart blanc"></i>
+																	{% endif %}
+																</a>
+															</div>
+															<a href="{{ path('app_formation_details',{'slug': formation.slug}) }}">
+																<img src="{{ asset('assets/uploads/') }}{{ formation.cover }}" alt="Service Images">
+															</a>
+															
+
+														</div>
+														<div class="content">
+															<div class="card-top">
+
+																<ul class="edu-meta meta-02">
+																	<li>
+																		<span>
+																			<i class="icon-calendar-2-line"></i>
+																		</span>
+																		<span>{{ formation.dateStart|date('d-m-Y') }}</span>
+																	</li>
+																	<li>
+																		<span>
+																			<i class="icon-time-line"></i>
+																		</span>
+																		<span>
+																			{{ formation.duration }}
+																			 Heures </span>
+																	</li>
+
+																</ul>
+															</div>
+															<h6 class="title">
+																<a href="#"> {{ formation.title }} </a>
+															</h6>
+															<div class="card-bottom">
+																<div class="price-list price-style-02">
+																	<a class="edu-btn-inscr {% if (formation.DateInsF|date('d-m-Y')) < "now"|date('d-m-y') %} desactived {% endif %}" href="{{ path('app_inscription',{'id': formation.id}) }}">{% trans %} S’inscrire {% endtrans %}</a>
+																</div>
+																<div class="top-position status-group left-top">
+                                        <span class="eduvibe-status status-02">
+                                        
+                                            <div class="rating">
+                                                <i class="icon-Star"></i>
+                                            </div>
+                                            {% set sum = 0 %}    
+
+                                            <span class="rating-count">( 
+                                                {% if (formation.ratings|length > 0) %}
+                                                {% set loopOutput %}               
+                                                    {% for r in formation.ratings %}            
+                                                    {% set sum = sum + r.score %}        
+                                                    {% endfor %}    
+                                                {% endset %}
+                                                {{ sum / formation.ratings|length }} 
+                                                {{ loopOutput }}
+                                                     
+                                                 {% else %} 0 {% endif %})</span>
+                                        </span>
+                                    </div>
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			{{ include('home/_footer.html.twig') }}
+
+			</div>
+
+			<style>
+				.social-share li a {
+					width: 46px !important;
+				}
+				.row.g-5 a:first-child {
+					width: 50%;
+				}
+				.col-lg-6.col-md-6.col-sm-12.col-12.besoin-footer {
+					width: 100%;
+				}
+				.edu-card.card-type-3 .inner .content .title {
+					margin-bottom: 20px;
+					height: 86px;
+				}
+				.wishlist-top-right.details {
+					position: absolute;
+					right: 10px;
+					top: 10px;
+				}
+				.slick-track {
+					display: flex;
+					flex-direction: row-reverse;
+				}
+				
+				.stars {
+					margin: 15px;
+					text-align: center;
+				}
+
+				.stargrey {
+					color: #96969d;
+				}
+
+				.yellow {
+					color: #fedc18;
+				}
+
+				.star:hover {
+					cursor: pointer;
+				}
+				p.avis {
+					font-weight: 600;
+					color: var(--color-dark);
+					margin-right: 15px;
+					margin: 0 0 0 0;
+				}
+				.eduvibe-status.status-02 {
+					left: 0;		
+					position: absolute;
+					top: 0;
+				}
+
+			</style>
+			<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+			<script>
+				function onClickLike(e) {
+                    e.preventDefault();
+                    const url = this.href;
+                    const icone = this.querySelector('i');
+
+                    axios.get(url).then(function (response) {
+						if (icone.classList.contains('blanc')) {
+							icone.classList.replace('blanc', 'red');
+						} else {
+							icone.classList.replace('red', 'blanc');
+						}
+                    });
+
+                }
+
+                document.querySelectorAll('a#axios-like').forEach(function (link) {
+                  	  link.addEventListener('click', onClickLike)
+                })
+
+
+					// On récupère toutes les étoiles
+	jQuery(document).ready(function($){
+
+			var toutesLesEtoiles = $('.stars .star');
+			toutesLesEtoiles.click(onStarClick);
+            var id = $('.stars').attr('data');
+			
+			function onStarClick(event) {
+				
+				// On récupère l'objet cliqué, AU FORMAT JQUERY
+				var etoileCliquée = $(this);
+				 var rating = etoileCliquée.attr('data-index');
+				
+				// On récupère son index ("Quelle étoile a été cliquée ?") depuis sont attribut data-index
+				var indexCliqué = etoileCliquée.data("index");
+
+				var parent = $(this).parent();
+
+				// Style : "Vider" toutes les étoiles.. de ce groupe
+				parent.find('.star').addClass('stargrey');
+				parent.find('.star').removeClass('yellow');
+
+				$.ajax({
+					type:'POST',
+					url: id,
+					data:{rating: rating},
+					
+					success:function(data){
+						
+					
+					},
+					error: function(data){
+						console.log("error");
+					
+					}
+				});
+             
+				for (var i = 0; i <= indexCliqué; i++) {
+
+					var etoile = parent.find('.star[data-index=' + i + ']');
+					etoile.addClass('yellow');
+					etoile.removeClass('stargrey');
+				}
+           
+				
+			}
+		});
+			</script>
+		{% endblock %}

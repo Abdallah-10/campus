@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Password Reset Email Sent{% endblock %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/icons.min.css.css') }}">
+    
+    <link rel="stylesheet" href="{{ asset('assets/css/color_skins.css') }}">
+ 
+{% endblock %}
+{% block body %}
+
+<body class="theme-purple authentication sidebar-collapse">
+
+<div class="account-pages my-5 pt-sm-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                      <div class="card overflow-hidden">
+                        <div class="card-body" style="padding-top: 50px;"> 
+                                <div class="auth-logo">
+                                    <a href="/" class="auth-logo-light">
+                                        <div class="avatar-md profile-user-wid mb-4">
+                                            <div class="avatar-title backs">
+                                                <img src="{{ asset('/assets/images/banner/logo.png') }}" alt="" class="auth" width="150px;">
+                                                <div><img class="logo-lighter" src="{{ asset('assets/images/banner/tun.png') }}" alt="Site Logo">
+                                                 <img class="logo-lighter" src="{{ asset('assets/images/banner/tunisie.png') }}" alt="Site Logo"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="bg-login">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="text-primary">
+                                            <h5 class="text-primar p-3">{% trans %}Bienvenue{% endtrans %}</h5>                                          
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                                <div class="p-2">
+								{% if (app.request.locale)=='fr' %}
+									<p>
+									Si un compte correspondant à votre adresse e-mail existe, un e-mail vient d'être envoyé contenant un lien que vous pouvez utiliser pour réinitialiser votre mot de passe. Ce lien expirera dans 1 heure.
+									</p>
+									<p>Si vous ne recevez pas d'e-mail, veuillez vérifier votre dossier spam  ou <a href="{{ path('app_forgot_password_request') }}"> réessayer.</a></p>
+								{% else %}
+																		<p>
+في حالة وجود حساب يطابق عنوان بريدك الإلكتروني ، فقد تم إرسال بريد إلكتروني للتو يحتوي على رابطاً  يمكنك استخدامه لإعادة تعيين كلمة المرور الخاصة بك. ستنتهي صلاحية هذا الرابط خلال ساعة واحدة.
+									</p>
+									<p>إذا لم تستلم بريدًا إلكترونيًا ، فيرجى التحقق من مجلد البريد العشوائي أو <a href="{{ path('app_forgot_password_request') }}"> حاول مرة أخرى
+
+</a></p>
+								{% endif %}
+								</div>
+                 
+
+                            </div>
+            
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+ {% if(app.request.locale == 'ar') %}
+<style>
+label {
+     font-size: 17px;
+    --bs-text-opacity: 1;
+    font-weight: 600;
+    text-align: right;
+    display: block;
+}p{
+     font-size: 17px;
+    --bs-text-opacity: 1;
+    font-weight: 600;
+}
+</style>
+{% endif %}
+<style>
+a {
+    text-decoration: none;
+}
+button.btn.btn-login.waves-effect.waves-light {
+    background-color: #dc3545;
+    color: #fff;
+    font-size: 17px;
+    --bs-text-opacity: 1;
+    font-weight: 600;
+}
+img.logo-lighter {
+    width: 80px;
+}h5.text-primar {
+    color: #000;
+    text-align:center;}
+a.condition {
+    text-decoration-line: underline !important;
+}
+.terms {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;}
+.backs {
+    justify-content: space-between !important;
+}
+
+</style>
+{% endblock %}

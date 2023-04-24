@@ -1,0 +1,380 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Inscription!{% endblock %}
+
+{% block body %}
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+ <div class="main-wrapper">
+         {{ include('home/_header.html.twig') }}
+        <!-- Start Sldier Area  -->
+        <div class="slider-area banner-style-1 banner-int bg-image height-300 d-flex align-items-center" style=" background: linear-gradient(45deg, #c3081ae6, #6f090942); ">
+            <div class="container eduvibe-animated-shape">
+                <div class="row g-5 row--40 align-items-center">
+                    <div class="order-2 order-xl-1 col-lg-12 col-xl-12">
+                        <div class="inner">
+                            <div class="content">
+                                
+                                <h1 class="title-detail" data-sal-delay="200" data-sal="slide-up" data-sal-duration="800" style="text-align: center;">
+                                {% if user.DateAdd is not null %} {% if (app.request.locale)=='fr' %}Confirmation d'inscription{% else %}تأكيد التسجيل {% endif %}
+								{% else %}{% if (app.request.locale)=='fr' %}Compléter vos données personnelles{% else %} استكمل بياناتك الشخصية{% endif %}{% endif %}
+                                </h1>                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Sldier Area  -->
+        {% if user.DateAdd is not null %}
+             <div class="edu-service-area service-wrapper-1 bg-image">
+                    <div class="container eduvibe-animated-shape">
+                        <div class="row">
+                            <p class="sous-titl"></p>
+                        </div>
+                <div class="row">
+                    {{ form_start(form) }}
+                        <div class="my-custom-class-for-errors">
+                            {{ form_errors(form) }}
+                        </div>
+
+                        <div class="row">
+                            
+                 <script>
+                    $(function() {
+                        $("#inscription_genre option").each(function(i){
+                            
+                            if($(this).val() == $("#inscription_genre").attr("data")){
+                                $(this).attr('selected','selected');
+                            }
+                        });
+                        $("#inscription_gouvernorat option").each(function(i){
+                            
+                            if($(this).val() == $("#inscription_gouvernorat").attr("data")){
+                                $(this).attr('selected','selected');
+                            }
+                        });
+                        $("#inscription_ministere option").each(function(i){
+                            
+                            if($(this).val() == $("#inscription_ministere").attr("data")){
+                                $(this).attr('selected','selected');
+                            }
+                        });
+						 $("#inscription_grade option").each(function(i){
+                            
+                            if($(this).val() == $("#inscription_grade").attr("data")){
+                                $(this).attr('selected','selected');
+                            }
+                        });
+
+                         $("#inscription_niveau option").each(function(i){
+                            
+                            if($(this).val() == $("#inscription_niveau").attr("data")){
+                                $(this).attr('selected','selected');
+                            }
+                        });
+                          $("#inscription_poste option").each(function(i){
+                            
+                            if($(this).val() == $("#inscription_poste").attr("data")){
+                                $(this).attr('selected','selected');
+                            }
+                        });
+						
+                    });
+                 </script>   
+                       <div class="col-md-6 d-none">
+					       {% set identifiant = user.identifiant %}
+                            {% set name = user.name %}{% set organisme = user.organisme %}{% set age = user.age|date('Y-m-d') %}{% set genre = user.genre %}{% set phone = user.phone %}{% set org = user.organisme %}
+                            {% set email = user.email %}{% set gouvernorat = user.gouvernat %}{% set poste = user.poste %}{% set ministere = user.ministere %}
+                            {% set grade = user.grade %}{% set niveau = user.niveau %}
+                                {{ form_row(form.name,{'attr': {'value': name }})  }}
+                                {{ form_row(form.age,{'attr': {'value': age }})  }}
+                                {{ form_row(form.phone, {'attr': {'value': phone }}) }}
+                                {{ form_row(form.gouvernorat, {'attr': {'data': gouvernorat }})  }}
+                                {{ form_row(form.organisme, {'attr': {'data': organisme }})  }}
+                                {{ form_row(form.grade,{'attr': {'data': grade }}) }}
+                            </div>
+                            <div class="col-md-6 d-none" id="some-custom-id">
+                                {{ form_row(form.genre,{'attr': {'data': genre }}) }}
+                                {{ form_row(form.email ,{'attr': {'value': email }}) }}
+                                {{ form_row(form.ministere,{'attr': {'data': ministere }}) }}
+                                {{ form_row(form.poste, {'attr': {'data': poste }}) }}
+                                {{ form_row(form.niveau,{'attr': {'data': niveau }}) }}
+								{{ form_row(form.identifiant,{'attr': {'value': identifiant }}) }}
+                            </div>
+                        </div>
+                            <div class="row">
+                            <p class="sous-titl-2">{% trans %}Information sur la formation{% endtrans %}</p>
+                            <div class="col-md-6">
+                            <input type="hidden" value="{{ formation.id }}">
+                            <input type="text" value="{{ formation.title }}" class="form-control" placeholder="{{ formation.title }}" disabled>
+                            </div>
+                            
+                            <div class="col-md-6"  style="height: 47px;border-radius: 4px;background-color: #e9ecef;color: #000;padding-top: 10px;">
+                            <span>Date début de la formation : {{ formation.dateStart|date('Y-m-d') }}</span>
+                            </div>   
+                           
+                        </div>
+                             <div class="col-lg-12">
+                                <button class="btn btn-personel" type="submit">
+                                    <span> {% trans %}Validation {% endtrans %}</span><i class="icon-arrow-right-line-right"></i></button>
+                            </div>
+                        
+                    {{ form_end(form) }}
+                </div>
+            
+
+                    </div>
+              </div>
+
+        {% else %}
+  
+        <!-- Start Service Area  -->
+        <div class="home-one-cat edu-service-area service-wrapper-1 bg-image">
+            <div class="container eduvibe-animated-shape">
+                <div class="row">
+                    <p class="sous-titl">{% trans %}Informations personnelles {% endtrans %}</p>
+                </div>
+                <div class="row inscrip-cont">
+                    {{ form_start(form) }}
+                        <div class="my-custom-class-for-errors">
+                            {{ form_errors(form) }}
+                        </div>
+    
+                        <div class="row">
+                            <div class="col-md-6">
+                       
+                            {% set email = user.email %}
+                            <div class="col-md-12"> <div class="col-md-6">{{ form_row(form.name)  }}</div>
+                             <div class="col-md-6">{{ form_row(form.lastname)  }}</div></div>
+                            {{ form_row(form.genre) }}
+                            {{ form_row(form.age)  }}
+                            
+                            {{ form_row(form.ministere) }}
+                          </div>
+                            <div class="col-md-6">
+                                {{ form_row(form.identifiant) }}
+                                {{ form_row(form.email ,{'attr': {'value': email }}) }}
+                            
+                                {{ form_row(form.phone) }}
+                                {{ form_row(form.organisme) }}
+                                 
+                                </div>
+                                <div id="overlay">
+                                <div class="cv-spinner">
+                                    <span class="spinner"></span>
+                                </div>
+                                </div>
+                            </div>
+                           
+                         <div class="row">  
+                            <div class="col-md-6">
+                              
+                              
+                               {{ form_row(form.gouvernorat) }}
+                               {{ form_row(form.niveau) }}
+                                
+                            </div>
+                            <div class="col-md-6" id="some-custom-id">
+                                {{ form_row(form.grade) }}
+                                {{ form_row(form.poste) }}
+                                <input type="hidden" id="id" value="{{ user.id }}">
+                                 <input type="hidden" id="hashedId" value="{{ hashedId }}">
+                            </div>
+                        </div>
+                            <div class="row mt--20">
+                            
+                            <div class="tacbox">
+                            <input id="checkbox" type="checkbox" / required>
+                            {% if(app.request.locale) =='fr' %}
+                            <label for="checkbox"> En acceptant la charte de protection des données personnelles, 
+                            j'accepte que mes données soient traitées conformément à celle ci.</label>{% else %}
+                             <label for="checkbox"> بقبول ميثاق حماية البيانات الشخصية ، أوافق على أن بياناتي ستتم معالجتها وفقًا لها</label>{% endif %}
+                            </div>
+                            </div>
+                        </div>
+                         <div class="col-lg-12">
+                                <button class="btn btn-personel" type="submit">
+                                    <span>{% trans %}Envoyer{% endtrans %}</span><i class="icon-arrow-right-line-right"></i></button>
+                            </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+        <!-- Start Footer Area  -->
+
+        <!-- End Footer Area  -->
+</div>
+{% if(app.request.locale) == 'ar' %}
+    <style>
+    p{ text-align: end;}
+    .inscrip-cont{
+        direction: rtl;
+    }
+.spinner {
+    position: absolute;
+    top: -68px;
+    left: 50px !important;
+}
+    </style>
+{% else %}
+    <style>
+.spinner {
+     position: absolute;
+    top: -68px;
+    right: 50px;
+}
+    </style>
+{% endif %}
+
+<style>
+#overlay{	
+  position: relative;
+  display: none;
+}
+.cv-spinner {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+.spinner {
+    width: 30px;
+    height: 30px;
+    border: 4px #ddd solid;
+    border-top: 4px #dc3545 solid;
+    border-radius: 50%;
+    animation: sp-anime 0.8s infinite linear;
+   
+}
+@keyframes sp-anime {
+  100% { 
+    transform: rotate(360deg); 
+  }
+}
+.is-hide{
+  display:none;
+}
+input[type="text"], input[type="email"]{
+     height: 47px;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #000;
+}
+.mb-3 {
+    margin-bottom: 3rem !important;
+}
+
+textarea#inscription_commentaire {
+    color: #fff;
+    height: 150px;
+    background-color: #00b0fd;
+    font-size: 16px;
+    margin-top: 35px;
+}i.icon-arrow-right-line-right {
+    padding: 11px 1px 0px 10px;
+    /* margin-top: 22px; */
+    top: 2px;
+    font-size: 16px;
+    position: relative;
+}
+input#user_age {
+    height: 47px;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #000;
+}
+textarea::placeholder {
+  color: #fff !important;  
+  font-size: 16px;
+  font-weight: 500;
+}
+button#inscription_Valider {
+    width: 20%;
+    padding: 10px;
+    font-size: 18px;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+    margin-top: 49px;
+    background-color: #00228D;
+    border: #e9ecef;
+    box-shadow: 1px 2px 4px #6c757d;
+    color: #fff;
+}
+
+</style>
+<script>
+
+$(document).ready(function() {
+    const vi =  document.getElementById('id').value;
+    const hashedId = document.getElementById('hashedId').value;
+
+   $("#inscription_ministere").change(function() {
+      setTimeout(function(){
+                $("#overlay").fadeIn();
+               },500);
+        $('#inscription_organisme').prop( "disabled", true )
+       var x = document.getElementById("inscription_ministere").value;
+
+        $.ajax({
+            type:'POST',
+            url: '{{ path('personal_info',{'id':'vi' ,'hashedId':'hashedId' }) }}',
+            data:{ data: x },         
+            success:function(data){
+                var html = '<option class="placehold"> Etablissements publics sous tutelle </option>';
+                console.log('ok')
+              
+               $.each(data, function (index, value) {
+                    html +='<option value='+value["id"]+'>'+ value["category"] +'</option> ';
+                });
+               document.getElementById('inscription_organisme').innerHTML = html;
+                 setTimeout(function(){
+                    $("#overlay").fadeOut(300);
+                },100);
+                 $('#inscription_organisme').prop( "disabled", false )
+            },
+            error: function(data){
+                console.log("error");
+               
+            }
+        });
+    });
+
+
+       $("#inscription_ar_ministere").change(function() {
+      setTimeout(function(){
+                $("#overlay").fadeIn();
+               },500);
+        $('#inscription_ar_organisme').prop( "disabled", true )
+       var x = document.getElementById("inscription_ar_ministere").value;
+
+        $.ajax({
+            type:'POST',
+            url: '{{ path('personal_info',{'id':'vi' ,'hashedId':'hashedId' }) }}',
+            data:{ data: x },         
+            success:function(data){
+                var html = '<option class="placehold"> المنشآت والمؤسسات العمومية</option>';
+                console.log('ok')
+              
+               $.each(data, function (index, value) {
+                    html +='<option>'+ value +'</option> ';
+                });
+               document.getElementById('inscription_ar_organisme').innerHTML = html;
+                 setTimeout(function(){
+                    $("#overlay").fadeOut(300);
+                },100);
+                 $('#inscription_ar_organisme').prop( "disabled", false )
+            },
+            error: function(data){
+                console.log("error");
+               
+            }
+        });
+    });
+});
+
+</script>
+{% endblock %}

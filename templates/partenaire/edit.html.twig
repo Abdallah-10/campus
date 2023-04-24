@@ -1,0 +1,14 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}{% trans %}Edit Partenaire{% endtrans %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans %}Modifier Partenaire{% endtrans %}</h1>
+   <div class="col-md-8">
+    {{ include('partenaire/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a class="btn btn-secondary" href="{{ path('app_partenaire_index') }}" style="width: 15%;right: -9px;margin-top: 7px;">{% trans %}Retour à la liste {% endtrans %}</a>
+
+    {{ include('partenaire/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

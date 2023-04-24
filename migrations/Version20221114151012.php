@@ -1,0 +1,41 @@
+<?php
+
+declare(strict_types=1);
+
+namespace DoctrineMigrations;
+
+use Doctrine\DBAL\Schema\Schema;
+use Doctrine\Migrations\AbstractMigration;
+
+/**
+ * Auto-generated Migration: Please modify to your needs!
+ */
+final class Version20221114151012 extends AbstractMigration
+{
+    public function getDescription(): string
+    {
+        return '';
+    }
+
+    public function up(Schema $schema): void
+    {
+        // this up() migration is auto-generated, please modify it to your needs
+        $this->addSql('CREATE TABLE profil (id INT AUTO_INCREMENT NOT NULL, cover VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE messanger ADD sender_id INT DEFAULT NULL, DROP sender');
+        $this->addSql('ALTER TABLE messanger ADD CONSTRAINT FK_17AAE5C1F624B39D FOREIGN KEY (sender_id) REFERENCES user (id)');
+        $this->addSql('CREATE INDEX IDX_17AAE5C1F624B39D ON messanger (sender_id)');
+        $this->addSql('ALTER TABLE slider CHANGE ordre ordre INT NOT NULL');
+        $this->addSql('ALTER TABLE user CHANGE cover cover VARCHAR(255) DEFAULT NULL, CHANGE age age INT NOT NULL');
+    }
+
+    public function down(Schema $schema): void
+    {
+        // this down() migration is auto-generated, please modify it to your needs
+        $this->addSql('DROP TABLE profil');
+        $this->addSql('ALTER TABLE messanger DROP FOREIGN KEY FK_17AAE5C1F624B39D');
+        $this->addSql('DROP INDEX IDX_17AAE5C1F624B39D ON messanger');
+        $this->addSql('ALTER TABLE messanger ADD sender INT NOT NULL, DROP sender_id');
+        $this->addSql('ALTER TABLE slider CHANGE ordre ordre INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE user CHANGE age age INT DEFAULT NULL, CHANGE cover cover VARCHAR(255) DEFAULT \'user.png\'');
+    }
+}

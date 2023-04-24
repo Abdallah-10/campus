@@ -1,0 +1,204 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %} Digital Learning Academy {% endtrans %}{% endblock %}
+
+{% block body %}
+ <div class="main-wrapper">
+        {{ include('home/_header.html.twig') }} 
+        <div class=" breadcrumb-style-1 pt--180 ptb_md--140 ptb_sm--140 pb--60 bg-image">
+			<div class="container eduvibe-animated-shape">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="breadcrumb-inner text-start">
+							<div class="page-title">
+								<h3 class="title-formt">{% trans %} Un apprentissage pour vous {% endtrans %}</h3>
+                                <p class="desc-formt">{% trans %} Élargissez votre savoir, découvrez les compétences de demain, et prenez votre carrière en main.{% endtrans %}</p>
+							</div>
+						</div>
+					</div>                    
+				</div>
+			</div>
+		</div>
+        <div class=" edu-service-area service-wrapper-1 edu-section-gap bg-image mt--80" id="form-recp">
+
+            <div class=" eduvibe-animated-shape" {% if (app.request.locale)=='ar' %} dir="rtl" {% endif %}>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            
+                        </div>
+                    </div>
+                </div>
+               <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                         {% include 'home/_filter.html.twig' with {forms: forms} only %}
+                    </div>
+                <div class="col-md-9">
+                <div class="row g-5 ">
+                
+                    <!-- Start Service Card  -->
+                    {% for formation in formations %}
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                        <div class="service-card service-card-1 radius-small">
+                            <div class="inner">
+                                <div class="thumbnail">
+                                    <a href="{{ path('app_formation_details',{'slug': formation.slug}) }}">
+                                        <img src="{{ asset('assets/uploads/') }}{{ formation.cover }}" alt="Service Images">
+                                    </a>
+                                    <div class="top-position status-group left-top">
+                                        <span class="eduvibe-status status-02">
+                                        
+                                            <div class="rating">
+                                                <i class="icon-Star"></i>
+                                            </div>
+                                            {% set sum = 0 %}    
+
+                                            <span class="rating-count">( 
+                                                {% if (formation.ratings|length > 0) %}
+                                                {% set loopOutput %}               
+                                                    {% for r in formation.ratings %}            
+                                                    {% set sum = sum + r.score %}        
+                                                    {% endfor %}    
+                                                {% endset %}
+                                                {{ sum / formation.ratings|length }} 
+                                                {{ loopOutput }}
+                                                     
+                                                 {% else %} 0 {% endif %})</span>
+                                        </span>
+                                    </div>
+                                    <div class="wishlist-top-right">
+                                        <a class="wishlist-btn" href="{{ path('app_like',{'id':formation.id} )}}" id="axios-like">
+                                        {% if app.user and formation.isLikedByUser(app.user) %}
+                                           <i class="icon-Heart red"></i>
+                                        {% else %}
+                                            <i class="icon-Heart blanc"></i>
+                                        {% endif %}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <span class="course-total">
+                                         <img src="{{ asset('assets/images/banner/icon1.png') }}" alt="Service formation">
+                                         <span class="text-formt">{{ formation.duration }} Heures </span>
+                                        <img src="{{ asset('assets/images/banner/icon2.png') }}" alt="Service formation">
+                                        <span class="text-formt-2">{{ formation.dateStart ? formation.dateStart|date('d-m-Y') : '' }}</span>
+                                        <img src="{{ asset('assets/images/banner/icon3.png') }}" alt="Service Imformationages">
+                                        <span class="text-formt-3">{{ formation.langue }} </span>
+                                    </span>
+                                    <h6 class="title"><a href="{{ path('app_formation_details',{'slug': formation.slug}) }}">{{ formation.title|u.truncate(50, '...') }}</a></h6>
+                                   <p class="description">{{ formation.apercu|u.truncate(150, '...')  }}</p>
+                                   <div class="col-lg-12">
+                                    <div class="load-more-btn mt--20" style="{% if (formation.DateInsF|date('d-m-Y')) < "now"|date('d-m-Y') %}cursor: no-drop; {% endif %}">
+                                        <a class="edu-btn-inscr {% if (formation.DateInsF|date('d-m-Y')) < "now"|date('d-m-Y') %}desactived {% endif %}" href="{{ path('app_inscription',{'id': formation.id}) }}">{% trans %}S'inscrire {% endtrans %} </a>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 {% endfor %}
+                </div>
+                </div>
+                <div class="row text-center mt--60">
+                    <div class="col-lg-12">
+                        <div class="load-more-btn">
+                               {{ knp_pagination_render(formations) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% if (app.request.locale)=='ar' %}
+<style>
+input[type=checkbox]~label, input[type=radio]~label {
+    width: 212px;
+}
+form.filtre-form {
+    padding-right: 15px;}
+</style>
+{% endif %}
+<style>
+.top-position.status-group.left-top {
+    left: 0;
+}
+.filtre-form {
+    display: flex;
+    align-content: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: stretch;
+    padding-top: 5px;
+    flex-wrap: wrap;
+}.form-label {
+
+    margin-bottom: 10px;
+    margin-left: 15px;
+    margin-top: 10px;
+}input#q {
+    background-color: #fff;
+    border-radius: 3px;
+    margin-left: 15PX;
+    margin-top: 30px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+a.avance-ar,a.avance {
+    display: none;
+}
+form.filtre-form {
+    background: #f8f9fa;
+    padding-bottom: 5px;
+    box-shadow: 0px 10px 5px rgb(0 0 0 / 9%);
+}.form-control {
+    margin-left: 30px;
+    font-size: 12px;
+    width: 200px;
+}button#Rechercher {
+    margin-left: 30%;
+    margin-top: 40px;
+}
+    <style>
+	.single-ar:last-child::after {
+		top: 32px;
+		rotate: 180deg;
+}.single-ar:first-child::after {
+    top: -4px;
+    rotate: 180deg;
+}
+.top-position.status-group.left-top {
+    position: absolute;
+    top: 0;
+}
+.col-lg-6.col-md-6.col-sm-6.col-12.sal-animate {
+    padding: 0px 45px 0px 45px;
+}
+.wishlist-top-right {
+    position: absolute;
+    top: 3px;
+    right: 8px;
+/* background-color: #4c4d4e; */
+}
+fieldset {
+    border: none !important;
+    width: 100%;
+}
+</style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    function onClickLike(e){
+        e.preventDefault();
+        const url = this.href;
+        const icone = this.querySelector('i');
+        
+        axios.get(url).then(function(response){
+            if(icone.classList.contains('blanc')) {icone.classList.replace('blanc','red');}
+            else {icone.classList.replace('red','blanc');}
+        });
+
+    }
+
+    document.querySelectorAll('a#axios-like').forEach(function(link){
+        link.addEventListener('click',onClickLike)
+    })
+</script>
+{% endblock %}

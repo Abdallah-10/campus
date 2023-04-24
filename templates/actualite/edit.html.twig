@@ -1,0 +1,28 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Modifier Domaines{% endblock %}
+
+{% block content %}
+
+    <h1>Modifier Actualite</h1>
+
+    {{ include('actualite/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a class="btn btn-secondary waves-effect waves-light" href="{{ path('app_actualite_index') }}">Retour à la liste</a>
+
+    {{ include('actualite/_delete_form.html.twig') }}
+
+<style>
+a.btn.btn-secondary.waves-effect.waves-light {
+    width: 15%;
+    margin-top: 10px;
+    margin-left: 10px;}
+button.btn.btn-danger.waves-effect.waves-light {
+    position: absolute;
+    bottom: 0;
+    right: 25%;
+    width: 15%;
+}
+
+</style>  
+{% endblock %}

@@ -1,0 +1,154 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Temoignage{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xl-9 col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm order-2 order-sm-1">
+                        <div class="d-flex align-items-start mt-3 mt-sm-0">
+                            <div class="flex-shrink-0">
+                                <div class="avatar-xl me-3">
+                                    <div class="avatar-xl mx-auto mb-4">
+                                        <div class="avatar-title bg-soft-light text-light display-4 m-0 rounded-circle">
+                                            <i class="bx bxs-user-circle"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div>
+                                    <h5 class="font-size-20 mb-1">{{ inscription.name }}</h5>
+                                    <p class="text-muted font-size-16">{{ inscription.poste }}</p>
+
+                                    <div class=" align-items-start gap-2 gap-lg-3 text-muted font-size-16">
+                                        <div><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i> Tel : {{ inscription.phone }}</div>
+                                        <div><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i> Email : {{ inscription.email }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="overview" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-xl-3">
+                                        <div>
+                                            <h5 class="font-size-15">Genre :</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl">
+                                        <div class="text-muted">
+                                            <p class="mb-2">{{ inscription.genre }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-xl-3">
+                                        <div>
+                                            <h5 class="font-size-15">Organisme :</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl">
+                                        <div class="text-muted">
+                                            <p>{{ inscription.organisme }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-xl-3">
+                                        <div>
+                                            <h5 class="font-size-15">Gouvernorat :</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl">
+                                        <div class="text-muted">
+                                            <p>{{ inscription.gouvernorat }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-xl-3">
+                                        <div>
+                                            <h5 class="font-size-15">Ministère :</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl">
+                                        <div class="text-muted">
+                                            <p>{{ inscription.Ministere }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-xl-3">
+                                        <div>
+                                            <h5 class="font-size-15">formation :</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl">
+                                        <div class="text-muted">
+										{% set fors =inscription.formation %}
+                    {% for inscript in fors %}
+                  <p><a target="_blank" href="{{ path('app_formation_details',{'slug': inscript.slug}) }}"> 
+                     {{ inscript.title }}</a></p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="">
+                                <div class="row">
+                                    <div class="col-xl-3">
+                                        <div>
+                                            <h5 class="font-size-15">Date de formation :</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl">
+                                        <div class="text-muted">
+                                            <p>{{ formation.dateStart|date('d-m-Y') }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- end card body -->
+                </div>
+                <!-- end card -->
+            </div>   
+        </div>
+    </div>
+    
+</div>
+<a class="btn btn-info" href="{{ path('back_inscription') }}" style="width: 150px;">Retour à la liste</a>
+{% endblock %}

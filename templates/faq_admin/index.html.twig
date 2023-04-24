@@ -1,0 +1,43 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Actualités{% endblock %}
+
+{% block content %}
+    <div class="col-12">
+		<div class="card">
+			<div class="card-body">
+          <h1>FAQ </h1>
+            <div class="col-md-3 mt-4 mb-4">
+                <a class="btn btn-primary waves-effect waves-light" href="{{ path('app_faq_admin_new') }}" style="width: 100%;">ajouter </a>
+                </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Question</th>
+                <th>Reponse</th>
+                <th>Langue</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for faq in faqs %}
+            <tr>
+                <td>{{ faq.id }}</td>
+                <td>{{ faq.question }}</td>
+                <td>{{ faq.reponse }}</td>
+                <td>{{ faq.langue }}</td>
+                <td style="display:flex;">
+                    <a class="btn btn-secondary waves-effect waves-light" href="{{ path('app_faq_admin_show', {'id': faq.id}) }}">Voir</a>
+                    <a class="btn btn-warning waves-effect waves-light " href="{{ path('app_faq_admin_edit', {'id': faq.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

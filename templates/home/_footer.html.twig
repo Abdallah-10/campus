@@ -1,0 +1,169 @@
+   {% if (app.request.locale)=='fr' %}
+    <footer class="eduvibe-footer-one edu-footer footer-style-default">
+            <div class="footer-top">
+               
+                <div class="container eduvibe-animated-shape">
+               
+                    <div class="row g-5 ">
+                        <div class="col-lg-6 col-md-6 col-sm-12 besoin-footer">
+                            <div class="edu-footer-widget">
+                                <div class="logo">
+                                      <a href="/">
+                                         <img class="logo-light" src="{{ asset('assets/images/banner/logo.png') }}" alt="Site Logo">
+                                        </a>
+                                        <a href="/">
+                                            <img class="logo-light" src="{{ asset('assets/images/banner/tunisie.png') }}" alt="Site Logo">
+                                        </a>
+                                        <a href="/">
+                                            <img class="logo-light" src="{{ asset('assets/images/banner/tun.png') }}" alt="Site Logo">
+                                        </a>
+                                 
+                                </div>
+                                
+                                <p class="description">L'apprentissage en continu vous ouvre des perspectives de carrière et une aisance accrue dans votre gestion au quotidien.La Digital Learning Academy est votre allié principal pour vous familiariser avec les nouveaux outils technologiques et développer vos compétences. L’instruction se fait à votre rythme et selon votre disponibilité. En quelques clics, vous voilà, acteur de votre potentiel. </p>
+                                
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                            <div class="edu-footer-widget-last quick-link-widget {% if (app.request.locale)=='ar' %}desc-ar{% endif %}">
+                                <h5 class="widget-title">{% trans %}Navigation{% endtrans %}</h5>
+                                <div class="inner">
+                                    <ul class="footer-link link-hover">
+                                        <li><a href="/">{% trans %}Accueil{% endtrans %}</a></li>
+                                        <li><a href="/list-formations">{% trans %}Formation{% endtrans %}</a></li>
+										<li><a href="/media">{% trans %}Actualités et Événements{% endtrans %}</a></li>
+                                        <li><a href="/besoin/aide">{% trans %}Besoin d'aide ?{% endtrans %}</a></li>
+										  <li><a href="/faq">{% trans %}FAQ{% endtrans %}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                            <div class="edu-footer-widget-last {% if (app.request.locale)=='ar' %}desc-ar{% endif %}">
+                                
+                                {{ form_start(formf)}}
+                                {{ form_end(formf)}}
+                                <div class="inner">
+                                    <div class="widget-information">
+                                       <ul class="social-share">
+                                            <li><a href="#"><i class="icon-Fb"></i></a></li>
+                                            <li><a href="#"><i class="icon-Twitter"></i></a></li>
+                                            <li><a href="#"><i class="icon-youtube"></i></a></li>
+                                            <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="copyright-area copyright-default">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="inner text-center">
+                                <p>{% trans %} Copyright {% endtrans %} 2023  <a href="https://www.numeryx.fr/fr" >Numeryx</a> {% trans %} All Rights Reserved {% endtrans %}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        {% else %}
+
+  
+        <footer class="eduvibe-footer-one edu-footer footer-style-default">
+            <div class="footer-top">
+               
+                <div class="container eduvibe-animated-shape">
+               
+                    <div class="row g-5 foot">
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                            <div class="edu-footer-widget-last {% if (app.request.locale)=='ar' %}desc-ar{% endif %}">
+                                
+                                {{ form_start(formf)}}
+                                {{ form_end(formf)}}
+                                <div class="inner">
+                                    <div class="widget-information">
+                                       <ul class="social-share">
+                                            <li><a href="#"><i class="icon-Fb"></i></a></li>
+                                            <li><a href="#"><i class="icon-Twitter"></i></a></li>
+                                            <li><a href="#"><i class="icon-youtube"></i></a></li>
+                                            <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                            <div class="edu-footer-widget-last quick-link-widget {% if (app.request.locale)=='ar' %}desc-ar{% endif %}">
+                                <h5 class="widget-title">{% trans %}Navigation{% endtrans %}</h5>
+                                <div class="inner">
+                                    <ul class="footer-link link-hover">
+                                        <li><a href="/">{% trans %}Accueil{% endtrans %}</a></li>
+                                        <li><a href="/list-formations">{% trans %}Formation{% endtrans %}</a></li>
+										<li><a href="/media">{% trans %}Actualités et Événements{% endtrans %}</a></li>
+                                        <li><a href="/besoin/aide">{% trans %}Besoin d'aide ?{% endtrans %}</a></li>
+										  <li><a href="/faq">{% trans %}FAQ{% endtrans %}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="col-lg-6 col-md-6 col-sm-12 besoin-footer">
+                            <div class="edu-footer-widget">
+                                <div class="logo">
+                                      <a href="/">
+                                         <img class="logo-light" src="{{ asset('assets/images/banner/logo.png') }}" alt="Site Logo">
+                                        </a>
+                                        <a href="/">
+                                            <img class="logo-light" src="{{ asset('assets/images/banner/tunisie.png') }}" alt="Site Logo">
+                                        </a>
+                                        <a href="/">
+                                            <img class="logo-light" src="{{ asset('assets/images/banner/tun.png') }}" alt="Site Logo">
+                                        </a>
+                                 
+                                </div>
+                                
+                                 <p class="description" dir="rtl">يوسع التعلم المستمر خياراتك المهنية ويجعل ادارتك لشؤونك اليومية أسهل. توفر لك أكاديمية التعلم الرقمي شهادة معترف بها ، وتدريبًا ممتازًا ، وإمكانية الوصول على مدار 24 ساعة كامل أيام الأسبوع رؤيتنا دعم المديرين التنفيذيين في الوظيفة العمومية على الانفتاح على العالم التكنولوجي من حولنا ، من أجل توجيههم وتدريبهم على الاستخدام الصحيح للتكنولوجيا ذات الصلة بمهنتهم..  </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="copyright-area copyright-default">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="inner text-center">
+                                <p>{% trans %} Copyright {% endtrans %} 2023  <a href="https://www.numeryx.fr/fr" >Numeryx</a> {% trans %} All Rights Reserved {% endtrans %}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+<style>
+        .logo {
+            justify-content: flex-start !important;
+        }
+        .edu-footer-widget-last {
+            border-right: 4px solid var(--color-primary) !important;
+            padding-right: 20px !important;
+            border-left: none !important;
+            padding-left:0px !important;
+        }
+       
+</style>
+{% endif %}

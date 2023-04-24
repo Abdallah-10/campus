@@ -1,0 +1,15 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %} FAQ{% endblock %}
+
+{% block content %}
+   
+    <div class="col-md-3 "></div>
+    <div class="col-md-6 ">
+    <h1>Ajouter une nouvelle FAQ</h1>
+
+    {{ include('faq_admin/_form.html.twig') }}
+ <button class="btn btn-info retour"><a  href="{{ path('app_faq_admin_index') }}">Retour à la liste</a></button>
+    </div>
+    <div class="mt-4 pt-4"></div>
+{% endblock %}

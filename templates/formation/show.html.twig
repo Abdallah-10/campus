@@ -1,0 +1,81 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Formation{% endblock %}
+
+{% block content %}
+    <h1>Détails Formation</h1>
+<div class="col-md-1">
+</div>
+<div class="col-md-7 mt-4">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ formation.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ formation.title }}</td>
+            </tr>
+            <tr>
+                <th>Couverture</th>
+                <td><img style="width: 250px;height: 150px;object-fit: cover;" src="{{ asset('assets/uploads/') }}{{ formation.cover }}" alt="Service Images"></td>
+            </tr>
+            <tr>
+                <th>Durée</th>
+                <td>{{ formation.duration }}</td>
+            </tr>
+            <tr>
+                <th>Langue</th>
+                <td>{{ formation.langue }}</td>
+            </tr>
+			<tr>
+                <th>Local</th>
+                <td>{{ formation.location }}</td>
+            </tr>
+			<tr>
+                <th>Thématique</th>
+                <td>{{ formation.thematique }}</td>
+            </tr>
+            <tr>
+                <th>Date début</th>
+                <td>{{ formation.dateStart ? formation.dateStart|date('d-m-Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date fin</th>
+                <td>{{ formation.dateEnd ? formation.dateEnd|date('d-m-Y') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ formation.type }}</td>
+            </tr>
+            <tr>
+                <th>Aperçu </th>
+                <td>{{ formation.apercu }}</td>
+            </tr>
+            <tr>
+                <th>Objectifs</th>
+                <td>{{ formation.objectifs }}</td>
+            </tr>
+            <tr>
+                <th>Certifs</th>
+                <td>{{ formation.certifs }}</td>
+            </tr>
+            <tr>
+                <th>Structure</th>
+                <td>{{ formation.structure }}</td>
+            </tr>
+            <tr>
+                <th>Critères</th>
+                <td>{{ formation.criteres }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary waves-effect waves-light" href="{{ path('app_formation_index') }}">Retour à la liste</a>
+
+    <a class="btn btn-primary waves-effect waves-light" href="{{ path('app_formation_edit', {'id': formation.id}) }}">Modifier</a>
+
+    {{ include('formation/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

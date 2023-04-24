@@ -1,0 +1,41 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}slider {% endblock %}
+
+{% block content %}
+    <h1>gestion de Slider</h1>
+   <div class="row" style="padding: 34px;">
+    <div class="col-md-3">
+    <a class="btn btn-primary waves-effect waves-light" href="{{ path('app_slider_new') }}" style="width: 100%;">
+	Ajouter une bannière</a></div>
+    <table class="table table-bordered dt-responsive nowrap w-100" style="margin: 10px;">
+        <thead>
+            <tr>
+                <th>Ordre</th>
+                <th>Titre</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for slider in sliders %}
+            <tr>
+                <td>{{ slider.ordre }}</td>
+                <td>{{ slider.titre }}</td>
+                
+            <td><img style="width: 270px;height: 125px;object-fit: cover;" 
+                src="{{ asset('assets/uploads/') }}{{ slider.image }}" alt="Service Images"></td>
+				<td class="d-flex">
+                    <a class="btn btn-secondary waves-effect waves-light" href="{{ path('app_slider_show', {'id': slider.id}) }}">Voir</a>
+                    <a class="btn btn-warning waves-effect waves-light " style="margin-left:6px;" href="{{ path('app_slider_edit', {'id': slider.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

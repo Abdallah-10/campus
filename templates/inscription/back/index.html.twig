@@ -1,0 +1,68 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}inscriptions {% endblock %}
+
+{% block content %}
+    <h1>Liste des inscriptions</h1>
+   <div class="row" style="padding: 34px;">
+    <div class="col-md-10">
+    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 ">
+        <thead>
+            <tr>
+                <th>Nom & Prénom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Gouvernorat</th>
+               
+                <th>Ministère</th>
+				 <th>Formation</th>
+				 <th>Organisme</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for inscription in inscriptions %}
+            <tr>
+                <td>{{ inscription.name }}</td>
+                <td>{{ inscription.email }}</td>
+                <td>{{ inscription.phone }}</td>
+                <td>{{ inscription.gouvernorat }}</td>
+                <td>{{ inscription.ministere }}</td>
+				 {% set fors =inscription.formation %}
+                    {% for inscript in fors %}
+                  <td><a target="_blank" href="{{ path('app_formation_details',{'slug': inscript.slug}) }}"> 
+                     {{ inscript.title }}</a></td>  
+                  <td>{{ inscript.link }}</td>
+                <td>
+               <a class="btn btn-secondary waves-effect waves-light" href="{{ path('back_inscription_show', {'id': inscription.id}) }}">voir</a>
+                
+              
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+         {% endfor %}
+        </tbody>
+    </table>
+
+   <style>
+   .desactived {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+	button.btn.btn-secondary.buttons-collection.dropdown-toggle.buttons-colvis,
+	button.btn.btn-secondary.buttons-copy.buttons-html5 {
+    display: none;
+	}
+button.btn.btn-secondary.buttons-pdf.buttons-html5,
+button.btn.btn-secondary.buttons-excel.buttons-html5 {
+    margin: 10px;
+}
+.dt-buttons.btn-group.flex-wrap {
+    display: flex;
+}
+   </style>
+ 
+{% endblock %}

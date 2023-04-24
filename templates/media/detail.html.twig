@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {% trans %} Digital Learning Academy {% endtrans %}
+{% endblock %}
+
+{% block body %}
+	<div class="main-wrapper">
+		{{ include('home/_header.html.twig') }}
+
+		<!-- Start Sldier Area  -->
+		<div class="edu-breadcrumb-area breadcrumb-style-1 pt--200 pb--100 ptb_md--140 ptb_sm--140 bg-image">
+			<div class="container eduvibe-animated-shape">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="breadcrumb-inner text-start">
+							<div class="page-title">
+								<h3 class="title">{{ actualite.titre }}</h3>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="edu-event-details-area edu-event-details edu-section-gap bg-color-white">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-12">
+                        <div class="inner" style="position: relative;"><div class="thumbnaile">
+                            <img class="event" src="{{asset('assets/uploads/')}}{{ actualite.image }}" alt="Event Images">
+                        </div>
+						<div class="top-position status-actus-group right-top">
+                                            <span class="eduvibe-status status-02">{{ actualite.type|trans({}, 'messages') }}</span>
+                         </div>
+						 </div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-lg-7">
+                        <div class="content">
+                            <h3 class="title">{{ actualite.titre }}</h3>
+                            <p>{{ actualite.description }}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="eduvibe-sidebar">
+                            <div class="eduvibe-widget eduvibe-widget-details">
+                                <h5 class="title">{% trans %}Détail {% endtrans %}</h5>
+                                <div class="widget-content">
+                                    <ul>
+                                        <li><span><i class="icon-calendar-2-line"></i>{% trans %}Date {% endtrans %}</span><span>{{ actualite.date|date('d-m-Y') }}</span></li>
+                                        {% if (actualite.location) %}
+                                        <li><span><i class="icon-map-pin-line"></i>{% trans %} Lieu {% endtrans %}</span><span>{{ actualite.location }}</span></li>
+                                        {% endif %}
+                                    </ul>
+
+                                    <div class="read-more-btn mt--90 text-center">
+                                       <div class="eduvibe-post-share">
+													
+													<a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=/media/{{ actualite.slug }}" rel="nofollow" onclick="javascript:window.open(this.href, '','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;">
+														<i class="icon-linkedin"></i>
+													</a>
+													<a class="facebook" href="https://www.facebook.com/sharer.php?u=/media/{{ actualite.slug }}" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;">
+														<i class="icon-Fb"></i>
+													</a>
+													<a class="twitter" href="Twitter" href="https://twitter.com/share?url=/media/{{ actualite.slug }}" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;">
+														<i class="icon-Twitter"></i>
+													</a>
+													</div>
+												</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{ include('home/_footer.html.twig') }}
+				<!-- End Footer Area  -->
+	</div> 
+	<style>
+		.eduvibe-status.status-02 {
+    color: #dc3545;
+    background: #f9fafb;
+	    text-transform: capitalize;
+}
+.eduvibe-widget {
+    position: relative;}
+	</style>
+{% endblock %}

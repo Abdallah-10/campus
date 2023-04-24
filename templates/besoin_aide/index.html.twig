@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %} Hello BesoinAideController! {% endtrans %} {% endblock %}
+
+{% block body %}
+<div class="main-wrapper">
+     {{ include('home/_header.html.twig') }}
+        
+        <!-- Start Search Popup  -->
+        <div class="edu-search-popup">
+            <div class="close-button">
+                <button class="close-trigger"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="inner">
+                <form class="search-form" action="#">
+                    <input type="text" class="eduvibe-search-popup-field" placeholder="Search Here...">
+                    <button class="submit-button"><i class="icon-search-line"></i></button>
+                </form>
+            </div>
+        </div>
+        <!-- End Search Popup  -->
+        <div class="edu-breadcrumb-area breadcrumb-style-1 pt--200 pb--100 ptb_md--140 ptb_sm--140 bg-image">
+            <div class="container eduvibe-animated-shape">
+             <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb-inner text-start">
+                            <div class="page-title">
+                                <h3 class="title ">{% trans %} Besoin d'aide ? {% endtrans %} </h3>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="edu-contact-me-area eduvibe-contact-me-top about-me-1  bg-color-white">
+            <div class="container eduvibe-animated-shape">
+                <div class="row g-5 mb--160 mt--60">
+                    <div class="col-lg-6">
+                        <div class="pr--75 pr_lg--0 pr_md--0 pr_sm--0" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <div class="thumbnaile">
+                                <img class="w-100" src="{{ asset('assets/images/contact/contact-me/contact-1.jpg') }}" alt="About Images">
+                                <div class="content-overlay">
+                                  {% if (app.request.locale)=='fr' %}
+								  <h4 class="title-tr">N'hésitez pas à <br />   nous contacter </h4>
+									{% else %}
+									<h4 class="title-tr">لا تتردد في  <br />   الاتصال بنا </h4>
+									{% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="section-title text-start mb--45" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            
+                            <h3 class="title {% if (app.request.locale)=='ar' %}desc-ar{% endif %}"> {% trans %} Envoyez-nous un message {% endtrans %} </h3>
+                        </div>
+                            {% for message in app.flashes('success') %}
+                                <div class="alert alert-success">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {{ form_start(formContact) }}
+                         <form class="rnt-contact-form rwt-dynamic-form row" id="contact-forme" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                    {{ form_widget(formContact.name , {'attr': {'class': 'form-control form-control-lg'}}) }}
+                                    </div>
+                                     <div class="form-group">
+                                         {{ form_widget(formContact.email , {'attr': {'class': 'form-control form-control-lg'}}) }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                    {{ form_widget(formContact.lastname , {'attr': {'class': 'form-control form-control-lg'}}) }}
+                                    </div>
+                                      <div class="form-group">
+                                      {{ form_widget(formContact.phone , {'attr': {'class': 'form-control form-control-lg','pattern': '[0-9]{8}'}}) }}
+                                    </div>
+                                <div>
+                            </div>
+                      </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                      {{ form_widget(formContact.type , {'attr': {'class': 'form-control form-control-lg'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                      {{ form_widget(formContact.object , {'attr': {'class': 'form-control form-control-lg'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                      {{ form_widget(formContact.comment , {'attr': {'class': 'form-control form-control-lg'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button class="rn-btn edu-btn" type="submit">
+                                    <span>{% trans %}Envoyer{% endtrans %}</span><i class="icon-arrow-right-line-right"></i></button>
+                            </div>
+                         {{ form_end(formContact) }}
+                    </div>
+                </div>
+                <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
+                      <div class="shape-image shape-image-contact">
+                            <img src="{{ asset('assets/images/banner/shape.png') }}" alt="Shape Thumb">
+                        </div>
+                  
+                    <div class="shape-image shape-image-4">
+                        <img src="{{ asset('assets/images/shapes/shape-03-02.png') }}" alt="Shape Thumb">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+          {{ include('home/_footer.html.twig') }}
+		  
+	{% if (app.request.locale)=='ar' %}
+
+	<style>
+    .form-select {
+    text-align: end;
+    }
+    p, .h1, .h2, .h3, .h4, .h5, .h6, a {
+    font-family: 'Noto Kufi Arabic', sans-serif !important;
+    }
+     .form-group input,.form-group textarea {
+     text-align: end;}
+    <style>
+	{% endif %}	  
+    <style>
+    button.rn-btn.edu-btn {
+        height: 52px;
+        line-height: 52px;
+    }h4.title-tr {
+    color: #fff;
+}
+    <style>
+{% endblock %}

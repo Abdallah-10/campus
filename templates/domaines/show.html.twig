@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Domaines{% endblock %}
+
+{% block body %}
+    <h1>Domaines</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ domaine.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ domaine.nom }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ domaine.categorie }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_domaines_index') }}">back to list</a>
+    <a href="{{ path('app_domaines_edit', {'id': domaine.id}) }}">edit</a>
+
+    {{ include('domaines/_delete_form.html.twig') }}
+    
+{% endblock %}

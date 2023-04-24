@@ -1,0 +1,29 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Modifier Formation{% endblock %}
+
+{% block content %}
+ <div style="margin-left:10%">
+    <h1>Modifier Utilisateur</h1>
+		<div class="col-md-6 ">
+		{{ include('user/_form.html.twig', {'button_label': 'Modifier'}) }}
+		
+		<a class="btn btn-secondary waves-effect waves-light" href="{{ path('app_user_index') }}" style="position: absolute;
+		right: 50%;bottom:0px;">Retour à la liste</a>
+
+		{{ include('user/_delete_form.html.twig') }}
+
+	</div>
+</div>
+<style>
+input#user_password::placeholder {
+    color: #000;
+    font-size: 21px;
+}
+button.btn.btn-danger.waves-effect.waves-light.dray {
+    position: absolute;
+    left: 16%;
+    width: 15%;
+}
+</style>
+{% endblock %}

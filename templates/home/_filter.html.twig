@@ -1,0 +1,21 @@
+{{ form_start(forms, { 'attr': {'class': 'filtre-form','action':'#form-recp'} })}}
+  {% if (app.request.locale)=='fr' %} <a href="/formations" class="avance"> >> Recherche avanceé </a>
+  {% else %}
+  <a href="/formations" class="avance-ar">>> البحث المتقدم  </a>
+  {% endif %}
+{{ form_end(forms)}}
+{% if (app.request.locale)=='ar' %}
+<style>
+form.filtre-form {
+    padding-left: 10px;
+    background: #dc3545;
+    direction: rtl;
+}
+a.avance-ar {
+    position: absolute;
+    left: 41px;
+    margin-top: 43px;
+    font-size: 12px;
+    color: #fff;}
+</style>
+{% endif %}

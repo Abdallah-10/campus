@@ -1,0 +1,334 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %} Digital Learning Academy {% endtrans %}{% endblock %}
+
+{% block body %}
+ <div class="main-wrapper">
+        {{ include('home/_header.html.twig') }} 
+        <!-- Start Sldier Area  -->
+        <div class=" breadcrumb-style-1 pt--180 ptb_md--140 ptb_sm--140 pb--60 bg-image">
+			<div class="container eduvibe-animated-shape">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="breadcrumb-inner text-start">
+							<div class="page-title">
+								<h3 class="title-formt">{% trans %} Un apprentissage qui vous ressemble {% endtrans %}</h3>
+                                <p class="desc-formt">{% trans %} Élargissez votre savoir, découvrez les compétences de demain, et prenez votre carrière en main.{% endtrans %}</p>
+							</div>
+						</div>
+					</div>
+                    
+				</div>
+			</div>
+		</div>
+        <!-- End Sldier Area  -->
+		 
+        <div class=" eduvibe-home-four-about edu-about-area about-style-2 edu-section-gap bg-color-white">
+            <div class="container eduvibe-animated-shape">
+                <div class="row row--50">
+				{% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+                    <div class="col-lg-6">
+                        <div class="about-image-gallery">
+                            <div class="eduvibe-about-1-img-wrapper">
+                                <img class="image-1" src="{{ asset('assets/images/bg/about-image-01.png') }}" alt="About Images" />
+                                <span class="eduvibe-about-blur">
+                                <img src="{{ asset('assets/images/bg/about-blur.png') }}" alt="About Blur" /></span>
+                            </div>
+                            
+                            <div class="finished-session">
+                                <div class="inner">
+                                    <span class="finished-title" style="    padding-left: 25px;">
+                                {% trans %}   des formations certifiantes {% endtrans %}
+                            </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="inner mt_md--40 mt_sm--40">
+                            <div class="section-title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                <span class="pre-title {% if (app.request.locale)=='ar' %}desc-ar{% endif %}" style="{% if (app.request.locale)=='ar' %}width: 100%;{% endif %}">{% trans %}A propos {% endtrans %}</span>
+                                <h3 class="title {% if (app.request.locale)=='ar' %}desc-ar{% endif %}">{% trans %} Un vivier de formations {% endtrans %}</h3>
+                            </div>
+							{% if (app.request.locale)=='fr' %}
+                            <p class="description mt--40 mt_md--20 mt_sm--20" data-sal-delay="150" 
+							data-sal="slide-up" data-sal-duration="800"> 
+							Les 100 premières formations sont spécialisées dans l’apprentissage lié à la data, l’AI, les TICs. Le monde change à grande vitesse, la Tunisie s’ouvre à des besoins plus spécifiques et demandent de plus en plus l’aide de la technologie numérique pour répondre plus efficacement aux stratégies et recommandations de ces politiques de développement.En effet la maitrise de l’univers digital, de part son langage codé, ses mécanismes et son étendu, est un atout majeur au sein de la fonction publique.
+							</p>
+							{% else %}
+									  <p class="description desc-ar" data-sal-delay="350" data-sal="slide-up" data-sal-duration="800" >
+أول100 دورة تدريبية هي دورات تدريبية متخصصة في التعلم المرتبط بالبيانات والذكاء الاصطناعي وتكنولوجيا المعلومات والاتصالات. العالم يتغير بسرعة عالية ، وتونس تنفتح على احتياجات أكثر تحديدًا وتطلب بشكل متزايد مساعدة التكنولوجيا الرقمية للاستجابة بشكل أكثر فعالية لاستراتيجيات وتوصيات سياسات التنمية هذه.في الواقع ،إذ أن التأقلم مع العالم الرقمي و التمكن من لغته المشفرة وآلياته هو أحد الروافد الرئيسية في الوظيفة العمومية.
+
+								</p>	{% endif %}
+
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="eduvibe-home-five-progress edu-service-area edu-section-gap bg-image home-one-cat">
+            <!-- Start Service Area  -->
+            <div class="container eduvibe-animated-shape">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <span class="pre-title">{% trans %}Comment ça marche {% endtrans %}</span>
+                            <h3 class="title">{% trans %} Un process en 3 étapes {% endtrans %}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5 mt--20">
+                    <!-- Start Service Grid  -->
+					{% if (app.request.locale)=='fr' %}
+                     <div class="service-card-single col-lg-4 col-md-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                        <div class="service-card service-card-7 shape-bg-3">
+                            <div class="inner">
+                                <div class="icon">
+                                    <a href="#">
+                                        <i class="icon-trophy-line"></i>
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h6 class="title"><a href="/register">{% trans %} Inscrivez vous en ligne {% endtrans %}</a></h6>
+                                    <p class="description ">{% trans %}Le formulaire se remplit en quelques secondes et à la suite de cela, vous recevrez un mail pour valider votre inscription. Un rappel vous parviendra à l’approche de la date de début de la formation.{% endtrans %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-card-single col-lg-4 col-md-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                        <div class="service-card service-card-7 shape-bg-1">
+                            <div class="inner">
+                                <div class="icon">
+                                    <a href="#">
+                                        <i class="icon-book-line"></i>
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h6 class="title"><a href="#"> {% trans %} Parcourir le catalogue {% endtrans %}</a></h6>
+                                    <p class="description">{% trans %} Un moteur de recherche est à votre disposition pour parcourir le listing des formations proposées. Vous pouvez lire la fiche de présentation et vous familiariser avec le contenu proposé. Chaque formation est accompagnée de son plan détaillé et de ses objectifs. {% endtrans %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Service Grid  -->
+
+                    <!-- Start Service Grid  -->
+                    <div class="service-card-single col-lg-4 col-md-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                        <div class="service-card service-card-7 shape-bg-2">
+                            <div class="inner">
+                                <div class="icon">
+                                    <a href="#">
+                                        <i class="icon-shopping-basket-2-line"></i>
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h6 class="title"><a href="#">{% trans %} Selectionner une formation {% endtrans %}</a></h6>
+                                    <p class="description">{% trans %}Il vous suffit de cliquer sur « s’inscrire ». Il s’agit d’un choix libre et personnel. Vous pouvez choisir plusieurs formations durant toute la durée de votre adhésion à Digital Learning Academy. {% endtrans %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Service Grid  -->
+
+                    <!-- Start Service Grid  -->
+                   
+                    <!-- End Service Grid  -->
+					{% else %}
+				
+                    <!-- Start Service Grid  -->
+                     
+                    <!-- End Service Grid  -->
+
+                    <!-- Start Service Grid  -->
+                    <div class="service-card-single single-ar col-lg-4 col-md-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                        <div class="service-card service-card-7 shape-bg-2">
+                            <div class="inner">
+                                <div class="icon">
+                                    <a href="#">
+                                        <i class="icon-shopping-basket-2-line"></i>
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h6 class="title"><a href="#">اختر دورة</a></h6>
+                                    <p class="description desc-ar">فقط اضغط على "تسجيل". هذا اختيار حر وشخصي. يمكنك اختيار عدة دورات تدريبية طوال مدة عضويتك في أكاديمية التعلم الرقمي</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Service Grid  -->
+
+                    <!-- Start Service Grid  -->
+                
+					 <div class="service-card-single single-ar col-lg-4 col-md-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                        <div class="service-card service-card-7 shape-bg-1">
+                            <div class="inner">
+                                <div class="icon">
+                                    <a href="#">
+                                        <i class="icon-book-line"></i>
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h6 class="title"><a href="">تصفح القائمة </a></h6>
+                                    <p class="description desc-ar">يوجد محرك بحث تحت تصرفك لتصفح قائمة الدورات المقدمة. يمكنك قراءة ورقة العرض والتعرف على المحتوى المقترح. كل تدريب مصحوب بخطته التفصيلية وأهدافه.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="service-card-single single-ar col-lg-4 col-md-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                        <div class="service-card service-card-7 shape-bg-3">
+                            <div class="inner">
+                                <div class="icon">
+                                    <a href="#">
+                                        <i class="icon-trophy-line"></i>
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h6 class="title"><a href="/register">التسجيل عبر الإنترنت</a></h6>
+                                    <p class="description desc-ar">يمكنك ملء النموذج في بضع ثوانٍ وبعد ذلك ، ستتلقى بريدًا إلكترونيًا من فريق المنصة للتحقق من صحة تسجيلك. سيتم إرسال تذكير إليك في أقرب وقت من تاريخ بدء التدريب</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					{% endif %}
+					
+                </div>
+            </div>
+        </div>
+        <!-- Start Service Area  -->
+        <div class=" edu-service-area service-wrapper-1 edu-section-gap bg-image " id="form-recp">
+            <div class="container eduvibe-animated-shape">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <span class="pre-title">{% trans %}  Formations {% endtrans %}</span>
+                            <h3 class="title">{% trans %}  Ce que nous offrons {% endtrans %}</h3>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="row">
+                    <div class="col-lg-12">
+                         {% include 'home/_filter.html.twig' with {forms: forms} only %}
+                    </div>
+                </div>
+                <div class="row g-5 mt--25">
+                    <!-- Start Service Card  -->
+                    {% for formation in formations %}
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                        <div class="service-card service-card-1 radius-small">
+                            <div class="inner">
+                                <div class="thumbnail">
+                                    <a href="{{ path('app_formation_details',{'slug': formation.slug}) }}">
+                                        <img src="{{ asset('assets/uploads/') }}{{ formation.cover }}" alt="Service Images">
+                                    </a>
+                                    <div class="top-position status-group left-top">
+                                        <span class="eduvibe-status status-02">
+                                        
+                                            <div class="rating">
+                                                <i class="icon-Star"></i>
+                                            </div>
+                                            {% set sum = 0 %}    
+
+                                            <span class="rating-count">( 
+                                                {% if (formation.ratings|length > 0) %}
+                                                {% set loopOutput %}               
+                                                    {% for r in formation.ratings %}            
+                                                    {% set sum = sum + r.score %}        
+                                                    {% endfor %}    
+                                                {% endset %}
+                                                {{ sum / formation.ratings|length }} 
+                                                {{ loopOutput }}
+                                                     
+                                                 {% else %} 0 {% endif %})</span>
+                                        </span>
+                                    </div>
+                                    <div class="wishlist-top-right">
+                                        <a class="wishlist-btn" href="{{ path('app_like',{'id':formation.id} )}}" id="axios-like">
+                                        {% if app.user and formation.isLikedByUser(app.user) %}
+                                           <i class="icon-Heart red"></i>
+                                        {% else %}
+                                            <i class="icon-Heart blanc"></i>
+                                        {% endif %}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <span class="course-total">
+                                         <img src="{{ asset('assets/images/banner/icon1.png') }}" alt="Service formation">
+                                         <span class="text-formt">{{ formation.duration }} Heures </span>
+                                        <img src="{{ asset('assets/images/banner/icon2.png') }}" alt="Service formation">
+                                        <span class="text-formt-2">{{ formation.dateStart ? formation.dateStart|date('d-m-Y') : '' }}</span>
+                                        <img src="{{ asset('assets/images/banner/icon3.png') }}" alt="Service Imformationages">
+                                        <span class="text-formt-3">{{ formation.langue }} </span>
+                                    </span>
+                                    <h6 class="title"><a href="{{ path('app_formation_details',{'slug': formation.slug}) }}">{{ formation.title|u.truncate(50, '...') }}</a></h6>
+                                   <p class="description">{{ formation.apercu|u.truncate(150, '...')  }}</p>
+                                   <div class="col-lg-12">
+                                    <div class="load-more-btn mt--20" style="{% if (formation.DateInsF|date('d-m-Y')) < "now"|date('d-m-Y') %}cursor: no-drop; {% endif %}">
+                                        <a class="edu-btn-inscr {% if (formation.DateInsF|date('d-m-Y')) < "now"|date('d-m-Y') %}desactived {% endif %}" href="{{ path('app_inscription',{'id': formation.id}) }}">{% trans %}S'inscrire {% endtrans %} </a>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 {% endfor %}
+                </div>
+                <div class="row text-center mt--60">
+                    <div class="col-lg-12">
+                        <div class="load-more-btn">
+                               {{ knp_pagination_render(formations) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Footer Area  -->
+			{{ include('home/_footer.html.twig') }}
+        <!-- End Footer Area  -->
+    </div>
+    <style>
+	.single-ar:last-child::after {
+		top: 32px;
+		rotate: 180deg;
+}.single-ar:first-child::after {
+    top: -4px;
+    rotate: 180deg;
+}
+    .top-position.status-group.left-top {
+        position: absolute;
+        top: 0;
+    }
+    .wishlist-top-right {
+       position: absolute;
+       top: 3px;
+       right: 8px;
+    /* background-color: #4c4d4e; */
+    }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    function onClickLike(e){
+        e.preventDefault();
+        const url = this.href;
+        const icone = this.querySelector('i');
+        
+        axios.get(url).then(function(response){
+            if(icone.classList.contains('blanc')) {icone.classList.replace('blanc','red');}
+            else {icone.classList.replace('red','blanc');}
+        });
+
+    }
+
+    document.querySelectorAll('a#axios-like').forEach(function(link){
+        link.addEventListener('click',onClickLike)
+    })
+</script>
+{% endblock %}

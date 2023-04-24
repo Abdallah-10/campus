@@ -1,0 +1,15 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Nouvelle Formation{% endblock %}
+
+{% block content %}
+   
+    <div class="col-md-3 "></div>
+    <div class="col-md-6 ">
+     <h1>Ajouter nouvelle formation</h1>
+    {{ include('formation/_form.html.twig') }}
+
+    <button class="btn btn-info retour"><a  href="{{ path('app_formation_index') }}">{% trans %}Retour à la liste{% endtrans %}</a></button>
+    </div>
+    <div class="mt-4 pt-4"></div>
+{% endblock %}

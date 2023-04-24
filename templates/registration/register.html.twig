@@ -1,0 +1,121 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+<div class="account-pages my-5 pt-sm-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-6">
+                        <div class="card overflow-hidden">
+                            
+                            <div class="card-body" style="padding-top: 50px;"> 
+                                <div class="auth-logo">
+                                    <a href="/" class="auth-logo-light">
+                                        <div class="avatar-md profile-user-wid mb-4">
+                                            <span class="avatar-title backs">
+                                                <img src="{{ asset('/assets/images/banner/logo.png') }}" alt="" class="auth" width="150px;">
+                                                <div>
+                                                 <img class="logo-lighter" src="{{ asset('assets/images/banner/tun.png') }}" alt="Site Logo">
+                                                 <img class="logo-lighter" src="{{ asset('assets/images/banner/tunisie.png') }}" alt="Site Logo"></div>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="bg-login">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="text-primar ">
+                                            <h5 class="text-primar">{% trans %}Inscription{% endtrans %}</h5>
+                                           
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                                <div class="p-5">
+                                  {% if error %}
+                                    <div class="alert alert-danger">{% trans %}
+                                    Le site est réservé uniquement aux fonctionnaires publics, merci de saisir votre email professionnel {% endtrans %}</div>
+                                  {% endif %}
+
+                                   {{ form_start(registrationForm) }}
+                                        <div class="mb-3">
+                                          {{ form_row(registrationForm.email) }}    
+                                        </div>
+                
+                                        <div class="mb-3">
+                                            {{ form_row(registrationForm.plainPassword, {
+                                                label: 'Mot de passe'
+                                            }) }}     
+                                        </div>
+                                        <div class="terms"> {{ form_row(registrationForm.agreeTerms) }} <a class="condition" href="https://www.ccilb.be/fr/wm-media/Conditions_utilisation_CCI.pdf" target="_blank">
+										{% if (app.request.locale)=='fr' %}Condition d'utilisation {% else %}شروط الاستعمال{% endif %}</a></div>
+                                        <div class="mt-4 d-grid">
+                                            <button class="btn btn-login waves-effect waves-light" type="submit">{% trans %}S'inscrire {% endtrans %}</button>
+                                        </div>
+
+                                        <div class="mt-4 text-center">
+                                          <div class="mt-5 text-center">
+                            
+                                                <div>
+                                                    <p>{% trans %}Vous avez déjà un compte ?{% endtrans %}<a href="/login" class="fw-medium text-primary">{% trans %} Connexion{% endtrans %}</a> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                
+                                    {{ form_end(registrationForm) }}
+                                </div>
+            
+                            </div>
+                        </div>
+                       
+
+                    </div>
+                </div>
+            </div>
+        </div>
+ {% if(app.request.locale == 'ar') %}
+<style>
+label {
+     font-size: 17px;
+    --bs-text-opacity: 1;
+    font-weight: 600;
+    text-align: right;
+    display: block;
+}p{
+     font-size: 17px;
+    --bs-text-opacity: 1;
+    font-weight: 600;
+}
+</style>
+{% endif %}
+<style>
+a {
+    text-decoration: none;
+}
+button.btn.btn-login.waves-effect.waves-light {
+    background-color: #dc3545;
+    color: #fff;
+    font-size: 17px;
+    --bs-text-opacity: 1;
+    font-weight: 600;
+}
+img.logo-lighter {
+    width: 80px;
+}h5.text-primar {
+    color: #000;
+    text-align:center;}
+a.condition {
+    text-decoration-line: underline !important;
+}
+.terms {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;}
+.backs {
+    justify-content: space-between !important;
+}
+</style>
+{% endblock %}

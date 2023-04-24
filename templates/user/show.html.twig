@@ -1,0 +1,75 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}utilisateur{% endblock %}
+
+{% block content %}
+    <h1>Détails utilisateur</h1>
+<div class="col-md-1">
+</div>
+<div class="col-md-7 mt-4">
+    <table id="tech-companies-1" class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+			<tr>
+                <th>Nom & prénom</th>
+                <td>{{ user.name }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Rôles</th>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            </tr>
+         
+            <tr>
+                <th>Genre</th>
+                <td>{{ user.genre }}</td>
+            </tr>
+               <tr>
+                <th>Date de naissance </th>
+                <td>{{ user.age|date('d-m-Y') }}</td>
+            </tr>
+            <tr>
+                <th>Téléphone</th>
+                <td>{{ user.phone }}</td>
+            </tr>
+            <tr>
+                <th>Gouvernorat</th>
+                <td>{{ user.gouvernat }}</td>
+            </tr>
+            <tr>
+                <th>Ministère</th>
+                <td>{{ user.ministere }}</td>
+            </tr>
+            <tr>
+                <th>Organisme</th>
+                <td>{{ user.organisme }}</td>
+            </tr>
+            <tr>
+                <th>Poste</th>
+                <td>{{ user.poste }}</td>
+            </tr>
+            <tr>
+                <th>Niveau</th>
+                <td>{{ user.niveau }}</td>
+            </tr>
+            
+            <tr>
+                <th>Grade</th>
+                <td>{{ user.grade }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary waves-effect waves-light" href="{{ path('app_user_index') }}">Retour à la liste</a>
+
+    <a class="btn btn-primary waves-effect waves-light" href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
+
+
+    {{ include('user/_delete_form.html.twig') }}
+{% endblock %}

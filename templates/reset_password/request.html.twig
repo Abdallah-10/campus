@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}réinitialisez votre mot de passe{% endblock %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/icons.min.css.css') }}">
+    
+    <link rel="stylesheet" href="{{ asset('assets/css/color_skins.css') }}">
+ 
+{% endblock %}
+{% block body %}
+
+<body class="theme-purple authentication sidebar-collapse">
+
+<div class="account-pages my-5 pt-sm-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                        <div class="card overflow-hidden">
+                           <div class="card-body" style="padding-top: 50px;"> 
+                                <div class="auth-logo">
+                                    <a href="/" class="auth-logo-light">
+                                        <div class="avatar-md profile-user-wid mb-4">
+                                            <span class="avatar-title backs">
+                                                <img src="{{ asset('/assets/images/banner/logo.png') }}" alt="" class="auth" width="150px;">
+                                                <div><img class="logo-lighter" src="{{ asset('assets/images/banner/tun.png') }}" alt="Site Logo">
+                                                 <img class="logo-lighter" src="{{ asset('assets/images/banner/tunisie.png') }}" alt="Site Logo"></div>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="bg-login">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="text-primary">
+                                            <h5 class="text-primar">{% trans %}Réinitialisez votre mot de passe{% endtrans %}</h5>                                          
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                                <div class="p-2">
+                            {% for flash_error in app.flashes('reset_password_error') %}
+                                <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                            {% endfor %}
+                            <h4></h4>
+
+                            {{ form_start(requestForm) }}
+                                {{ form_row(requestForm.email) }}
+                                <div>
+                                    {% if (app.request.locale)=='fr' %} <small>
+                                       Entrez votre adresse e-mail et nous vous enverrons un
+                                         lien pour réinitialiser votre mot de passe.
+                                    </small>{% else %}
+									<small>
+									                                 أدخل عنوان بريدك الإلكتروني وسنرسل لك رابطاً لإعادة تعيين كلمة المرور الخاصة بك
+                                    </small>{% endif %}
+                                </div>
+								<br>
+                                <button class="btn btn-login">{% trans %}Envoyer un e-mail de réinitialisation du mot de passe{% endtrans %}</button>
+                            {{ form_end(requestForm) }}
+
+                            </div>
+            
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<style>
+.bg-soft {
+    background-color: var(--color-primary) !important;
+}
+.bg-login {
+    background-color: #dc3545;
+}.btn-login{
+    background-color: #dc3545;
+    color: #fff;
+}
+</style>
+ {% if(app.request.locale == 'ar') %}
+<style>
+label {
+     font-size: 17px;
+    --bs-text-opacity: 1;
+    font-weight: 600;
+    text-align: right;
+    display: block;
+}p{
+     font-size: 17px;
+    --bs-text-opacity: 1;
+    font-weight: 600;
+}
+</style>
+{% endif %}
+<style>
+a {
+    text-decoration: none;
+}
+button.btn.btn-login.waves-effect.waves-light {
+    background-color: #dc3545;
+    color: #fff;
+    font-size: 17px;
+    --bs-text-opacity: 1;
+    font-weight: 600;
+}
+img.logo-lighter {
+    width: 80px;
+}h5.text-primar {
+    color: #000;
+    text-align:center;}
+a.condition {
+    text-decoration-line: underline !important;
+}
+.terms {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;}
+.backs {
+    justify-content: space-between !important;
+}
+</style>
+{% endblock %}

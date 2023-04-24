@@ -1,0 +1,47 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Actualités{% endblock %}
+
+{% block content %}
+    <div class="col-12">
+		<div class="card">
+			<div class="card-body">
+          <h1>Actualite </h1>
+  <div class="col-md-3 mt-4 mb-4">
+    <a class="btn btn-primary waves-effect waves-light" href="{{ path('app_actualite_new') }}" style="width: 100%;">ajouter </a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                 <th>langue</th>
+                <th>Image</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for actualite in actualites %}
+            <tr>
+                <td>{{ actualite.id }}</td>
+                <td>{{ actualite.titre }}</td>
+                <td>{{ actualite.description }}</td>
+                  <td>{{ actualite.langue }}</td>
+                <td>  <img src="{{ asset('assets/uploads/') }}{{ actualite.image }}" alt="Client Images" width="80px" ></td>
+                <td>{{ actualite.date ? actualite.date|date('Y-m-d') : '' }}</td>
+                <td style="    display: flex;">
+                    <a class="btn btn-secondary waves-effect waves-light"  href="{{ path('app_actualite_show', {'id': actualite.id}) }}">Voir</a>
+                    <a class="btn btn-warning waves-effect waves-light " style="margin-left:6px;" href="{{ path('app_actualite_edit', {'id': actualite.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

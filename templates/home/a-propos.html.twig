@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}compus{% endblock %}
+
+{% block body %}
+ <div class="main-wrapper">
+        {{ include('home/_header.html.twig') }}
+
+        <!-- Start Sldier Area  -->
+        <div class=" breadcrumb-style-1 pt--160 ptb_md--140 ptb_sm--140 pb--60 bg-image">
+			<div class="container eduvibe-animated-shape">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="breadcrumb-inner text-start">
+							<div class="page-title">
+								<h3 class="title-formt">{% trans %}  À propos {% endtrans %}</h3>
+							</div>
+						</div>
+					</div>
+                    
+				</div>
+			</div>
+		</div>
+        <!-- End Sldier Area  -->
+        <div class="home-one-cat edu-service-area service-wrapper-1 edu-section-gap bg-image">
+            <div class="container eduvibe-animated-shape">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <h4 class="apercu border-line">{% trans %} A propos {% endtrans %}</h4>
+                            <div class="row">
+                            <div class="col-md-12">
+                             <p class="descriptions">{% trans %}  L’apprentissage en continu vous ouvre des perspectives de carrière et une aisance accrue dans votre gestion au quotidien. La Digital Learning Academy est votre allié principal pour vous familiariser avec les nouveaux outils technologiques et développer vos compétences. L’instruction se fait à votre rythme et selon votre disponibilité. En quelques clics, vous voilà, acteur de votre potentiel.
+                                <br><br>Le Ministère des TICs a conçu la Digital Learning Academy dans le but de monter en compétence 
+                                les cadres de la fonction publique tunisienne et leur offrir les outils et supports adéquats afin de révéler leurs capacités et servir, dans l’optique d’une Tunisie plus digitalisée, les citoyens. {% endtrans %} </p>
+                            </div></div>
+                        <div class="row justify-content-center">
+                           <div class="col-md-3">
+                            <p class="detail-desc">
+                                <i class="icon-checkbox-circle-fill"></i>{% trans %} Une certification reconnue {% endtrans %}<br>
+                                <i class="icon-checkbox-circle-fill"></i> {% trans %} Une formation d’excellence {% endtrans %}<br>
+                                <i class="icon-checkbox-circle-fill"></i> {% trans %} Une connexion 24h/7 {% endtrans %}<br>                    
+                            </p></div>
+                           <div class="col-md-3"> 
+                            <p class="detail-desc">
+                                <i class="icon-checkbox-circle-fill"></i> {% trans %}  Une équipe à l’écoute {% endtrans %}<br>
+                                <i class="icon-checkbox-circle-fill"></i> {% trans %} Une méthode probante {% endtrans %}<br>
+                                <i class="icon-checkbox-circle-fill"></i> {% trans %}  Un engouement mesurable {% endtrans %}
+                             </p>
+                        </div>
+        <div class="edu-brand-area edu-section-gap">
+            <div class="container">
+              <h4 class="text-center title-part">{% trans %} Partenaires {% endtrans %}</h4>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="row eduvibe-home-five-brands justify-content-center">
+                            <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                                <a  class="client-logo">
+                                    <img class="part-logo" src="{{ asset('assets/uploads/giz_recrute.png') }}" alt="Brand Images">
+
+                                </a>
+                            </div> 
+                             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                                <a  class="client-logo">
+                                    <img class="part-logo" src="{{ asset('assets/uploads/giz.png') }}" alt="Brand Images">
+
+                                </a>
+                            </div> 
+                             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                                <a  class="client-logo">
+                                    <img class="part-logo" src="{{ asset('assets/uploads/MinisteEre-des-Technologies-de-la-communication-6318bd61ba527.png') }}" alt="Brand Images">
+
+                                </a>
+                            </div> 
+							<div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                                <a  class="client-logo">
+                                    <img class="part-logo" src="{{ asset('assets/uploads/LOGO-Digital-transformation-Center.png') }}" alt="Brand Images">
+
+                                </a>
+                            </div> 
+                             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                                <a  class="client-logo">
+                                    <img class="part-logo" src="{{ asset('assets/uploads/Itu-international_telecommunication_union-logo-blue.png') }}" alt="Brand Images">
+
+                                </a>
+                            </div> 
+                             <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                                <a  class="client-logo">
+                                    <img class="part-logo" src="{{ asset('assets/uploads/GSMA_logo_HQ_1587032385.jpg') }}" alt="Brand Images">
+
+                                </a>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                       
+               </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+    {{ include('home/_footer.html.twig') }}
+</div>
+
+{% endblock %}
+       

@@ -1,0 +1,35 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Formation{% endblock %}
+
+{% block content %}
+ <h1>Détails slider</h1>
+<div class="col-md-1">
+</div>
+<div class="col-md-7 mt-4">
+    <table class="table">
+
+        <tbody>
+            <tr>
+                <th>Ordre</th>
+                <td>{{ slider.ordre }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ slider.titre }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img style="width: 250px;height: 150px;object-fit: cover;" 
+                src="{{ asset('assets/uploads/') }}{{ slider.image }}" alt="Service Images"></td>
+            </tr>
+        </tbody>
+     </table>
+
+    <a class="btn btn-secondary waves-effect waves-light" href="{{ path('app_slider_index') }}">Retour à la liste</a>
+
+    <a class="btn btn-primary waves-effect waves-light" href="{{ path('app_slider_edit', {'id': slider.id}) }}">Modifier</a>
+
+    {{ include('slider/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

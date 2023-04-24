@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {% trans %} Digital Learning Academy {% endtrans %}
+{% endblock %}
+
+{% block body %}
+	<div class="main-wrapper">
+		{{ include('home/_header.html.twig') }}
+
+		<!-- Start Sldier Area  -->
+		<div class="edu-breadcrumb-area breadcrumb-style-1 pt--200 pb--100 ptb_md--140 ptb_sm--140 bg-image">
+			<div class="container eduvibe-animated-shape">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="breadcrumb-inner text-start">
+							<div class="page-title">
+								<h3 class="title">{% trans %} Actualités et Événements {% endtrans %}</h3>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="edu-elements-area  bg-color-white mt--80">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-12">
+                        <div class="row g-5 mb-5 ">
+                        {% if (app.request.locale)=='fr' %}
+                        {% for actualite in actualites %}
+                        {% if (actualite.langue)=='français' %}
+                            <!-- Start Blog Grid  -->
+                            <div class="col-lg-4 col-md-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                <div class="edu-blog blog-type-2 radius-small">
+                                    <div class="inner">
+                                        <div class="thumbnail actaulite">
+                                            <a href="/media/{{ actualite.slug }}">
+                                                <img src="{{ asset('assets/uploads/') }}{{ actualite.image }}" alt="Blog Images">
+                                            </a>
+                                        </div>
+										<div class="top-position status-actus-group right-top">
+                                            <span class="eduvibe-status status-02">{{ actualite.type|trans({}, 'messages') }}</span>
+                                        </div>
+                                        <div class="content">
+                                            
+                                            <h5 class="title-act"><a href="/media/{{ actualite.slug }}">{{ actualite.titre }}</a></h5>
+                                            <p class="desc-actu">{{ actualite.description|u.truncate(120, '...')  }}</p>
+                                            <div class="blog-card-bottom">
+                                                <ul class="blog-meta">
+                                                    <li><i class="icon-calendar-2-line"></i>{{ actualite.date|date('d-m-Y') }}</li>
+                                                </ul>
+                                                <div class="read-more-btn">
+                                                    <a class="btn-transparent" href="/media/{{ actualite.slug }}">En savoir plus<i class="icon-arrow-right-line-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            {% else %}
+                       {% for actualite in actualites %}
+                        {% if (actualite.langue)=='arabe' %}
+                            <!-- Start Blog Grid  -->
+                            <div class="col-lg-4 col-md-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                <div class="edu-blog blog-type-2 radius-small">
+                                    <div class="inner">
+                                        <div class="thumbnail actaulite">
+                                            <a href="/media/{{ actualite.slug }}">
+                                                <img src="{{ asset('assets/uploads/') }}{{ actualite.image }}" alt="Blog Images">
+                                            </a>
+                                        </div>
+										<div class="top-position status-actus-group right-top">
+                                            <span class="eduvibe-status status-02">{{ actualite.type|trans({}, 'messages') }}</span>
+                                        </div>
+                                        <div class="content">
+                                            
+                                            <h5 class="title-act"><a href="/media/{{ actualite.slug }}">{{ actualite.titre }}</a></h5>
+                                            <p class="desc-actu">{{ actualite.description|u.truncate(120, '...')  }}</p>
+                                            <div class="blog-card-bottom">
+                                                <ul class="blog-meta">
+                                                    <li><i class="icon-calendar-2-line"></i>{{ actualite.date|date('d-m-Y') }}</li>
+                                                </ul>
+                                                <div class="read-more-btn">
+                                                    <a class="btn-transparent" href="/media/{{ actualite.slug }}">اقرأ المزيد<i class="icon-arrow-right-line-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                            <!-- End Blog Grid  -->
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        {{ include('home/_footer.html.twig') }}
+				<!-- End Footer Area  -->
+	</div> 
+	
+	<style>
+	.eduvibe-status.status-02 {
+    color: #dc3545;
+    background: #f9fafb;
+	    text-transform: capitalize;
+}
+	</style>
+{% endblock %}

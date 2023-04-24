@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion ! {% endblock %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/icons.min.css.css') }}">
+    
+    <link rel="stylesheet" href="{{ asset('assets/css/color_skins.css') }}">
+ 
+{% endblock %}
+{% block body %}
+
+<body class="theme-purple authentication sidebar-collapse">
+
+<div class="account-pages my-5 pt-sm-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-6">
+                        <div class="card overflow-hidden">
+                            
+                            <div class="card-body" style="padding-top: 50px;"> 
+                                <div class="auth-logo">
+                                    <a href="/" class="auth-logo-light">
+                                        <div class="avatar-md profile-user-wid mb-4">
+                                            <span class="avatar-title backs">
+                                                <img src="{{ asset('/assets/images/banner/logo.png') }}" alt="" class="auth" width="150px;">
+                                                <div><img class="logo-lighter" src="{{ asset('assets/images/banner/tun.png') }}" alt="Site Logo">
+                                                 <img class="logo-lighter" src="{{ asset('assets/images/banner/tunisie.png') }}" alt="Site Logo"></div>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="bg-login">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="text-primary">
+                                            <h5 class="text-primar">{% trans %}Connexion{% endtrans %}</h5>                                          
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                                <div class="p-5">
+                                    <form class="form-horizontal" method="post" action="">
+                                     {% for message in app.flashes('success') %}
+                                            <div class="alert alert-success">
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
+                                            {% if error %}
+                                                <div class="alert alert-danger">Email et/ou mot de passe incorrect(s)</div>
+                                            {% endif %}
+
+                                            {% if app.user %}
+                                                <div class="mb-3">
+                                                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                                </div>
+                                            {% endif %}
+                                        <div class="mb-3">
+										<label class="form-label">{% trans %}Email{% endtrans %}</label>
+                                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" 
+autocomplete="current-email" class="form-control" placeholder="{% trans %}Saisissez votre Email{% endtrans %}" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">{% trans %}Mot de passe{% endtrans %}</label>
+                                            <div class="input-group auth-pass-inputgroup">
+                                               <input type="password" name="password" id="inputPassword" class="form-control" 
+											   autocomplete="current-password" placeholder="{% trans %}Saisissez votre Mot de passe{% endtrans %}" required type="password" />
+                                            </div>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="remember-check">
+                                            <label class="form-check-label" for="remember-check">
+                                                {% trans %}Se souvenir de moi {% endtrans %} </label>
+                                        </div>
+                                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                        <div class="mt-3 d-grid">
+                                            <button class="btn btn-login waves-effect waves-light" type="submit">
+											{% trans %}Se connecter {% endtrans %}</button>
+                                        </div>            
+                                        <div class="mt-4 text-center">   
+                                            <div>
+                                                <p> {% if (app.request.locale)=='fr' %}Vous n'avez pas de compte !{% else %}لا يوجد لديك حساب ! {% endif %}
+												<a href="/register" class="fw-medium text-primary"> 
+												{% trans %}Inscrivez-vous {% endtrans %}</a> </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-4 text-center">
+                                            <a href="/reset-password" class="text-muted"><i class="mdi mdi-lock me-1"></i>
+										{% if (app.request.locale)=='fr' %}	Mot de passe oublié {% else %} نسيت كلمة المرور  {% endif %}</a>
+                                        </div>
+                                    </form>
+                                </div>
+            
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+{% if(app.request.locale == 'ar') %}
+<style>
+label {
+    text-align: right;
+    display: block;
+}
+</style>
+{% endif %}
+<style>
+h5.text-primar {
+    color: #000;
+    text-align:center;}
+img.logo-lighter {
+    width: 80px;
+}
+button.btn.btn-login.waves-effect.waves-light {
+    background-color: #dc3545;
+    color: #fff;
+}
+.backs {
+    justify-content: space-between !important;
+}
+</style>
+{% endblock %}

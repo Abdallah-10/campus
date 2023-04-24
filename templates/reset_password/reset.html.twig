@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Password Reset Email Sent{% endblock %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/icons.min.css.css') }}">
+    
+    <link rel="stylesheet" href="{{ asset('assets/css/color_skins.css') }}">
+ 
+{% endblock %}
+{% block body %}
+
+<body class="theme-purple authentication sidebar-collapse">
+
+<div class="account-pages my-5 pt-sm-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                        <div class="card-body" style="padding-top: 50px;"> 
+                                <div class="auth-logo">
+                                    <a href="/" class="auth-logo-light">
+                                        <div class="avatar-md profile-user-wid mb-4">
+                                            <span class="avatar-title backs">
+                                                <img src="{{ asset('/assets/images/banner/logo.png') }}" alt="" class="auth" width="150px;">
+                                                <div><img class="logo-lighter" src="{{ asset('assets/images/banner/tun.png') }}" alt="Site Logo">
+                                                 <img class="logo-lighter" src="{{ asset('assets/images/banner/tunisie.png') }}" alt="Site Logo"></div>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="bg-login">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="text-primary">
+                                            <h5 class="text-primar">{% trans %}Bienvenue{% endtrans %}</h5>                                          
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+								<h1>{% trans %}Réinitialisez votre mot de passe{% endtrans %}</h1>
+
+								{{ form_start(resetForm) }}
+									{{ form_row(resetForm.plainPassword) }}
+									<button class="btn btn-primary">{% trans %}Réinitialiser le mot de passe{% endtrans %}</button>
+								{{ form_end(resetForm) }}
+								
+								</div>
+                 
+
+                            </div>
+            
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<style>
+.bg-login {
+    background-color: #dc3545;
+}button.btn.btn-login.waves-effect.waves-light {
+    background-color: #dc3545;
+    color: #fff;
+}
+</style>
+{% endblock %}

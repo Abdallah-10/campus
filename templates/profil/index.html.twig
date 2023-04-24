@@ -1,0 +1,450 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {% trans %}Hello ProfilController! {% endtrans %}{% endblock %}
+
+{% block body %}
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://unpkg.com/htmx.org@1.8.4" integrity="sha384-wg5Y/JwF7VxGk4zLsJEcAojRtlVp1FKKdGy1qN+OMtdq72WRvX/EdRdqg/LOhYeV" crossorigin="anonymous"></script>
+
+<div class="main-content">
+ {{ include('home/_header.html.twig') }}
+        <div class="edu-breadcrumb-area breadcrumb-style-1 pt--200 pb--80 ptb_md--140 ptb_sm--140 bg-image">
+            <div class="container eduvibe-animated-shape">
+             <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb-inner text-start">
+                            <div class="page-title">
+                                <h3 class="title">{% trans %}Mon compte{% endtrans %}</h3>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
+                    <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
+                        <div class="shape-image shape-image-1">
+                            <img src="{{ asset('assets/images/shapes/shape-11-07.png') }}" alt="Shape Thumb" />
+                        </div>
+                        <div class="shape-image shape-image-2">
+                            <img src="{{ asset('assets/images/shapes/shape-01-02.png') }}" alt="Shape Thumb" />
+                        </div>
+                   
+                        <div class="shape-image shape-image-4">
+                            <img src="{{ asset('assets/images/shapes/shape-13-12.png') }}" alt="Shape Thumb" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="edu-instructor-profile-area edu-section-gap bg-color-white">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-4 pr--55">
+
+                        <div class="instructor-profile-left">
+                            <div class="inner">
+                                <div class="thumbnail">
+                                    <img id="imagePreview" src="{{ asset('assets/uploads/') }}{{ user.cover }}" alt="About Images">
+                                      <div class="avatar-upload">
+                                         <div class="avatar-edit"> 
+                                        
+                                             <img id="icona" src="{{ asset('assets/uploads/camera.png') }}" alt="About Images">
+
+
+                                            {{ form_start(form ,{'attr': {'id': 'profile_cover'}}) }}
+                                            <label for="imageUpload">
+                                                {{ form_widget(form.cover ,{'attr': {'class': 'imageUpload'}}) }} </label>
+
+                                            {{ form_end(form) }}
+                                        
+                                   </div>
+                                  </div>
+                                </div>
+                                <div class="content">
+                                    <h5 class="title">{{ user.name }}</h5>
+                                    <span class="subtitle">{{ user.poste }}</span>
+                                    <div class="contact-with-info">
+                                    
+                                        <p><span>{% trans %}Email:{% endtrans %}</span> <a href="#">{{ user.email }}</a></p>
+                                        <p><span>{% trans %} Phone: {% endtrans %}</span> <a href="tel:{{ user.phone }}">{{ user.phone }}</a></p>
+                                         <p><span>{% trans %} Genre : {% endtrans %}</span> {{ user.genre }}</p>
+                                         <p><span>{% trans %} Date de naissance : {% endtrans %}</span> {{ user.age|date('d-m-Y') }}</p>
+                                         <p><span>{% trans %} Gouvernorat : {% endtrans %}</span> {{ user.gouvernat }}</p>
+                                         <p><span>{% trans %} Organisme : {% endtrans %}</span> {{ user.organisme }}</p>
+                                        
+                                        <p style="width: 92%;"><span >{% trans %}Ministère :{% endtrans %}</span> {{ user.ministere }}</p>
+                                         <p><span>{% trans %} Grade : {% endtrans %}</span> {{ user.grade }}</p>
+                                         <p style="width: 97%;"><span >{% trans %} Niveau de responsabilité :{% endtrans %}</span> {{ user.poste }}</p>    
+                                        <p><span>{% trans %} Niveau académique : {% endtrans %}</span> {{ user.niveau }}</p>          
+                                        
+                                    </div>
+                                   <!-- <a class="mod-link" href="{{ path('app_user_edit_front', {'id': user.id }) }}">{% trans %} Modifier mes informations {% endtrans %}</a> -->
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="instructor-profile-right">
+                            <div class="inner">
+                           
+                                <div class="edu-skill-style">
+                                    <div class="section-title text-start mb--30">
+                                    
+                                <div class="edu-skill-style ">
+                                <h4 class="card-title mb-4 profil-title">{% trans %} Mes Formations {% endtrans %}</h4>
+                                <div class="card">
+                                    <div class="card-body">
+                                        
+                                        <div class="table-responsive">
+                                            <table class="table table-nowrap table-hover mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col" style="width: 52%;">{% trans %} Formation {% endtrans %}</th>
+                                                        <th scope="col">{% trans %} Date début {% endtrans %}</th>
+                                                        <th scope="col">{% trans %} Date fin {% endtrans %}</th>
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                 <tbody>
+                                                    {% for inscripter in inscripts %}
+                                                        {% set fors =inscripter.formation %}
+                                                        {% for inscript in fors %}
+                                                   
+                                                        <tr>
+                                                            
+                                                            <td><a target="_blank" href="{{ path('app_formation_details',{'slug': inscript.slug}) }}"> 
+                                                            {{ inscript.title }}</a></td>
+                                                            <td>{{ inscript.dateStart ? inscript.dateStart|date('d-m-Y') : '' }}</td>
+                                                            <td>{{ inscript.dateEnd ? inscript.dateEnd|date('d-m-Y') : '' }}</td>
+                                                            
+                                                        </tr>
+                                                    {% else %}
+                                                        <tr>
+                                                            <td colspan="14">{% trans %} Aucun enregistrement trouvé {% endtrans %}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                {% endfor %}
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="edu-skill-style mt--65 d-none">
+                                   <h4 class="card-title mb-4 profil-title">{% trans %} Mes Contacts {% endtrans %}</h4>
+   
+                                 <input type="text" id="search" placeholder="Search" />
+                                 <div class="row " >
+                                    <div  id="contacts" class="col-lg-12 mt--60 mb_dec--20">
+                                        <!-- Start Single Service  -->
+                                            {% for contact in contacts %}
+                                                <!-- Start Single Service  -->
+                                                <div class="single-slick-card col-md-3">
+                                                    <div class="service-card service-card-8 shape-bg-5">
+                                                        <div class="inner">
+                                                            <div class="icon">
+                                                                <a href="/messanger/{{ contact.id }}">
+                                                                    <img class="avatar-cont" src="{{ asset('assets/uploads/') }}{{ contact.cover }}" alt="Icons">
+                                                                </a>
+                                                            </div>
+                                                            <div class="content">
+                                                                <h6 class="title"><a href="/messanger/{{ contact.id }}">{{ contact.name }}</a></h6>
+                                                            </div>
+                                                            <div class="hover-action">
+                                                                <a class="read-more-btn " href="/messanger/{{ contact.id }}"  >
+                                                                <i class="icon-arrow-right-line-right"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                            {% endfor %}
+                                        <!-- End Single Service  -->
+                                      </div>
+                                    </div>
+                                </div>
+
+                                 <div class="edu-skill-style mt--65">
+                                   <h4 class="card-title mb-4 profil-title">{% trans %} Mes Favoris {% endtrans %}</h4>
+
+                                   <div class="mt--40 edu-slick-button slick-activation-wrapper eduvibe-course-one-carousel eduvibe-course-details-related-course-carousel">
+										{% for formation in formations %}
+                                        
+											<div class="single-slick-card">
+												<div class="edu-card card-type-3 radius-small">
+													<div class="inner">
+														<div class="thumbnailes">
+															<div class="wishlist-top-right details">
+																
+															</div>
+															<a href="{{ path('app_formation_details',{'slug': formation.post.slug}) }}">
+																<img src="{{ asset('assets/uploads/') }}{{ formation.post.cover }}" alt="Service Images">
+															</a>
+
+														</div>
+														<div class="content">
+															<div class="card-top">
+
+																<ul class="edu-meta meta-02">
+																	<li>
+																		<span>
+																			<i class="icon-calendar-2-line"></i>
+																		</span>
+																		<span>{{ formation.post.dateStart|date('d-m-Y') }}</span>
+																	</li>
+																	<li>
+																		<span>
+																			<i class="icon-time-line"></i>
+																		</span>
+																		<span>
+																			{{ formation.post.duration }}
+																		{% trans %}	Heures {% endtrans %}</span>
+																	</li>
+
+																</ul>
+															</div>
+															<h6 class="title">
+																<a href="#">{{ formation.post.title }}</a>
+															</h6>
+															<div class="card-bottom">
+																<div class="price-list price-style-02">
+																	<a class="edu-btn-inscr {% if (formation.post.DateInsF|date('d-m-Y')) < " now"|date('d-m-y') %}desactived {% endif %}" 
+                                                                    href="{{ path('app_inscription',{'id': formation.id}) }}">{% trans %} S’inscrire {% endtrans %}</a>
+																</div>
+                                                                
+																<div class="edu-rating rating-default">
+																	<div class="rating">
+																		<i class="icon-Star"></i>
+
+																	</div>
+																	<span class="rating-count">(18)</span>
+																</div>
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+										{% endfor %}
+									</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<style>
+.service-card.service-card-8.shape-bg-5 {
+    padding: 4px;
+    margin-bottom: 18px;
+}
+div#contacts {
+    overflow-y: auto;
+    height: 475px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+ .eduvibe-shop-single-product .inner .content .title, .service-card-8 .inner .content .title {
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 22px;
+        margin-bottom: 0px;
+    } 
+.font-size-15 {
+    font-size: 15px!important;
+}
+
+.text-truncate {
+    text-transform: capitalize;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.card-title {
+    font-size: 15px;
+    margin: 0 0 7px 0;
+    font-weight: 600;
+}
+.text-muted {
+    --bs-text-opacity: 1;
+    color: #000!important;
+}.font-size-24 {
+    font-size: 24px!important;
+}
+
+.bx {
+    font-family: boxicons!important;
+    font-weight: 400;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    display: inline-block;
+    text-transform: none;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.bx {
+    color: #f3f4f4;
+    font-size: 50px;
+    padding: 7px;
+}
+.profile-user-img {
+  width: 125px;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  
+}
+h4.card-title.mb-4.profil-title {
+    color: #092991;
+    font-size: 20px;
+    /* text-decoration: underline; */
+    font-family: monospace;
+}
+
+
+.section-title .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 20px;
+    font-family: Ebrima;
+    font-weight: 600;
+    font-size: 16px;
+}
+.avatar-upload {
+  position: relative;
+  max-width: 205px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+.avatar-upload .avatar-edit {
+      position: absolute;
+    right: 9px;
+    z-index: 1;
+    top: -49px;
+}
+img#icona {
+    object-fit: contain;
+    height: 30px;
+}
+.avatar-upload .avatar-edit input {
+    /* display: none; */
+    width: 43.1px;
+    height: 41.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    top: -28px;
+}
+img.avatar-cont {
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    justify-content: center;
+    margin: 0 auto;
+}
+.avatar-upload .avatar-edit input + label {
+     display: inline-block;
+    width: 37px;
+    height: 37px;
+    margin-bottom: 0;
+    border-radius: 100%;
+    background: #FFFFFF;
+    border: 1px solid #d2d6de;
+    box-shadow: 0px 2px 4px 0px rgb(0 0 0 / 12%);
+    cursor: pointer;
+    font-weight: normal;
+    transition: all 0.2s ease-in-out;
+}
+.avatar-upload .avatar-edit input + label:hover {
+  background: #f1f1f1;
+  border-color: #d6d6d6;
+}
+img#imagePreview {
+    border: 2px solid #231f4024;
+}
+input#search {
+    width: 200px;
+    border: 1px solid #202991;
+}
+</style>
+<script>
+
+$(document).ready(function() {
+   $("#search").keyup(function() {
+       
+        var search = $('#search').val();
+
+        $.ajax({
+            type:'POST',
+            url: '{{ path('app_profil') }}',
+            data:{ data: search },         
+            success:function(data){
+                var html = '';
+
+                $.each(data, function (index, value) {
+                 
+                    
+                    html +='<div class="single-slick-card col-md-3"><div class="service-card service-card-8 shape-bg-5"><div class="inner"><div class="icon"><a href="/messanger/' + value[name] + '"> <img class="avatar-cont" src="{{ asset('assets/uploads/') }}' + value['cover'] + '" alt="Icons"></a></div><div class="content"><h6 class="title"><a href="/messanger/' + value['id'] + '">' + value['name'] + '</a></h6></div> <div class="hover-action"> <a class="read-more-btn " href="/messanger/' + value['id'] + '"  > <i class="icon-arrow-right-line-right"></i></a></div></div> </div> </div> </div> ';
+                   
+                });
+               document.getElementById('contacts').innerHTML = html;
+            },
+            error: function(data){
+                console.log("error");
+               
+            }
+        });
+   });
+});
+
+$(document).ready(function(){
+
+  $("#profil_cover").change(function(data){
+
+    var imageFile = data.target.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(imageFile);
+
+    reader.onload = function(evt){
+      $('#imagePreview').attr('src', evt.target.result);
+      $('#imagePreview').hide();
+      $('#imagePreview').fadeIn(650);
+    }
+    
+     var formData = new FormData(document.getElementById("profile_cover"));
+        $.ajax({
+            type:'POST',
+            url: '{{ path('app_profil_upload') }}',
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success:function(data){
+                console.log("success");
+               
+            },
+            error: function(data){
+                console.log("error");
+               
+            }
+        });
+
+  });
+
+
+
+});
+
+</script>
+{% endblock %}

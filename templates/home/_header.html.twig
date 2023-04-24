@@ -1,0 +1,145 @@
+<header class="edu-header  header-sticky header-transparent header-style-2 header-default " {% if (app.request.locale)=='ar' %} dir="rtl" {% endif %}>
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-xl-3 col-md-6 col-6">
+                    <div class="logo">
+                        <a href="/">
+                            <img class="logo-light" src="{{ asset('assets/images/banner/logo.png') }}" alt="Site Logo">
+                        </a>
+                         <a href="/">
+                            <img class="logo-light" src="{{ asset('assets/images/banner/tunisie.png') }}" alt="Site Logo">
+                        </a>
+                         <a href="/">
+                            <img class="logo-light" src="{{ asset('assets/images/banner/tun.png') }}" alt="Site Logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-xl-block">
+                    <nav class="mainmenu-nav d-none d-lg-block">
+                          <ul class="mainmenu">
+                            <li><a href="/">{% trans %}Accueil{% endtrans %}</a></li>                          
+                            <li><a href="/list-formations">{% trans %}Formation{% endtrans %}</a></li> 
+							<li><a href="/media">{% trans %}Actualités et Événements{% endtrans %}</a></li> 
+                            <li><a href="/besoin/aide">{% trans %}Besoin d'aide ?{% endtrans %}</a></li> 
+                            <li><a href="/faq">{% trans %}FAQ{% endtrans %}</a></li> 
+               
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-8 col-xl-3 col-md-6 col-6">
+                    <div class="header-right d-flex justify-content-end">
+                        <div class="header-menu-bar">
+                            
+                    <div class="quote-icon quote-user d-none d-md-block ml--15 ml_sm--5">
+                    {% if app.user %}
+                    <div class="header-right d-flex justify-content-end">
+                        <div class="header-menu-bar">
+                            <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item bg-soft-light border-started" id="page-header-user-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class=" d-xl-inline-block ms-1 fw-medium">
+                                    <img id="imagePreview-head" src="{{ asset('assets/uploads/') }}{% if(app.user.cover) is empty %}user.png{% else %}{{ app.user.cover }} {% endif %}" alt="About Images">
+                                </span>
+                                <i class="mdi mdi-chevron-down d-xl-inline-block"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                {% if 'ROLE_ADMIN' in app.user.roles %} 
+                                 <a class="dropdown-item" href="/admin" style="background-color: bisque;"><i class="icon-file-list-4-line font-size-16 align-middle me-1"></i>{% if (app.request.locale)=='fr' %}   Dashboard {% else %}لوحة القيادة {% endif %}</a>
+                                {% endif %}
+                                 <a class="dropdown-item" href="/profil"><i class="ri-user-line font-size-16 align-middle me-1"></i> {% trans %} Mon compte {% endtrans %}</a>
+                                <a class="dropdown-item" href="/logout"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i>{% if (app.request.locale)=='fr' %}  Déconnexion {% else %}الخروج {% endif %}</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                  {% else %}
+                  <div class="header-right d-flex justify-content-end">
+                        <div class="header-menu-bar">
+                            <div class="quote-icon quote-user d-none d-md-block ml--15 ml_sm--5">
+                                <a class="edu-btn btn-medium left-icon header-button" href="/login">
+                                <i class="ri-user-line"></i>{% trans %} Connexion {% endtrans %}</a>
+                            </div>
+                            <div class="quote-icon quote-user d-block d-md-none ml--15 ml_sm--5">
+                                <a class="white-box-icon" href="/login"><i class="ri-user-line"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                            </div>
+                            <div class="quote-icon quote-user d-block ml--15 ml_sm--5">
+
+                                {% for locale in locales %}
+                                    {% if locale != app.request.locale %}
+                                        <a class="langue" href="{{ path('change_locale', {'locale': locale}) }}">{% if(locale=='ar') %}العربية{% else %} Français {% endif %}</a>
+                                    {% endif %}
+                                {% endfor %}
+               
+                             </div>
+                        </div>
+
+                        <div class="mobile-menu-bar ml--15 ml_sm--5 d-block d-xl-none">
+                            <div class="hamberger">
+                                <button class="white-box-icon hamberger-button header-menu">
+                                    <i class="ri-menu-line"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+ <div class="popup-mobile-menu">
+            <div class="inner">
+                <div class="header-top">
+                    <div class="logo">
+                        <a href="/">
+                            <img class="logo-light" src="{{ asset('assets/images/banner/logo.png') }}" alt="Site Logo">
+                        </a>
+                         <a href="/">
+                            <img class="logo-light" src="{{ asset('assets/images/banner/tunisie.png') }}" alt="Site Logo">
+                        </a>
+                         <a href="/">
+                            <img class="logo-light" src="{{ asset('assets/images/banner/tun.png') }}" alt="Site Logo">
+                        </a>
+                    </div>
+                    <div class="close-menu">
+                        <button class="close-button">
+                            <i class="ri-close-line"></i>
+                        </button>
+                    </div>
+                </div>
+                <ul class="mainmenu">
+                   <li><a href="/">{% trans %}Accueil{% endtrans %}</a></li>                          
+                            <li><a href="/list-formations">{% trans %}Formation{% endtrans %}</a></li> 
+							<li><a href="/media">{% trans %}Actualités et Événements{% endtrans %}</a></li> 
+                            <li><a href="/besoin/aide">{% trans %}Besoin d'aide ?{% endtrans %}</a></li> 
+                            <li><a href="/faq">{% trans %}FAQ{% endtrans %}</a></li> 
+                        <li>
+                        {% if app.user %}
+            
+                        <li>  <a class="" href="/profil"><i class="ri-user-line font-size-16 align-middle me-1"></i> {% trans %} Mon compte {% endtrans %}</a></li>
+                        <li> <a class="" href="/logout"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i>{% if (app.request.locale)=='fr' %}  Déconnexion {% else %}الخروج {% endif %}</a></li>
+                
+                        {% else %}
+                        <li><a class="" href="/login">
+                                <i class="ri-user-line"></i>{% trans %} Connexion {% endtrans %}</a></li>
+                     {% endif %}</li>
+                </ul>
+            </div>
+        </div>
+{% if (app.request.locale)=='ar' %}
+   <style>
+    a.langue {
+         margin-left: 0px !important;
+    }
+    </style>
+{% endif %}
+<style>
+@media (max-width:1024px){
+.edu-header.header-default {
+    padding-top: 15px;
+}}
+@media (max-width:1024px){
+.edu-header.header-default.sticky {
+    padding-top: 1px;
+}}
+</style>

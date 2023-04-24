@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %} Hello BesoinAideController! {% endtrans %}
+{% endblock %}
+
+{% block body %}
+<div class="main-wrapper">
+	{{ include('home/_header.html.twig') }}
+
+	<!-- Start Search Popup  -->
+	<div class="edu-search-popup">
+		<div class="close-button">
+			<button class="close-trigger">
+				<i class="ri-close-line"></i>
+			</button>
+		</div>
+		<div class="inner">
+			<form class="search-form" action="#">
+				<input type="text" class="eduvibe-search-popup-field" placeholder="Search Here...">
+				<button class="submit-button">
+					<i class="icon-search-line"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+	<!-- End Search Popup  -->
+	<div class="edu-breadcrumb-area breadcrumb-style-1 pt--200 pb--60 ptb_md--40 ptb_sm--40 bg-image">
+		<div class="container eduvibe-animated-shape">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="breadcrumb-inner text-start">
+						<div class="page-title">
+							<h3 class="title"> {% trans %} Partenaires {% endtrans %}</h3>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+<div class="edu-course-area eduvibe-home-one-course course-wrapper-1 edu-section-gap bg-color-white">
+            <div class="wrapper">
+                <div class="container eduvibe-animated-shape">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-title text-center" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                                <span class="pre-title">{% trans %}Nos Partenaires {% endtrans %}</span>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-5 mt--10">
+					{% for partenaire in partenaires %}
+                        <!-- Start Single Card  -->
+                        <div class="col-12 col-sm-12 col-xl-4 col-md-6" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <div class="edu-card card-type-2 radius-small">
+                                <div class="inner">
+                                    <div class="thumbnail" style="    display: flex; justify-content: space-around;">
+                                        <a href="{{ partenaire.link }}" target="_blank">
+											<img class="logo-hover" src="{{ asset('assets/uploads/') }}{{ partenaire.cover}}" alt="Brand Images">                                        </a>
+                                        
+                                    </div>
+                                    
+                                </div>
+								
+                            </div>
+                        </div>
+					{% endfor %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{ include('home/_footer.html.twig') }}
+<style>
+	button.rn-btn.edu-btn {
+		        height: 52px;
+		        line-height: 52px;
+		    }
+		 <style>
+{% endblock %}

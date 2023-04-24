@@ -1,0 +1,387 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Dashboard</h4>
+
+           
+
+        </div>
+    </div>
+</div>
+<div class="row">
+  <div class="col-xl-12">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card mini-stats-wid">
+                    <div class="card-body">
+                        
+                        <div class="d-flex flex-wrap">
+                            <div class="me-3">
+                                <p class="text-muted mb-2">Nombre de formations</p>
+                                <h5 class="mb-0">{{ countFormt }}</h5>
+                            </div>
+
+                            <div class="avatar-sm ms-auto">
+                                <div class="avatar-title bg-light rounded-circle text-primary font-size-20" style="width: 100% !important;">
+                                    <i class="bx bxs-book-bookmark"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card blog-stats-wid">
+                    <div class="card-body">
+
+                        <div class="d-flex flex-wrap">
+                            <div class="me-3">
+                                <p class="text-muted mb-2">Nombre de bénéficiaires au total</p>
+                                <h5 class="mb-0">{{ inscriptMal + inscriptfemal }}</h5>
+                            </div>
+
+                            <div class="avatar-sm ms-auto">
+                                <div class="avatar-title bg-light rounded-circle text-primary font-size-20" style="width: 100% !important;">
+                                    <i class="bx bxs-note"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card blog-stats-wid">
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap">
+                            <div class="me-3">
+                                <p class="text-muted mb-2">Nombre des thématiques proposées</p>
+                                <h5 class="mb-0">{{ nmbrTheme }}</h5>
+                            </div>
+
+                            <div class="avatar-sm ms-auto">
+                                <div class="avatar-title bg-light rounded-circle text-primary font-size-20" style="width: 100% !important;">
+                                    <i class="bx bxs-message-square-dots"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			 <div class="col-lg-5">
+                <div class="card blog-stats-wid">
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap">
+                            <div class="me-3">
+                                <p class="text-muted mb-2">Répartition des formations par langue</p>
+                                  <div class="kpi-stat">
+								<h5 class="mb-0">Arabe : 0 </h5>
+                                <h5 class="mt-0 mb-0">Francais : 30 </h5>
+								<h5 class="mt-0 mb-0">Anglais : 73</h5>
+								</div>
+                            </div>
+
+                            <div class="avatar-sm ms-auto">
+                                <div class="avatar-title bg-light rounded-circle text-primary font-size-20" style="width: 100% !important;">
+                                    <i class="bx bxs-message-square-dots"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+			
+              <div class="col-lg-5">
+                <div class="card blog-stats-wid">
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap">
+                            <div class="me-3">
+                                <p class="text-muted mb-2">Répartition des bénéficiaires par sexe</p>
+                                <div class="kpi-stat">
+								<h5 class="mb-0">Homme : {{ inscriptMal }}</h5>
+                                <h5 class="mt-0 mb-0">Femme : {{ inscriptfemal }}</h5>
+								</div>
+                            </div>
+
+                            <div class="avatar-sm ms-auto">
+                                <div class="avatar-title bg-light rounded-circle text-primary font-size-20" style="width: 100% !important;">
+                                    <i class="bx bxs-user-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card cardch">
+            <div class="card-body">
+
+                <h4 class="card-title mb-4">Nombre des bénéficiaires par gouvernorat
+                 <i class="fas fa-arrow-alt-circle-down dowlder" onclick="download()">Télécharger</i></h4>
+                 <canvas class="chart" id="myChart" height="400" width="700"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-12">
+        <div class="card cardch">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Nombre de formations par Thématiques <i class="fas fa-arrow-alt-circle-down dowlder" onclick="downloadt()">Télécharger</i></h4>
+                 <canvas class="chart" id="myCharts" height="400" width="700"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-8">
+        <div class="card cardch">
+            <div class="card-body">
+
+                <h4 class="card-title mb-4">Nombre des bénéficiaires par sexe par gouvernorat <i class="fas fa-arrow-alt-circle-down dowlder" onclick="downloadb()">Télécharger</i></h4>
+                 <canvas class="chart" id="myChartsex" height="400" width="700"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <div class="card cardch">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Nombre des bénéficiaires par fonction <i class="fas fa-arrow-alt-circle-down dowlder" onclick="downloadf()">Télécharger</i></h4>
+                 <canvas class="chart" id="myChartp" height="300" width="400"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+.cardch {
+    height: 470px;
+}
+.kpi-stat{
+    display: -webkit-box!important;
+    display: -ms-flexbox!important;
+    display: flex!important;
+    align-items: flex-end;
+    justify-content: space-between;
+	}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"  referrerpolicy="no-referrer"></script>
+<script>
+const ctx = document.getElementById('myChart').getContext('2d');
+
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {{ insgov|raw }},
+        datasets: [{
+            label: '# bénéficiaires',
+            data: {{ inscount|raw }},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }
+        ]
+    },
+    options: {
+        responsive: false,
+        maintainAspectRatio: true,
+        scales: {
+            x: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+
+const ctxsp = document.getElementById('myCharts').getContext('2d');
+
+const myChartsp= new Chart(ctxsp, {
+    type: 'bar',
+    data: {
+        labels: {{ formtheme|raw }},
+        datasets: [{
+            label: 'Nombre des formations',
+            data: {{ themcount|raw }},
+            backgroundColor: [
+               'rgba(101, 11, 165, 0.8)'
+            
+            ],
+            borderColor: [
+               
+                'rgba(101, 11, 165, 0.8)'
+                
+            ],
+            borderWidth: 1
+        }
+        ]
+    },
+    options: {
+        responsive: false,
+        maintainAspectRatio: true,
+        scales: {
+            x: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+var barColors = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797",
+  "#e8c3b9",
+  "#1e7145",
+  "#FF5733",
+  "#D7FF33",
+  "#7FA1CF",
+  "#CF7FC2",
+  "#291625",
+  "#AF7AC5",
+  "#1B2916",
+  "#9F15EE",
+  "#573A67",
+  "#FA0BA7",
+  "#0BEFFA",
+];
+
+
+var xValuesp = {{ inspostchart|raw }};
+var yValuesp = {{ inscposte|raw }};
+new Chart("myChartp", {
+  type: "pie",
+  data: {
+    labels: xValuesp,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValuesp
+    }]
+  },
+  options: {
+    responsive: false,
+    maintainAspectRatio: true,
+    title: {
+      display: true,
+      text: "World Wide Wine Production 2018"
+    }
+  }
+});
+
+
+
+const ctxs = document.getElementById('myChartsex').getContext('2d');
+
+const myChartsex = new Chart(ctxs, {
+    type: 'bar',
+    data: {
+        labels: {{ inssexchart|raw }},
+        datasets: [{
+            label: '# Homme',
+            data: {{ inscSexh|raw }},
+            backgroundColor: [
+               'rgba(54, 162, 235, 1)'
+            
+            ],
+            borderColor: [
+               
+                'rgba(54, 162, 235, 1)'
+                
+            ],
+            borderWidth: 1
+        },
+        {
+            label: '# Femme',
+            data: {{ inscSexf|raw }},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+           
+            ],
+            borderColor: [
+          
+                'rgba(255, 99, 132, 0.2)'
+                
+            ],
+            borderWidth: 1
+        }
+        ]
+    },
+    options: {
+        responsive: false,
+        maintainAspectRatio: true,
+        scales: {
+            x: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+
+function download(){
+    const imageLink = document.createElement('a');
+    const canvas = document.getElementById('myChart');
+    imageLink.download = 'canvas.jpeg';
+    imageLink.href= canvas.toDataURL('image/jpeg',1);
+    imageLink.click();
+}
+function downloadt(){
+    const imageLink = document.createElement('a');
+    const canvas = document.getElementById('myCharts');
+    imageLink.download = 'canvas.jpeg';
+    imageLink.href= canvas.toDataURL('image/jpeg',1);
+    imageLink.click();
+}
+function downloadb(){
+    const imageLink = document.createElement('a');
+    const canvas = document.getElementById('myChartsex');
+    imageLink.download = 'canvas.jpeg';
+    imageLink.href= canvas.toDataURL('image/jpeg',1);
+    imageLink.click();
+}
+function downloadf(){
+    const imageLink = document.createElement('a');
+    const canvas = document.getElementById('myChartp');
+    imageLink.download = 'canvas.jpeg';
+    imageLink.href= canvas.toDataURL('image/jpeg',1);
+    imageLink.click();
+}
+</script>
+<style>
+    .dowlder{
+    position: relative;
+    left: 52px;
+    color: #15406c;
+    background-color: #e9e9ef;
+    padding: 5px;}
+</style>
+{% endblock %}

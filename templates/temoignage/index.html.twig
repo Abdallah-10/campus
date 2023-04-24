@@ -1,0 +1,52 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Temoignage index{% endblock %}
+
+{% block content %}
+    <h1>Témoignages</h1>
+   <div class="row" style="padding: 34px;">
+    <div class="col-md-3">
+    <a class="btn btn-primary waves-effect waves-light" href="{{ path('app_temoignage_new') }}" style="width: 100%;">
+	Ajouter un témoignage</a></div>
+    <table class="table table-bordered dt-responsive nowrap w-100" style="margin: 10px;">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Poste</th>
+                <th>Commentaire</th>
+                <th style="width: 150px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for temoignage in temoignages %}
+            <tr>
+                <td> {% if (temoignage.cover) %}
+                    <img src="{{ asset('assets/uploads/') }}{{ temoignage.cover }}" alt="Client Images" width="80px" >
+                    {% else %}
+                            <div class="avatar-xl mx-auto mb-4">
+                                <div class="avatar-title bg-soft-light text-light display-4 m-0 rounded-circle">
+                                    <i class="bx bxs-user-circle"></i>
+                                </div>
+                            </div>
+                    {% endif %}</td>
+                <td>{{ temoignage.nom }}</td>
+                <td>{{ temoignage.prenom }}</td>
+                <td>{{ temoignage.poste }}</td>
+                <td>{{ temoignage.comment }}</td>
+                <td class="d-flex">
+                    <a class="btn btn-secondary waves-effect waves-light" href="{{ path('app_temoignage_show', {'id': temoignage.id}) }}">Voir</a>
+                    <a class="btn btn-warning waves-effect waves-light " style="margin-left:6px;" href="{{ path('app_temoignage_edit', {'id': temoignage.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   
+{% endblock %}

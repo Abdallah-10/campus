@@ -1,0 +1,180 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MessangerController!{% endblock %}
+
+{% block body %}
+        <div class="main-wrapper">
+        {{ include('home/_header.html.twig') }}
+        <!-- End Search Popup  -->
+        <div class="edu-breadcrumb-area breadcrumb-style-1 pt--200 pb--100 ptb_md--140 ptb_sm--140 bg-image">
+            <div class="container eduvibe-animated-shape">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcrumb-inner text-start">
+                            <div class="page-title">
+                                <h3 class="title">Mes Contacts</h3>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
+                    <div class="shape-dot-wrapper shape-wrapper d-xl-block d-none">
+                        <div class="shape-image shape-image-1">
+                            <img src="assets/images/shapes/shape-11-07.png" alt="Shape Thumb" />
+                        </div>
+                        <div class="shape-image shape-image-2">
+                            <img src="assets/images/shapes/shape-01-02.png" alt="Shape Thumb" />
+                        </div>
+                        <div class="shape-image shape-image-3">
+                            <img src="assets/images/shapes/shape-03.png" alt="Shape Thumb" />
+                        </div>
+                        <div class="shape-image shape-image-4">
+                            <img src="assets/images/shapes/shape-13-12.png" alt="Shape Thumb" />
+                        </div>
+                        <div class="shape-image shape-image-5">
+                            <img src="assets/images/shapes/shape-36.png" alt="Shape Thumb" />
+                        </div>
+                        <div class="shape-image shape-image-6">
+                            <img src="assets/images/shapes/shape-05-07.png" alt="Shape Thumb" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="edu-blog-details-area edu-section-gap bg-color-white">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-4 order-2 order-lg-1">
+                        <!-- Start Blog Sidebar Area  -->
+                        <aside class="edu-blog-sidebar">
+
+                            <!-- Start Single Widget  -->
+                            <div class="edu-blog-widget mt--40 widget-latest-post">
+                                <div class="inner">
+                                    <h5 class="widget-title">Mes Discussions</h5>
+                                    <div class="content latest-post-list">
+
+
+                                        {% for chat in chatrec %}
+                                        <!-- Start Single Post  -->
+                                        <div class="latest-post">
+                                            <div class="thumbnail">
+                                                <a href="/messanger/{{ chat.sender.id }}">
+                                                    <img src="{{ asset('assets/uploads/') }}{{ chat.sender.cover }}" alt="Blog Images">
+                                                </a>
+                                            </div>
+                                            <div class="post-content">
+                                                <ul class="blog-meta">
+                                                    <li>{{ chat.dateAdd|date('Y-m-d') }}</li>
+                                                </ul>
+                                                <h6 class="title">
+                                                <a href="/messanger/{{ chat.sender.id }}">{{ chat.sender.name }}
+                                                </a></h6>
+                                            </div>
+                                        </div>
+                                        <!-- End Single Post  -->
+                                    {% endfor %}
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Widget  -->
+
+                        </aside>
+                        <!-- End Blog Sidebar Area  -->
+                    </div>
+                    <div class="col-lg-8 order-1 order-lg-2">
+                        <div class="blog-details-1">
+
+                            <div class="content-blog-top">
+                                <div class="status-group">
+                                    <a href="#" class="eduvibe-status status-05 color-primary w-600">Contact</a>
+                                </div>
+                             
+                            </div>
+
+                            <!-- Start Comment Area  -->
+                            <div class="edu-comment-area mt--50">
+                                <h5 class="blog-page-title">{{chats|length}} Discussions</h5>
+                                <div class="comment-list-wrapper mt--40">
+                                    <!-- Start Single Comment  -->
+                                    {% for chat in chats %}
+                                        <div class="comment">
+                                            <div class="thumbnail">
+                                                <img src="{{ asset('assets/uploads/') }}{{ chat.sender.cover }}" alt="Comment Images">
+                                            </div>
+                                            <div class="comment-content">
+                                                <h6 class="title">{{ chat.sender.name }}</h6>
+                                                    <span class="date">{{ chat.dateAdd|date('Y-m-d') }}</span>
+                                                    <p>{{ chat.content }}</p>                                            
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    <!-- End Single Comment  -->
+                                </div>
+                            </div>
+                            <!-- End Comment Area  -->
+
+
+                            <!-- Start Comment Form  -->
+                            <div class="edu-comment-form mt--50">
+                                <div class="comment-form-top">
+                                    <h5 class="blog-page-title">Reply To Elen Saspita {{ to.name }}</h5>
+                                   
+                                </div>
+                               
+                                    <div class="row g-5">
+                                       {{ form_start(form) }}
+                                                
+                                            
+                                        <div class="col-lg-12">
+                                            <div class="input-box">
+                                                {{ form_widget(form.content) }}
+                                            </div>
+                                        </div>
+                                        <input type="hidden" value="" name="contacter">
+                                        <div class="col-lg-12">
+                                            <div class="comment-btn">
+                                                <button class="edu-btn" type="submit">Submit Now<i class="icon-arrow-right-line-right"></i></a>
+                                            </div>
+                                        </div>
+                                        {{ form_end(form) }}
+                                    </div>
+                                
+                            </div>
+                            <!-- End Comment Form  -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<style>
+textarea#messanger_content {
+    padding: 1.375rem 1.75rem;
+    background: #F5F5F5;
+    border-radius: 5px;
+    border: 0 none;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    border: 1px solid transparent;
+    margin-bottom: 15px;
+    height: 150px;
+}
+button.edu-btn {
+    line-height: 50px;
+    padding: 0 25px;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: var(--font-primary);
+    display: inline-block;
+    height: 50px;
+}
+.comment {
+    box-shadow: 3px 3px 2px #a1abaf26;
+    border: 1px solid #00000024;
+}
+</style>
+{% endblock %}
