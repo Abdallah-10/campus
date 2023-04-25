@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/index.html.twig' %}
 
 {% block title %}Ministere{% endblock %}
 
-{% block body %}
+{% block content %}
     <h1>Ministere</h1>
 
     <table class="table">
@@ -17,14 +17,17 @@
             </tr>
             <tr>
                 <th>Langue</th>
-                <td>{{ ministere.langue }}</td>
+                <td>{{ ministere.name_ar }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_ministere_index') }}">back to list</a>
-
-    <a href="{{ path('app_ministere_edit', {'id': ministere.id}) }}">edit</a>
-
+	<a class="btn btn-warning waves-effect waves-light "  href="{{ path('app_ministere_index') }}">back to list</a>
+    <a  class="btn btn-secondary waves-effect waves-light" href="{{ path('app_ministere_edit', {'id': ministere.id}) }}">edit</a>
     {{ include('ministere/_delete_form.html.twig') }}
+        <style>
+    a.btn.btn-warning.waves-effect.waves-light , a.btn.btn-secondary.waves-effect.waves-light {
+    width: 200px;
+    margin: 10px;}
+    </style>
 {% endblock %}

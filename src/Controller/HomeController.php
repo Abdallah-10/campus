@@ -88,7 +88,8 @@ class HomeController extends AbstractController
     /**
      * @Route("/list-formations", name="app_list")
      */
-    public function show(NewslatterRepository $newslatterRepository,FormationRepository $formationRepository, PaginatorInterface $paginator,Request $request,MailerInterface $mailer): Response
+    public function show(NewslatterRepository $newslatterRepository,FormationRepository $formationRepository,
+    ActualiteRepository $actualiteRepository,PaginatorInterface $paginator,Request $request,MailerInterface $mailer): Response
     {
         
         $newslatter = New Newslatter();
@@ -123,6 +124,7 @@ class HomeController extends AbstractController
             'formations' => $formationsList,
             'forms' =>$form->createView(),
             'formf' =>$formf->createView(),
+			'actualites' => $actualiteRepository->findAll(),
         ]);
     }
 
@@ -259,7 +261,6 @@ class HomeController extends AbstractController
   
         return $this->render('home/partenaires.html.twig', [
             'partenaires' => $partenaireRepository->findAll(),
-          
             'formf' =>$form->createView(),
         ]);
     }

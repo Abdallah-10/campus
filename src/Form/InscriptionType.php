@@ -28,13 +28,17 @@ class InscriptionType extends AbstractType
         
         $builder
             ->add('name',TextType::class,[
-                'label' => 'Nom et Prénom',
+                'label' => 'Nom',
+            ])
+			->add('lastname',TextType::class,[
+                'label' => 'Prénom',
             ])
             ->add('email',EmailType::class,[
+			    'label' => 'Email *',
                 'disabled'   => true,
             ])
             ->add('organisme',EntityType::class, [
-                'label' =>'Etablissements publics sous tutelle ',
+                'label' =>'Organisme ',
                 'class' => Domaines::class,
                 'choice_label' => 'categorie',
                 'required'=>true,
@@ -125,7 +129,7 @@ class InscriptionType extends AbstractType
                         ],
             ])
             ->add('grade',ChoiceType::class,[
-                'label' =>'Grade',
+                'label' =>'Catégories de grade',
                 'required'=>true,
                 'placeholder' => 'Grade',
                 'choices'=>[

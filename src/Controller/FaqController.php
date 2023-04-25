@@ -12,13 +12,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\ActualiteRepository;
+
 
 class FaqController extends AbstractController
 {
     /**
      * @Route("/faq", name="app_faq")
      */
-    public function index(Request $request,NewslatterRepository $newslatterRepository,FaqRepository $faqRepository, MailerInterface $mailer): Response
+    public function index(Request $request,NewslatterRepository $newslatterRepository
+	,ActualiteRepository $actualiteRepository,FaqRepository $faqRepository, MailerInterface $mailer): Response
     {
 
         
@@ -41,6 +44,7 @@ class FaqController extends AbstractController
         return $this->render('faq/index.html.twig', [
             'faqs' => $faqRepository->findAll(),
             'formf' => $form->createView(),
+			'actualites' => $actualiteRepository->findAll(),
         ]);
     }
 }

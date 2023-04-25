@@ -35,9 +35,10 @@
                          {% include 'home/_filter.html.twig' with {forms: forms} only %}
                     </div>
                 <div class="col-md-9">
-                <div class="row g-5 ">
+                <div class="row g-5 text-center">
                 
                     <!-- Start Service Card  -->
+					{% if(formations|length > 0) %}
                     {% for formation in formations %}
                     <div class="col-lg-6 col-md-6 col-sm-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                         <div class="service-card service-card-1 radius-small">
@@ -98,6 +99,11 @@
                         </div>
                     </div>
                  {% endfor %}
+				 {% else %}
+					<p>{% trans %}Aucun élément à afficher{% endtrans %}</p>
+                        <div ><a class="rech-nouvelle" href="/formations" style="line-height: 1px;">
+						{% trans %}Effectuer une nouvelle recherche {% endtrans %}</a></div>
+					{% endif %}
                 </div>
                 </div>
                 <div class="row text-center mt--60">

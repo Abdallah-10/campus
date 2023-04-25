@@ -50,7 +50,7 @@
                                                 label: 'Mot de passe'
                                             }) }}     
                                         </div>
-                                        <div class="terms"> {{ form_row(registrationForm.agreeTerms) }} <a class="condition" href="https://www.ccilb.be/fr/wm-media/Conditions_utilisation_CCI.pdf" target="_blank">
+                                        <div class="terms"> {{ form_row(registrationForm.agreeTerms) }} <a class="condition" href="{{ asset('assets/images/CGU_DLA.pdf') }}" target="_blank">
 										{% if (app.request.locale)=='fr' %}Condition d'utilisation {% else %}شروط الاستعمال{% endif %}</a></div>
                                         <div class="mt-4 d-grid">
                                             <button class="btn btn-login waves-effect waves-light" type="submit">{% trans %}S'inscrire {% endtrans %}</button>

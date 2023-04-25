@@ -1,0 +1,86 @@
+			{% if (app.request.locale)=='ar' %}
+			<div id="news-bar">
+			<h4 class="journal">الأخبار </h4>
+			<marquee direction="right" scrollamount="3" behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()">
+			<h5 class="title-news"    style="direction: rtl;" >
+					{% for actualite in actualites %}
+					{% if (actualite.langue)=='arabe' %}
+				<a href="/media/{{ actualite.slug }}">{{ actualite.titre }}</a>
+			
+			{% endif %}
+			{% endfor %}
+			</h5>
+			</marquee>
+			</div>
+			{% else %}
+			<div id="news-bar"><h4 class="journal-fr">Journal </h4>
+			<marquee direction="left" scrollamount="3" behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()">
+				<h5 class="title-news">
+			{% for actualite in actualites %}
+			{% if (actualite.langue)=='français' %}
+			<a href="/media/{{ actualite.slug }}">{{ actualite.titre }}</a>
+			{% endif %}
+			{% endfor %}
+			</h5>
+			</marquee>
+		    </div>
+			{% endif %}
+{% if (app.request.locale)=='ar' %}
+	<style>
+	h4.journal {
+    position: absolute;
+    top: 11px;
+    right: 0;
+    font-size: 20px;
+    z-index: 999;
+    background: white;
+    padding: 0px 25px 3px 26px;
+    border-left: 1px solid red;
+}
+		p.desc-actu {
+			direction: rtl;
+		}
+	</style>
+{% endif %}
+
+<style>
+
+#news-bar {
+    position: absolute;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0px 0px #c1a4a436, 0 0 2px #b17c7c66 inset;
+    font: 17px bold;
+    padding: 4px;
+    top: 80px;
+}
+.journal-fr {
+    position: absolute;
+    left: 0;
+    font-size: 18px;
+    z-index: 999;
+    background: white;
+    padding: 7px 25px 4px 26px;
+    border-right: 1px solid red;
+}
+#news-bar:hover {
+  transition: 0.37s;
+}
+
+#news-bar a {
+   color: #cf1115;
+    text-decoration: none;
+    font-size: 15px;
+	margin-left: 5%;
+    margin-right: 5%;
+}
+
+#news-bar a:hover {
+  transition: 0.37s;
+  color: red;
+  text-shadow: 0 0 1px white, 0 0 2px white, 0 0 3px white, 0 0 4px white;
+}
+h5.title-news {
+    height: 15px;
+}
+</style>

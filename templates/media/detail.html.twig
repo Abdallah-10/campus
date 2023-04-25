@@ -50,9 +50,9 @@
                                     <ul>
                                         <li><span><i class="icon-calendar-2-line"></i>{% trans %}Date {% endtrans %}</span><span>{{ actualite.date|date('d-m-Y') }}</span></li>
                                         {% if (actualite.location) %}
-                                        <li><span><i class="icon-map-pin-line"></i>{% trans %} Lieu {% endtrans %}</span><span>{{ actualite.location }}</span></li>
-                                        {% endif %}
-                                    </ul>
+										<li><span><i class="icon-map-pin-line"></i>{% trans %} Lieu {% endtrans %}</span><span>{{ actualite.location }}</span></li>
+										{% endif %}
+									</ul>
 
                                     <div class="read-more-btn mt--90 text-center">
                                        <div class="eduvibe-post-share">
@@ -90,4 +90,13 @@
 .eduvibe-widget {
     position: relative;}
 	</style>
+	
+	 {% if (app.request.locale)=='ar' %}
+     <style>
+		   p, h1, h2, h3, h4, h5, h6, a ,li{
+			font-family: 'Noto Kufi Arabic', sans-serif !important;
+			direction: rtl;
+		}
+    </style>
+    {% endif %}
 {% endblock %}

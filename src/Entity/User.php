@@ -91,7 +91,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,TwoFact
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Inscription::class, mappedBy="idUser" , cascade={"remove"})
+     * @ORM\OneToMany(targetEntity=Inscription::class, mappedBy="idUser")
      */
     private $inscriptions;
 
@@ -102,7 +102,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface ,TwoFact
 
     /**
      * @ORM\Column(type="date", nullable=true)
-     */ 
+     */
     private $date_add;
 
     /**

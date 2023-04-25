@@ -61,14 +61,16 @@ class FormationType extends AbstractType
                     'placeholder'=>'Exp : ITU'
                 ]
             ])
-            ->add('date_ins_d',ChoiceType::class,[
-                'label' => "Date de l'inscription",
-                'choices'=>[
-                    'Tous' => 'Tous',
-                    'En cours' => 'En cours',
-                ],
+            ->add('date_ins_d',DateType::class,[
+                'label' => "Date début de l'inscription",
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
             ])
-            
+            ->add('date_ins_f',DateType::class,[
+                'label' => "Date fin de l'inscription",
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+            ])
             ->add('date_start',DateType::class,[
                 'label' => 'Date début de la formation',
                 'widget' => 'single_text',

@@ -5,6 +5,7 @@
 {% block body %}
  <div class="main-wrapper">
         {{ include('home/_header.html.twig') }} 
+		{{ include('home/_news.html.twig') }} 
         <!-- Start Sldier Area  -->
         <div class=" breadcrumb-style-1 pt--180 ptb_md--140 ptb_sm--140 pb--60 bg-image">
 			<div class="container eduvibe-animated-shape">
@@ -12,8 +13,8 @@
 					<div class="col-lg-12">
 						<div class="breadcrumb-inner text-start">
 							<div class="page-title">
-								<h3 class="title-formt">{% trans %} Un apprentissage qui vous ressemble {% endtrans %}</h3>
-                                <p class="desc-formt">{% trans %} Élargissez votre savoir, découvrez les compétences de demain, et prenez votre carrière en main.{% endtrans %}</p>
+								<h3 class="title-formt">{% trans %} Un apprentissage pour vous  {% endtrans %}</h3>
+                                <p class="desc-formt">{% trans %} Elargissez votre savoir et découvrez les compétences de demain. {% endtrans %}</p>
 							</div>
 						</div>
 					</div>
@@ -52,18 +53,17 @@
                     <div class="col-lg-6">
                         <div class="inner mt_md--40 mt_sm--40">
                             <div class="section-title" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                                <span class="pre-title {% if (app.request.locale)=='ar' %}desc-ar{% endif %}" style="{% if (app.request.locale)=='ar' %}width: 100%;{% endif %}">{% trans %}A propos {% endtrans %}</span>
-                                <h3 class="title {% if (app.request.locale)=='ar' %}desc-ar{% endif %}">{% trans %} Un vivier de formations {% endtrans %}</h3>
+                                
+                                <h3 class="title ">{% trans %} Un vivier de formations {% endtrans %}</h3>
                             </div>
 							{% if (app.request.locale)=='fr' %}
                             <p class="description mt--40 mt_md--20 mt_sm--20" data-sal-delay="150" 
 							data-sal="slide-up" data-sal-duration="800"> 
-							Les 100 premières formations sont spécialisées dans l’apprentissage lié à la data, l’AI, les TICs. Le monde change à grande vitesse, la Tunisie s’ouvre à des besoins plus spécifiques et demandent de plus en plus l’aide de la technologie numérique pour répondre plus efficacement aux stratégies et recommandations de ces politiques de développement.En effet la maitrise de l’univers digital, de part son langage codé, ses mécanismes et son étendu, est un atout majeur au sein de la fonction publique.
+							La plateforme « DLA » offre un catalogue de formation couvrant les principales disciplines digitales, comme la programmation, l’intelligence artificielle, le big data, les réseaux, la transformation numérique et la conduite de changement, l’IoT, le marketing digital, la conduite des projets,….. Ces thématiques sont adaptées aux spécificités des administrations et des entreprises publiques. Ce qui constitue un pas de plus en faveur de l’inclusion dans le domaine du digital. 
 							</p>
 							{% else %}
 									  <p class="description desc-ar" data-sal-delay="350" data-sal="slide-up" data-sal-duration="800" >
-أول100 دورة تدريبية هي دورات تدريبية متخصصة في التعلم المرتبط بالبيانات والذكاء الاصطناعي وتكنولوجيا المعلومات والاتصالات. العالم يتغير بسرعة عالية ، وتونس تنفتح على احتياجات أكثر تحديدًا وتطلب بشكل متزايد مساعدة التكنولوجيا الرقمية للاستجابة بشكل أكثر فعالية لاستراتيجيات وتوصيات سياسات التنمية هذه.في الواقع ،إذ أن التأقلم مع العالم الرقمي و التمكن من لغته المشفرة وآلياته هو أحد الروافد الرئيسية في الوظيفة العمومية.
-
+توفّر هذه المنصة محتوى متخصّص في أحدث التقنيات الرقمية وتطبيقاتها في العديد من المجالات، لجميع المستفيدين على مستوى القطاع العام. ممّا يشكّل خطوة إضافيّة نحو دعم الاندماج في المجال الرقمي. ويشمل محتوى التّكوين، مجموعة من التخصصات الرقمية الأساسية، كالبرمجة ، الذكاء الاصطناعي والبيانات الضخمة، البنية التحتية والشبكات، التحول الرقمي، وإدارة التغيير وإدارة المشاريع والتسويق الرقمي بالإضافة إلى العديد من التخصصات الأخرى 
 								</p>	{% endif %}
 
                         </div>
@@ -79,7 +79,7 @@
                     <div class="col-lg-12">
                         <div class="section-title text-center" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                             <span class="pre-title">{% trans %}Comment ça marche {% endtrans %}</span>
-                            <h3 class="title">{% trans %} Un process en 3 étapes {% endtrans %}</h3>
+                            <h3 class="title">{% trans %} Un processus en 3 étapes  {% endtrans %}</h3>
                         </div>
                     </div>
                 </div>
@@ -95,8 +95,8 @@
                                     </a>
                                 </div>
                                 <div class="content">
-                                    <h6 class="title"><a href="/register">{% trans %} Inscrivez vous en ligne {% endtrans %}</a></h6>
-                                    <p class="description ">{% trans %}Le formulaire se remplit en quelques secondes et à la suite de cela, vous recevrez un mail pour valider votre inscription. Un rappel vous parviendra à l’approche de la date de début de la formation.{% endtrans %}</p>
+                                    <h6 class="title"><a href="/register">{% trans %} Inscrivez-vous en ligne {% endtrans %}</a></h6>
+                                    <p class="description ">{% trans %}Saisissez votre adresse e-mail professionnelle et un mot de passe au choix. Vous allez recevoir un e-mail de demande de confirmation. Cliquez sur le lien dans l’email pour confirmer votre demande. Vous êtes, ensuite, invité à remplir le formulaire d'inscription. {% endtrans %}</p>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
                                 </div>
                                 <div class="content">
                                     <h6 class="title"><a href="#"> {% trans %} Parcourir le catalogue {% endtrans %}</a></h6>
-                                    <p class="description">{% trans %} Un moteur de recherche est à votre disposition pour parcourir le listing des formations proposées. Vous pouvez lire la fiche de présentation et vous familiariser avec le contenu proposé. Chaque formation est accompagnée de son plan détaillé et de ses objectifs. {% endtrans %}</p>
+                                    <p class="description">{% trans %} Un moteur de recherche est à votre disposition pour parcourir le listing des formations proposées. Vous pouvez lire la fiche de présentation et vous familiariser avec le contenu proposé. Chaque formation est accompagnée de son plan détaillé et de ses objectifs.  {% endtrans %}</p>
                                 </div>
                             </div>
                         </div>
@@ -128,8 +128,8 @@
                                     </a>
                                 </div>
                                 <div class="content">
-                                    <h6 class="title"><a href="#">{% trans %} Selectionner une formation {% endtrans %}</a></h6>
-                                    <p class="description">{% trans %}Il vous suffit de cliquer sur « s’inscrire ». Il s’agit d’un choix libre et personnel. Vous pouvez choisir plusieurs formations durant toute la durée de votre adhésion à Digital Learning Academy. {% endtrans %}</p>
+                                    <h6 class="title"><a href="#">{% trans %} Sélectionner une formation {% endtrans %}</a></h6>
+                                    <p class="description">{% trans %}Il vous suffit de cliquer sur le bouton «s’inscrire ». Un rappel vous parviendra à l’approche de la date de début de la formation. Vous pouvez choisir plusieurs formations durant la durée de votre adhésion à Digital Learning Academy  {% endtrans %}</p>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +156,7 @@
                                 </div>
                                 <div class="content">
                                     <h6 class="title"><a href="#">اختر دورة</a></h6>
-                                    <p class="description desc-ar">فقط اضغط على "تسجيل". هذا اختيار حر وشخصي. يمكنك اختيار عدة دورات تدريبية طوال مدة عضويتك في أكاديمية التعلم الرقمي</p>
+                                    <p class="description desc-ar">يمكنك ببساطة الضغط على أيقونة "التّسجيل"، وسيتم إرسال تذكير لك عند اقتراب موعد بدء الدّورة التكوينية. بإمكانك، أيضا، التّسجيل في عدّة دورات تكوينيّة خلال فترة الإشتراك في البوّابة </p>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +175,7 @@
                                 </div>
                                 <div class="content">
                                     <h6 class="title"><a href="">تصفح القائمة </a></h6>
-                                    <p class="description desc-ar">يوجد محرك بحث تحت تصرفك لتصفح قائمة الدورات المقدمة. يمكنك قراءة ورقة العرض والتعرف على المحتوى المقترح. كل تدريب مصحوب بخطته التفصيلية وأهدافه.</p>
+                                    <p class="description desc-ar">يسمح لك محرّك البحث بالتصفّح والبحث في قائمة الدّورات التكوينيّة المعروضة في البوّابة. كما تمكّنك القائمة المفصّلة للدّورات التّكوينية من الاطلاع على أهداف ومحتوى  كلّ دورة</p>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
                                 </div>
                                 <div class="content">
                                     <h6 class="title"><a href="/register">التسجيل عبر الإنترنت</a></h6>
-                                    <p class="description desc-ar">يمكنك ملء النموذج في بضع ثوانٍ وبعد ذلك ، ستتلقى بريدًا إلكترونيًا من فريق المنصة للتحقق من صحة تسجيلك. سيتم إرسال تذكير إليك في أقرب وقت من تاريخ بدء التدريب</p>
+                                    <p class="description desc-ar">أدخل عنوان بريدك الإلكتروني المهني  وكلمة مرور من اختيارك. سوف تتلقى رسالة بريد إلكتروني لطلب التأكيد. اضغط على الرابط في البريد الإلكتروني لتأكيد طلبك. ثم سيتم دعوتك لملء استمارة التّسجيل </p>
                                 </div>
                             </div>
                         </div>
@@ -217,8 +217,9 @@
                          {% include 'home/_filter.html.twig' with {forms: forms} only %}
                     </div>
                 </div>
-                <div class="row g-5 mt--25">
+                <div class="row g-5 mt--25 text-center">
                     <!-- Start Service Card  -->
+					{% if(formations|length > 0) %}
                     {% for formation in formations %}
                     <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                         <div class="service-card service-card-1 radius-small">
@@ -279,6 +280,11 @@
                         </div>
                     </div>
                  {% endfor %}
+				 {% else %}
+					<p>{% trans %}Aucun élément à afficher{% endtrans %}</p>
+                        <div ><a class="rech-nouvelle" href="/list-formations#form-recp" style="line-height: 1px;">
+						{% trans %}Effectuer une nouvelle recherche {% endtrans %}</a></div>
+					{% endif %}
                 </div>
                 <div class="row text-center mt--60">
                     <div class="col-lg-12">
@@ -294,7 +300,18 @@
 			{{ include('home/_footer.html.twig') }}
         <!-- End Footer Area  -->
     </div>
+	
+	{% if (app.request.locale)=='ar' %}
+	<style>
+	.section-title .title {
+    direction: rtl;}
+	</style>
+	{% endif %}	
     <style>
+	@media only screen and (max-width:992px){
+     a.avance-ar , a.avance {
+      margin-top: 216px !important;}
+	 }
 	.single-ar:last-child::after {
 		top: 32px;
 		rotate: 180deg;

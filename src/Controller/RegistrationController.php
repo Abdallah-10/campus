@@ -113,23 +113,23 @@ class RegistrationController extends AbstractController
         $locale = $request->getLocale();
        if($choix){
         $arr = [];
-        $k = [];
         $dom = $domainesRepository->findBy(['ministere'=> $choix]);
         
         foreach($dom as $dat){
             if($locale =='fr'){
-                $arr[] = [
+                 $arr[] = [
                     'id' => $dat->getId(),
                     'category' => $dat->getCategorie(),
                 ];
-              
             }else{
-                $arr[] = [
+				 $arr[] = [
                     'id' => $dat->getId(),
-                    'category' => $dat->getCategorie(),
+                    'category' => $dat->getCategorieAr(),
                 ];
+                
             }
         }
+        
         return new JsonResponse($arr);
        }
         

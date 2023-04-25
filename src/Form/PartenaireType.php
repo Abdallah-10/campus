@@ -27,14 +27,7 @@ class PartenaireType extends AbstractType
                     'placeholder'=>'lien vers le site web du partenaire'
                 ]
             ])
-            ->add('category',ChoiceType::class,[
-                'placeholder' => 'Category',
-                'choices'=>[
-                            'Initié par' => 'initie',
-                            'Financé par' => 'finance',
-                            'Implémenté par' => 'implimente',
-                        ],
-            ])
+         
             
         ;
     }

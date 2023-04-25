@@ -25,8 +25,8 @@
                 <td><a href="{{ partenaire.link }}" target="_blanck">{{ partenaire.link }}</a></td>
                   <td><a href="{{ partenaire.category }}" target="_blanck">{{ partenaire.category }}</a></td>
                 <td>
-                    <a class="btn btn-secondary waves-effect waves-light" href="{{ path('app_partenaire_show', {'id': partenaire.id}) }}">{% trans %}show {% endtrans %}</a>
-                    <a class="btn btn-warning waves-effect waves-light " href="{{ path('app_partenaire_edit', {'id': partenaire.id}) }}">{% trans %} edit {% endtrans %}</a>
+                    <a class="btn btn-secondary waves-effect waves-light" href="{{ path('app_partenaire_show', {'id': partenaire.id}) }}">{% trans %}Voir {% endtrans %}</a>
+                    <a class="btn btn-warning waves-effect waves-light " href="{{ path('app_partenaire_edit', {'id': partenaire.id}) }}">{% trans %} Modifier {% endtrans %}</a>
                 </td>
             </tr>
         {% else %}

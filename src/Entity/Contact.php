@@ -52,11 +52,11 @@ class Contact
      */
     private $dateAdd;
 
-    /**
+	/**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $type;
-
+	
     public function getId(): ?int
     {
         return $this->id;
@@ -145,8 +145,7 @@ class Contact
 
         return $this;
     }
-
-    public function getType(): ?string
+	public function getType(): ?string
     {
         return $this->type;
     }

@@ -8,33 +8,7 @@
 		{{ include('home/_header.html.twig') }}
 		<div class="slider-area banner-style-3 bg-image home-ind">
             <div class="d-flex align-items-center height-940">
-			{% if (app.request.locale)=='ar' %}
-			<div id="news-bar">
-			<h4 class="journal">الأخبار </h4>
-			<marquee direction="right" scrollamount="3" behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()">
-			<h5 class="title-news">
-					{% for actualite in actualites %}
-					{% if (actualite.langue)=='arabe' %}
-				<a href="/media/{{ actualite.slug }}">{{ actualite.titre }}</a>
-			
-			{% endif %}
-			{% endfor %}
-			</h5>
-			</marquee>
-			</div>
-			{% else %}
-			<div id="news-bar"><h4 class="journal-fr">Journal </h4>
-			<marquee direction="left" scrollamount="3" behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()">
-				<h5 class="title-news">
-			{% for actualite in actualites %}
-			{% if (actualite.langue)=='français' %}
-			<a href="/media/{{ actualite.slug }}">{{ actualite.titre }}</a>
-			{% endif %}
-			{% endfor %}
-			</h5>
-			</marquee>
-		    </div>
-			{% endif %}
+			{{ include('home/_news.html.twig') }}
 
                 <div class="container eduvibe-animated-shape">
                     <div class="row g-5 align-items-center">
@@ -51,12 +25,17 @@
 									data-sal="slide-up" data-sal-duration="800">
 									Ce Portail vous permet d’accéder en tant qu’employeurs du secteur public à un ensemble de formations qualifiantes et diplômantes dans le domaine du numérique proposées en partenariat avec ITU Academy, GSMA,….<br><a href="/register">Inscrivez-vous </a> dès maintenant pour ne 
 									 manquer aucune de nos formations.</p> {% else %}
-									  <p class="description desc-ar" data-sal-delay="350" 
-									data-sal="slide-up" data-sal-duration="800" >
-تهدف هذه البوّابة إلى تقديم عدّة دورات تكوينيّة إشهاديّة في مجال التّحوّل الرّقمي لفائدة موظّفي القطاع العمومي وذلك بالشّراكة مع عدّة مكاتب تكوين مثل أكاديمية الاتحاد الدولي  
-لا تفوِّت الفرصة. سجِّل الآن!<br>
+									
 
-								</p>{% endif %}
+ <p class="description desc-ar" data-sal-delay="350" 
+									data-sal="slide-up" data-sal-duration="800" >
+تهدف هذه البوّابة إلى تقديم عدّة دورات تكوينيّة إشهاديّة في مجال التّحوّل الرّقمي لفائدة موظّفي القطاع العمومي وذلك بالشّراكة مع عدّة مكاتب تكوين مثل أكاديمية الاتحاد الدولي للاتصالات 
+
+لا تفوِّت الفرصة. 
+		<a href="/login" style="color:red"> سجِّل الآن </a><br>
+
+								</p>
+									 {% endif %}
 									 
                             </div>
                             </div>
@@ -120,7 +99,7 @@
                                         <div class="content">
                                             <h3 class="counter"><span class="odometer" data-count="10">00</span>
                                             </h3>
-                                            <span class="spon">{% if (app.request.locale)=='ar' %}عدد التسجيلات{% else %}Nombre d’inscriptions{% endif %}</span>
+                                            <span class="spon">{% if (app.request.locale)=='ar' %}عدد المسجلين {% else %}Nombre d’inscriptions{% endif %}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -261,8 +240,8 @@
 				{% endfor %}
 				{% else %}
 					<p>{% trans %}Aucun élément à afficher{% endtrans %}</p>
-                        <div ><button class="edu-btn btn-medium btn-dark bes" href="/" style="line-height: 1px;">
-						{% trans %} Nouvelle recherche {% endtrans %}</button></div>
+                        <div ><a class="rech-nouvelle" href="/list-formations#form-recp" style="line-height: 1px;">
+						{% trans %}Effectuer une nouvelle recherche {% endtrans %}</a></div>
 					{% endif %}
 			</div>
 			<div class="row text-center mt--60">
@@ -429,7 +408,7 @@
                                         </div>
                                         <div class="content">
                                             
-                                            <h5 class="title-act"><a href="/media/{{ actualite.slug }}">{{ actualite.titre }}</a></h5>
+                                            <h5 class="title-act" style="direction: rtl;"><a href="/media/{{ actualite.slug }}">{{ actualite.titre }}</a></h5>
                                             <p class="desc-actu">{{ actualite.description|u.truncate(120, '...')  }}</p>
                                             <div class="blog-card-bottom">
                                                 <ul class="blog-meta">
@@ -512,23 +491,12 @@
 		<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
 	</svg>
 </div>
-{% if (app.request.locale)=='ar' %}
-	<style>
-	h4.journal {
-			position: absolute;
-			right: 0;
-			font-size: 27px;
-			z-index: 999;
-			background: white;
-			padding: 0px 25px 3px 26px;
-			border-left: 1px solid red;
-		}
-		p.desc-actu {
-			direction: rtl;
-		}
-	</style>
-{% endif %}
+
 <style>
+@media only screen and (max-width:992px){
+     a.avance-ar , a.avance {
+      margin-top: 216px !important;}
+	 }
 .col-lg-4.col-md-6.col-12.sal-animate {
     padding: 20px;
 }
@@ -569,44 +537,6 @@ span.odometer.odometer-auto-theme {
 }.edu-slick-button.slick-button-left .slick-dots {
     bottom: -20px;}
 
-#news-bar {
-    position: absolute;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 0px 0px #c1a4a436, 0 0 2px #b17c7c66 inset;
-    font: 17px bold;
-    padding: 4px;
-    top: 80px;
-}
-.journal-fr{
-	position: absolute;
-    left: 0;
-    font-size: 23px;
-    z-index: 999;
-    background: white;
-    padding: 7px 25px 4px 26px;
-    border-right: 1px solid red;
-}
-#news-bar:hover {
-  transition: 0.37s;
-}
-
-#news-bar a {
-   color: #cf1115;
-    text-decoration: none;
-    font-size: 15px;
-	margin-left: 5%;
-    margin-right: 5%;
-}
-
-#news-bar a:hover {
-  transition: 0.37s;
-  color: red;
-  text-shadow: 0 0 1px white, 0 0 2px white, 0 0 3px white, 0 0 4px white;
-}
-h5.title-news {
-    height: 15px;
-}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>

@@ -23,7 +23,7 @@
                                 <div>
                                     <h5 class="font-size-20 mb-1">{{ inscription.name }}</h5>
                                     <p class="text-muted font-size-16">{{ inscription.poste }}</p>
-
+									
                                     <div class=" align-items-start gap-2 gap-lg-3 text-muted font-size-16">
                                         <div><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i> Tel : {{ inscription.phone }}</div>
                                         <div><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i> Email : {{ inscription.email }}</div>
@@ -62,7 +62,20 @@
                                     </div>
                                 </div>
                             </div>
-
+							<div class="">
+                                <div class="row">
+                                    <div class="col-xl-3">
+                                        <div>
+                                            <h5 class="font-size-15">Date de naissance :</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl">
+                                        <div class="text-muted">
+                                            <p>{{ inscription.age|date('d-m-Y') }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="">
                                 <div class="row">
                                     <div class="col-xl-3">
@@ -105,7 +118,20 @@
                                     </div>
                                 </div>
                             </div>
-
+							<div class="">
+                                <div class="row">
+                                    <div class="col-xl-3">
+                                        <div>
+                                            <h5 class="font-size-15">Grade :</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl">
+                                        <div class="text-muted">
+                                            <p>{{ inscription.grade }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="">
                                 <div class="row">
                                     <div class="col-xl-3">

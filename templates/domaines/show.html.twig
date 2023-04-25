@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/index.html.twig' %}
 
 {% block title %}Domaines{% endblock %}
 
-{% block body %}
+{% block content %}
     <h1>Domaines</h1>
 
     <table class="table">
@@ -22,9 +22,12 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_domaines_index') }}">back to list</a>
-    <a href="{{ path('app_domaines_edit', {'id': domaine.id}) }}">edit</a>
-
+	 <a class="btn btn-warning waves-effect waves-light "  href="{{ path('app_domaines_index') }}">back to list</a>
+    <a  class="btn btn-secondary waves-effect waves-light" href="{{ path('app_domaines_edit', {'id': domaine.id}) }}">edit</a>
     {{ include('domaines/_delete_form.html.twig') }}
-    
+        <style>
+    a.btn.btn-warning.waves-effect.waves-light , a.btn.btn-secondary.waves-effect.waves-light {
+    width: 200px;
+    margin: 10px;}
+    </style>
 {% endblock %}

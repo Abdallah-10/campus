@@ -64,7 +64,7 @@ class SearchAvanceType extends AbstractType
             'required'=> false,
         ]) 
         ->add('date_ins_d',ChoiceType::class,[
-            'label' => " Début de l'inscription",
+            'label' => "Début de l'inscription",
             'choices' => [
                 'Tous' => 'Tous',
                 'En cours' => 'En cours',

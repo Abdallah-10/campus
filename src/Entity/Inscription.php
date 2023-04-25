@@ -27,6 +27,11 @@ class Inscription
 
     /**
      * @ORM\Column(type="string", length=255)
+     */
+    private $lastname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
 	 * @Assert\Range(min=20000000, max=99999999)
      */
     private $phone;
@@ -64,7 +69,6 @@ class Inscription
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="inscriptions", cascade={"remove"})
-     * @ORM\JoinColumn(name="id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $idUser;
 
@@ -98,11 +102,6 @@ class Inscription
      */
     private $ministere;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $lastname;
-
     public function __construct()
     {
         $this->formation = new ArrayCollection();
@@ -128,9 +127,9 @@ class Inscription
     }
 
 	public function getIdentifiant(): ?string
-                               {
-                                   return $this->identifiant;
-                               }
+                      {
+                          return $this->identifiant;
+                      }
 
     public function setIdentifiant(string $identifiant): self
     {
@@ -311,7 +310,7 @@ class Inscription
 
         return $this;
     }
-
+   
     public function getLastname(): ?string
     {
         return $this->lastname;
@@ -323,5 +322,4 @@ class Inscription
 
         return $this;
     }
-
 }

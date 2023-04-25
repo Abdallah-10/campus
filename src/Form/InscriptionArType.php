@@ -11,7 +11,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType as IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,7 +22,10 @@ class InscriptionArType extends AbstractType
     {
         $builder
         ->add('name',TextType::class,[
-            'label' => 'Nom et Prénom',
+            'label' => 'الأسم',
+        ])
+		->add('lastname',TextType::class,[
+            'label' => 'اللقب',
         ])
         ->add('email',EmailType::class,[
             'disabled'   => true,

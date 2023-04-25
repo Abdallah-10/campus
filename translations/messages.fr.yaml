@@ -22,11 +22,6 @@ Prénom: Prénom
 Email: Email 
 Téléphone: Téléphone
 Téléphone portable: Téléphone portable
-type d'assistance : type d'assistance
-Assistance technique : Assistance technique
-Réclamations: Réclamations
-Bug informatique : Bug informatique
-Autre : Autre
 Objet: Objet
 Votre message: Votre message 
 Envoyer: Envoyer 
@@ -88,8 +83,8 @@ COURS DISPONIBLE: COURS DISPONIBLE
 SECTEURS EXPERTISE: SECTEURS EXPERTISE
 APPRENANTS: APPRENANTS
 save.label: S’inscrire à la newsletter
-Un apprentissage qui vous ressemble: Un apprentissage qui vous ressemble
-Élargissez votre savoir, découvrez les compétences de demain, et prenez votre carrière en main.: Élargissez votre savoir, découvrez les compétences de demain, et prenez votre carrière en main.
+Un apprentissage qui vous rassemble : Un apprentissage qui vous ressemble
+Elargissez votre savoir et découvrez les compétences de demain. : Elargissez votre savoir et découvrez les compétences de demain. 
 Un vivier de formations: Un vivier de formations
 Comment ça marche: Comment ça marche
 Un process en 3 étapes: Un process en 3 étapes
@@ -198,7 +193,7 @@ Nombre d'inscriptions: Nombre d'inscriptions
 Bienvenue à Digital Learning Academy: Bienvenue à Digital Learning Academy
 C’est quoi la Digital Learning Academy ? : C’est quoi la Digital Learning Academy ? 
 Modalité: Modalité
-des formations certifiantes: des formations certifiantes
+Des formations certifiantes : Des formations certifiantes 
 Identifiant unique (CNSS/CNRPS): Identifiant unique (CNSS/CNRPS)
 Présidence Tunisie: Présidence Tunisie
 organisme: organisme
@@ -206,4 +201,14 @@ Bienvenue sur le portail DLA: Bienvenue sur le portail DLA
 Le projet DLA, C’est quoi ?: Le projet DLA, C’est quoi ?
 email.label: Votre adresse e-mail
 Langues: Langues
-Etablissements publics sous tutelle : Etablissements publics sous tutelle 
+Effectuer une nouvelle recherche: Effectuer une nouvelle recherche
+Aucun élément à afficher: Aucun élément à afficher
+Un processus en 3 étapes: Un processus en 3 étapes
+des formations certifiantes: des formations certifiantes
+type d'assistance : type d'assistance
+Assistance technique : Assistance technique
+Réclamations: Réclamations
+Bug informatique : Bug informatique
+Autre : Autre
+Un apprentissage pour vous: Un apprentissage pour vous
+Début de l'inscription: Début de l'inscription

@@ -43,7 +43,7 @@ class ContactType extends AbstractType
                     'required' => false
                 ]
             ])
-            ->add('type',ChoiceType::class,[
+			 ->add('type',ChoiceType::class,[
                 'choices'=>[
                     "type d'assistance"=>"type d'assistance",
                     'Assistance technique' => 'Assistance technique',

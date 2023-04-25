@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\ActualiteRepository;
 
 class BesoinAideController extends AbstractController
 {
@@ -28,7 +29,8 @@ class BesoinAideController extends AbstractController
     /**
      * @Route("/besoin/aide", name="app_besoin_aide")
      */
-    public function index(NewslatterRepository $newslatterRepository,ContactRepository $contactrepo, Request $request, MailerInterface $mailer, PaginatorInterface $paginator): Response
+    public function index(NewslatterRepository $newslatterRepository,ContactRepository $contactrepo, Request $request
+	, ActualiteRepository $actualiteRepository, MailerInterface $mailer, PaginatorInterface $paginator): Response
     {
         $contact = new Contact();
         $formContact = $this->createForm(ContactType::class, $contact);
@@ -44,7 +46,7 @@ class BesoinAideController extends AbstractController
             }else{
                 $this->addFlash('success', 'Merci ! votre message a été bien envoyé');
             }
-            $formContact->clear();
+           return $this->redirectToRoute('app_besoin_aide', [], Response::HTTP_SEE_OTHER);
         }
         $newslatter = New Newslatter();
         $form = $this->createForm(NewslatterType::class, $newslatter);
@@ -67,6 +69,7 @@ class BesoinAideController extends AbstractController
             'controller_name' => 'BesoinAideController',
             'formf' => $form->createView(),
             'formContact'=>$formContact->createView(),
+			'actualites' => $actualiteRepository->findAll(),
         ]);
     }
 }

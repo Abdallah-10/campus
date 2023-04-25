@@ -146,18 +146,20 @@
                             <div class="col-md-6">
                        
                             {% set email = user.email %}
-                            <div class="col-md-12"> <div class="col-md-6">{{ form_row(form.name)  }}</div>
+							
+							<div class="row"> <div class="col-md-6">{{ form_row(form.name)  }}</div>
                              <div class="col-md-6">{{ form_row(form.lastname)  }}</div></div>
+                            
                             {{ form_row(form.genre) }}
                             {{ form_row(form.age)  }}
                             
                             {{ form_row(form.ministere) }}
                           </div>
                             <div class="col-md-6">
-                                {{ form_row(form.identifiant) }}
+                                {{ form_row(form.identifiant, {'attr': {'pattern':'[0-9]{10}' }}) }}
                                 {{ form_row(form.email ,{'attr': {'value': email }}) }}
                             
-                                {{ form_row(form.phone) }}
+                                {{ form_row(form.phone ,{'attr': {'pattern':'[0-9]{8}' }}) }}
                                 {{ form_row(form.organisme) }}
                                  
                                 </div>
@@ -183,8 +185,13 @@
                                  <input type="hidden" id="hashedId" value="{{ hashedId }}">
                             </div>
                         </div>
+						 <div class="row mt--10">
+                           {% if(app.request.locale) =='fr' %}<label for="checkbox">* Toute la communication et les échanges liés à cette plateforme
+						   de formations seront fait sur cet email.</label>{% else %}
+						     <label for="checkbox"> * سيتم إجراء جميع الاتصالات والتبادلات المتعلقة بمنصة التدريب هذه على هذا البريد الإلكتروني.</label>{% endif %}
+                            </div>
                             <div class="row mt--20">
-                            
+                           
                             <div class="tacbox">
                             <input id="checkbox" type="checkbox" / required>
                             {% if(app.request.locale) =='fr' %}
@@ -304,7 +311,9 @@ button#inscription_Valider {
     box-shadow: 1px 2px 4px #6c757d;
     color: #fff;
 }
-
+.form-select {
+    padding-left: 5px !important; 
+}
 </style>
 <script>
 
@@ -315,7 +324,7 @@ $(document).ready(function() {
    $("#inscription_ministere").change(function() {
       setTimeout(function(){
                 $("#overlay").fadeIn();
-               },500);
+               },100);
         $('#inscription_organisme').prop( "disabled", true )
        var x = document.getElementById("inscription_ministere").value;
 
@@ -324,7 +333,7 @@ $(document).ready(function() {
             url: '{{ path('personal_info',{'id':'vi' ,'hashedId':'hashedId' }) }}',
             data:{ data: x },         
             success:function(data){
-                var html = '<option class="placehold"> Etablissements publics sous tutelle </option>';
+                var html = '';
                 console.log('ok')
               
                $.each(data, function (index, value) {
@@ -347,7 +356,7 @@ $(document).ready(function() {
        $("#inscription_ar_ministere").change(function() {
       setTimeout(function(){
                 $("#overlay").fadeIn();
-               },500);
+               },100);
         $('#inscription_ar_organisme').prop( "disabled", true )
        var x = document.getElementById("inscription_ar_ministere").value;
 
@@ -356,16 +365,18 @@ $(document).ready(function() {
             url: '{{ path('personal_info',{'id':'vi' ,'hashedId':'hashedId' }) }}',
             data:{ data: x },         
             success:function(data){
-                var html = '<option class="placehold"> المنشآت والمؤسسات العمومية</option>';
-                console.log('ok')
+                var html = '';
+                
               
                $.each(data, function (index, value) {
-                    html +='<option>'+ value +'</option> ';
+                     html +='<option value='+value["id"]+'>'+ value["category"] +'</option> ';
                 });
+				
                document.getElementById('inscription_ar_organisme').innerHTML = html;
                  setTimeout(function(){
-                    $("#overlay").fadeOut(300);
+                    $("#overlay").fadeOut();
                 },100);
+				console.log('ok')
                  $('#inscription_ar_organisme').prop( "disabled", false )
             },
             error: function(data){
